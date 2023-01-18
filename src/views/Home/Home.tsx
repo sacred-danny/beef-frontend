@@ -126,7 +126,7 @@ const Home: React.FC = () => {
           <Heading as="h1" scale="xl" mb="24px" color="invertedContrast">
             {t('WagyuSwap')}
           </Heading>
-          <Text bold={bold} color="invertedContrast">{t('The #1 AMM and yield farm on Velas Chain.')}</Text>
+          <Text bold={bold} color="invertedContrast">{t('The #1 AMM and yield farm on Flare.')}</Text>
         </div>
         <StyledImage src="/images/right-wagyu.svg" alt="Wagyu" width={160} height={120} />
       </Hero>
