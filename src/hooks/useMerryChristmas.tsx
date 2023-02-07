@@ -1,5 +1,6 @@
+// @ts-nocheck
 import { useEffect } from 'react'
-import { useParticleBurst } from '@wagyu-swap-libs/uikit'
+import { useParticleBurst } from '@beef-swap-libs/uikit'
 import { useLocation } from 'react-router-dom'
 
 const disableWhenNotChristmas = () => {

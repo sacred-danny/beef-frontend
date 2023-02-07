@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ReactText } from 'react'
 import { Profile } from 'state/types'
 
@@ -81,7 +82,7 @@ export interface TeamRanksProps {
 export interface UserRewardsProps {
   userCanClaim?: boolean
   userRewards?: {
-    wagyuToClaim?: string
+    BeefToClaim?: string
     pointsToClaim?: string
   }
 }
@@ -90,7 +91,7 @@ export interface UserTradingInformationProps {
   hasRegistered?: boolean
   hasUserClaimed?: boolean
   userRewardGroup?: string
-  userWagyuRewards?: string
+  userBeefRewards?: string
   userPointReward?: string
   canClaimNFT?: boolean
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import every from 'lodash/every'
-import { Stepper, Step, StepStatus, Card, CardBody, Heading, Text, Button, Link, OpenNewIcon } from '@wagyu-swap-libs/uikit'
+import { Stepper, Step, StepStatus, Card, CardBody, Heading, Text, Button, Link, OpenNewIcon } from '@beef-swap-libs/uikit'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import { Ifo } from 'config/constants/types'
 import { WalletIfoData } from 'hooks/ifo/types'
@@ -59,7 +59,7 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
               {t('Activate your Profile')}
             </Heading>
             <Text color="textSubtle" small mb="16px">
-              {t('You’ll need an active WagyuSwap Profile to take part in an IFO!')}
+              {t('You’ll need an active BeefSwap Profile to take part in an IFO!')}
             </Text>
             {isStepValid ? (
               <Text color="success" bold>
@@ -76,10 +76,10 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
         return (
           <CardBody>
             <Heading as="h4" color="secondary" mb="16px">
-              {t('Get WAGYU-VLX LP Tokens')}
+              {t('Get Beef-VLX LP Tokens')}
             </Heading>
             <Text color="textSubtle" small>
-              {t('Stake WAGYU and VLX in the liquidity pool to get LP tokens.')} <br />
+              {t('Stake Beef and VLX in the liquidity pool to get LP tokens.')} <br />
               {t('You’ll spend them to buy IFO sale tokens.')}
             </Text>
             <Button
@@ -113,7 +113,7 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
             </Heading>
             <Text color="textSubtle" small>
               {t(
-                'After the IFO sales finish, you can claim any IFO tokens that you bought, and any unspent WAGYU-VLX LP tokens will be returned to your wallet.',
+                'After the IFO sales finish, you can claim any IFO tokens that you bought, and any unspent Beef-VLX LP tokens will be returned to your wallet.',
               )}
             </Text>
           </CardBody>

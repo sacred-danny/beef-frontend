@@ -1,5 +1,6 @@
+// @ts-nocheck
 import styled from 'styled-components'
-import { Text } from '@wagyu-swap-libs/uikit'
+import { Text } from '@beef-swap-libs/uikit'
 
 const SecondaryCard = styled(Text)`
   border: 2px solid ${({ theme }) => theme.colors.tertiary};

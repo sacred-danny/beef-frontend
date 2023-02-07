@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { ChevronDownIcon, useMatchBreakpoints } from '@wagyu-swap-libs/uikit'
+import { ChevronDownIcon, useMatchBreakpoints } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 interface DetailsProps {

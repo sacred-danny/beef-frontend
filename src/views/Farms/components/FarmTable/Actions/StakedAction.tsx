@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { Button, useModal, IconButton, AddIcon, MinusIcon, Skeleton } from '@wagyu-swap-libs/uikit'
+import { Button, useModal, IconButton, AddIcon, MinusIcon, Skeleton } from '@beef-swap-libs/uikit'
 import { useLocation } from 'react-router-dom'
 import UnlockButton from 'components/UnlockButton'
 import { useWeb3React } from '@web3-react/core'

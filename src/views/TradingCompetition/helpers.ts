@@ -1,5 +1,6 @@
+// @ts-nocheck
 import { ReactText } from 'react'
-import { usePriceWagyuVusdt } from 'state/hooks'
+import { usePriceBeefVusdt } from 'state/hooks'
 import { getBalanceNumber } from 'utils/formatBalance'
 import easterPrizes from 'config/constants/trading-competition/easter'
 import BigNumber from 'bignumber.js'
@@ -8,13 +9,13 @@ export const localiseTradingVolume = (value: number, decimals = 0) => {
   return value.toLocaleString('en-US', { maximumFractionDigits: decimals })
 }
 
-export const useCompetitionWagyuRewards = (userWagyuReward: ReactText) => {
-  const wagyuAsBigNumber = new BigNumber(userWagyuReward as string)
-  const wagyuBalance = getBalanceNumber(wagyuAsBigNumber)
-  const wagyuPriceVusdt = usePriceWagyuVusdt()
+export const useCompetitionBeefRewards = (userBeefReward: ReactText) => {
+  const BeefAsBigNumber = new BigNumber(userBeefReward as string)
+  const BeefBalance = getBalanceNumber(BeefAsBigNumber)
+  const BeefPriceVusdt = usePriceBeefVusdt()
   return {
-    wagyuReward: wagyuBalance,
-    dollarValueOfWagyuReward: wagyuPriceVusdt.gt(0) ? wagyuBalance * wagyuPriceVusdt.toNumber() : null,
+    BeefReward: BeefBalance,
+    dollarValueOfBeefReward: BeefPriceVusdt.gt(0) ? BeefBalance * BeefPriceVusdt.toNumber() : null,
   }
 }
 

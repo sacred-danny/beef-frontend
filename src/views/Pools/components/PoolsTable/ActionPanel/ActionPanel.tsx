@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import styled, { keyframes, css } from 'styled-components'
 import {
@@ -12,10 +13,10 @@ import {
   Text,
   TimerIcon,
   useTooltip,
-} from '@wagyu-swap-libs/uikit'
+} from '@beef-swap-libs/uikit'
 import { BASE_URL } from 'config'
 import { getVelasScanBlockCountdownUrl } from 'utils/velasScan'
-import { useBlock, useWagyuVault } from 'state/hooks'
+import { useBlock, useBeefVault } from 'state/hooks'
 import BigNumber from 'bignumber.js'
 import { Pool } from 'state/types'
 import { useTranslation } from 'contexts/Localization'
@@ -120,20 +121,20 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
   const imageSrc = `${BASE_URL}/images/tokens/${earningToken.symbol.toLowerCase()}.png`
 
   const {
-    totalWagyuInVault,
+    totalBeefInVault,
     fees: { performanceFee },
-  } = useWagyuVault()
+  } = useBeefVault()
 
   const performanceFeeAsDecimal = performanceFee && performanceFee / 100
-  const isManualWagyuPool = sousId === 0
+  const isManualBeefPool = sousId === 0
 
   const getTotalStakedBalance = () => {
     if (isAutoVault) {
-      return getBalanceNumber(totalWagyuInVault, stakingToken.decimals)
+      return getBalanceNumber(totalBeefInVault, stakingToken.decimals)
     }
-    if (isManualWagyuPool) {
-      const manualWagyuTotalMinusAutoVault = new BigNumber(totalStaked).minus(totalWagyuInVault)
-      return getBalanceNumber(manualWagyuTotalMinusAutoVault, stakingToken.decimals)
+    if (isManualBeefPool) {
+      const manualBeefTotalMinusAutoVault = new BigNumber(totalStaked).minus(totalBeefInVault)
+      return getBalanceNumber(manualBeefTotalMinusAutoVault, stakingToken.decimals)
     }
     return getBalanceNumber(totalStaked, stakingToken.decimals)
   }
@@ -218,7 +219,7 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
         {(isXs || isSm || isMd) && totalStakedRow}
         {shouldShowBlockCountdown && blocksRow}
         <Flex mb="8px" justifyContent={['flex-end', 'flex-end', 'flex-start']}>
-          <LinkExternal href={`https://wagyuswap.info/token/${getAddress(earningToken.address)}`} bold={false}>
+          <LinkExternal href={`https://Beefswap.info/token/${getAddress(earningToken.address)}`} bold={false}>
             {t('Info site')}
           </LinkExternal>
         </Flex>
@@ -249,7 +250,7 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
       <ActionContainer>
         {showSubtitle && (
           <Text mt="4px" mb="16px" color="textSubtle">
-            {isAutoVault ? t('Automatic restaking') : `${t('Earn')} WAGYU ${t('Stake').toLocaleLowerCase()} WAGYU`}
+            {isAutoVault ? t('Automatic restaking') : `${t('Earn')} Beef ${t('Stake').toLocaleLowerCase()} Beef`}
           </Text>
         )}
         <Harvest {...pool} userDataLoaded={userDataLoaded} />

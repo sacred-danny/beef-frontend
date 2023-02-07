@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading, Card, CardBody } from '@wagyu-swap-libs/uikit'
+import { Heading, Card, CardBody } from '@beef-swap-libs/uikit'
 import HistoryChart from './HistoryChart'
 import Legend from './Legend'
 import { useTranslation } from '../../../../contexts/Localization'

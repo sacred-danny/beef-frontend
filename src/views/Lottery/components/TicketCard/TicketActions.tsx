@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, useModal } from '@wagyu-swap-libs/uikit'
+import { Button, useModal } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import useGetLotteryHasDrawn from 'hooks/useGetLotteryHasDrawn'
 import { useLotteryAllowance } from 'hooks/useAllowance'
 import useTickets from 'hooks/useTickets'
 import useTokenBalance from 'hooks/useTokenBalance'
-import { getWagyuAddress } from 'utils/addressHelpers'
+import { getBeefAddress } from 'utils/addressHelpers'
 import { useApproval } from 'hooks/useApproval'
 import BuyTicketModal from './BuyTicketModal'
 import MyTicketsModal from './UserTicketsModal'
@@ -26,12 +26,12 @@ const TicketCard: React.FC = () => {
   const { t } = useTranslation()
   const allowance = useLotteryAllowance()
   const lotteryHasDrawn = useGetLotteryHasDrawn()
-  const wagyuBalance = useTokenBalance(getWagyuAddress())
+  const BeefBalance = useTokenBalance(getBeefAddress())
   const tickets = useTickets()
   const ticketsLength = tickets.length
   const [onPresentMyTickets] = useModal(<MyTicketsModal myTicketNumbers={tickets} from="buy" />)
   const [onPresentApprove] = useModal(<PurchaseWarningModal />)
-  const [onPresentBuy] = useModal(<BuyTicketModal max={wagyuBalance.balance} />)
+  const [onPresentBuy] = useModal(<BuyTicketModal max={BeefBalance.balance} />)
   const { handleApprove, requestedApproval } = useApproval(onPresentApprove)
 
   const renderLotteryTicketButtons = () => {
@@ -42,7 +42,7 @@ const TicketCard: React.FC = () => {
             {t('View your tickets')}
           </Button>
           <Button width="100%" disabled={requestedApproval} onClick={handleApprove}>
-            {t('Approve WAGYU')}
+            {t('Approve Beef')}
           </Button>
         </>
       )

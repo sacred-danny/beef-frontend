@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { ButtonMenu, ButtonMenuItem } from '@wagyu-swap-libs/uikit'
+import { ButtonMenu, ButtonMenuItem } from '@beef-swap-libs/uikit'
 import PastLotteryDataContext from 'contexts/PastLotteryDataContext'
 import { getLotteryIssueIndex } from 'utils/lotteryUtils'
 import { useLottery } from 'hooks/useContract'
@@ -30,7 +30,7 @@ const Lottery: React.FC = () => {
 
   useEffect(() => {
     let isSubscribed = true
-    fetch(`https://staging.api.wagyuswap.app/api/lotteryHistory`)
+    fetch(`https://staging.api.Beefswap.app/api/lotteryHistory`)
       .then((response) => response.json())
       .then((data) => setHistoryData(data))
       .catch(() => {

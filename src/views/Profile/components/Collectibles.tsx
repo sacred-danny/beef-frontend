@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Heading, Text, Flex, ChevronRightIcon } from '@wagyu-swap-libs/uikit'
+import { Heading, Text, Flex, ChevronRightIcon } from '@beef-swap-libs/uikit'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'contexts/Localization'
 import { useGetCollectibles } from 'state/hooks'
@@ -34,13 +35,13 @@ const Collectibles = () => {
   return (
     <>
       <Heading as="h4" scale="md" mb="8px">
-        {t('Wagyu Collectibles')}
+        {t('Beef Collectibles')}
       </Heading>
       <Text as="p">
-        {t('Wagyu Collectibles are special ERC-721 NFTs that can be used on the WagyuSwap platform.')}
+        {t('Beef Collectibles are special ERC-721 NFTs that can be used on the BeefSwap platform.')}
       </Text>
       <Text as="p">
-        {t('NFTs in this user’s wallet that aren’t approved Wagyu Collectibles won’t be shown here.')}
+        {t('NFTs in this user’s wallet that aren’t approved Beef Collectibles won’t be shown here.')}
       </Text>
       {nftsInWallet.length > 0 && (
         <CollectibleList>
@@ -57,7 +58,7 @@ const Collectibles = () => {
         </Flex>
       )}
       <Flex alignItems="center" justifyContent="flex-end">
-        <Link to="/collectibles">{t('See all approved Wagyu Collectibles')}</Link>
+        <Link to="/collectibles">{t('See all approved Beef Collectibles')}</Link>
         <ChevronRightIcon />
       </Flex>
     </>

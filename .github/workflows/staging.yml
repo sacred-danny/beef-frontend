@@ -1,4 +1,4 @@
-name: Wagyuswap staging deployment - Test, Build & Deploy
+name: Beefswap staging deployment - Test, Build & Deploy
 
 on:
   push:
@@ -45,7 +45,7 @@ jobs:
         password: ${{ secrets.REMOTE_PASSWORD_STAGING }}
         port: ${{ secrets.REMOTE_PORT }}
         script: |
-          cd /root/projects/wagyu-frontend
+          cd /root/projects/beef-frontend
           git reset --hard origin/staging
           git pull
           yarn

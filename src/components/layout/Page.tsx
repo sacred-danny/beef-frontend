@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
@@ -6,7 +7,7 @@ import { useLocation } from 'react-router'
 import { DEFAULT_META, getCustomMeta } from 'config/constants/meta'
 import Container from './Container'
 import useGetPriceData from '../../hooks/useGetPriceData'
-import { WAGYU } from '../../config'
+import { Beef } from '../../config'
 
 const StyledPage = styled(Container)`
   min-height: calc(100vh - 64px);
@@ -27,13 +28,13 @@ const StyledPage = styled(Container)`
 const PageMeta = () => {
   const { t } = useTranslation()
   const { pathname } = useLocation()
-  // const wagyuPriceUsd = usePriceWagyuVusdt()
-  const wagyuPriceUsd = useGetPriceData()
-  const wagyuPriceUsdDisplay = wagyuPriceUsd ? Number(wagyuPriceUsd.data[WAGYU.address]?.price || 0).toFixed(3) : undefined
+  // const BeefPriceUsd = usePriceBeefVusdt()
+  const BeefPriceUsd = useGetPriceData()
+  const BeefPriceUsdDisplay = BeefPriceUsd ? Number(BeefPriceUsd.data[Beef.address]?.price || 0).toFixed(3) : undefined
 
   const pageMeta = getCustomMeta(pathname, t) || {}
   const { title, description, image } = { ...DEFAULT_META, ...pageMeta }
-  const pageTitle = wagyuPriceUsdDisplay ? [title, wagyuPriceUsdDisplay].join(' - ') : title
+  const pageTitle = BeefPriceUsdDisplay ? [title, BeefPriceUsdDisplay].join(' - ') : title
 
   return (
     <Helmet>

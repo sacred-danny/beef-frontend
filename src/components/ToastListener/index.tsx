@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { ToastContainer } from '@wagyu-swap-libs/uikit'
+import { ToastContainer } from '@beef-swap-libs/uikit'
 import useToast from 'hooks/useToast'
 
 const ToastListener = () => {

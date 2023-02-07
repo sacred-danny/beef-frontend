@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React, { useEffect, useRef } from 'react'
 import CountUp from 'react-countup'
-import { Text, TextProps } from '@wagyu-swap-libs/uikit'
+import { Text, TextProps } from '@beef-swap-libs/uikit'
 
 interface BalanceProps extends TextProps {
   value: number

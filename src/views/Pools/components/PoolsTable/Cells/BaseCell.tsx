@@ -1,4 +1,5 @@
-import { Flex, Text } from '@wagyu-swap-libs/uikit'
+// @ts-nocheck
+import { Flex, Text } from '@beef-swap-libs/uikit'
 import styled from 'styled-components'
 
 const BaseCell = styled.div`

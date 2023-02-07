@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex } from '@wagyu-swap-libs/uikit'
+import { Flex } from '@beef-swap-libs/uikit'
 import { RibbonProps } from '../../types'
 import Ribbon from '../Ribbon'
 

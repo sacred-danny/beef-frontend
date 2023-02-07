@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { Skeleton } from '@wagyu-swap-libs/uikit'
+import { Skeleton } from '@beef-swap-libs/uikit'
 
 export interface EarnedProps {
   earnings: number

@@ -1,8 +1,9 @@
+// @ts-nocheck
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { provider as ProviderType } from 'web3-core'
 import BigNumber from 'bignumber.js'
-import { Button, Flex, Text } from '@wagyu-swap-libs/uikit'
+import { Button, Flex, Text } from '@beef-swap-libs/uikit'
 import { getAddress } from 'utils/addressHelpers'
 import { getVls20Contract } from 'utils/contractHelpers'
 import { useAppDispatch } from 'state'
@@ -84,7 +85,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, account, addLiquidi
     <Action>
       <Flex>
         <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="3px">
-          WAGYU
+          Beef
         </Text>
         <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
           {t('Earned')}

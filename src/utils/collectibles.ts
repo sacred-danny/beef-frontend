@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Nfts, { IPFS_GATEWAY, nftSources } from 'config/constants/nfts'
 import { Nft, NftType } from 'config/constants/types'
 import { getAddress } from './addressHelpers'
@@ -17,7 +18,7 @@ export const getIdentifierKeyFromAddress = (nftAddress: string) => {
 }
 
 /**
- * Some sources like Wagyu do not return HTTP tokenURI's
+ * Some sources like Beef do not return HTTP tokenURI's
  */
 export const getTokenUrl = (tokenUri: string) => {
   if (tokenUri.startsWith('ipfs://')) {

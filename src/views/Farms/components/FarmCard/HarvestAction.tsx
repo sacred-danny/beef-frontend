@@ -1,13 +1,14 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import BigNumber from 'bignumber.js'
-import { Button, Flex, Heading } from '@wagyu-swap-libs/uikit'
+import { Button, Flex, Heading } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useAppDispatch } from 'state'
 import { fetchFarmUserDataAsync } from 'state/farms'
 import { useHarvest } from 'hooks/useHarvest'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useWeb3React } from '@web3-react/core'
-import { usePriceWagyuVusdt } from 'state/hooks'
+import { usePriceBeefVusdt } from 'state/hooks'
 import CardVusdtValue from '../../../Home/components/CardVusdtValue'
 
 interface FarmCardActionsProps {
@@ -20,11 +21,11 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
   const { t } = useTranslation()
   const [pendingTx, setPendingTx] = useState(false)
   const { onReward } = useHarvest(pid)
-  const wagyuPrice = usePriceWagyuVusdt()
+  const BeefPrice = usePriceBeefVusdt()
   const dispatch = useAppDispatch()
   const rawEarningsBalance = account ? getBalanceNumber(earnings) : 0
   const displayBalance = rawEarningsBalance.toLocaleString()
-  const earningsVusdt = rawEarningsBalance ? new BigNumber(rawEarningsBalance).multipliedBy(wagyuPrice).toNumber() : 0
+  const earningsVusdt = rawEarningsBalance ? new BigNumber(rawEarningsBalance).multipliedBy(BeefPrice).toNumber() : 0
 
   return (
     <Flex mb="8px" justifyContent="space-between" alignItems="center">

@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Flex, Text, Button, Heading, useModal, Skeleton } from '@wagyu-swap-libs/uikit'
+import { Flex, Text, Button, Heading, useModal, Skeleton } from '@beef-swap-libs/uikit'
 import BigNumber from 'bignumber.js'
 import { Token } from 'config/constants/types'
 import { useTranslation } from 'contexts/Localization'

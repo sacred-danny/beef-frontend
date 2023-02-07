@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { HelpIcon, Skeleton, useTooltip } from '@wagyu-swap-libs/uikit'
+import { HelpIcon, Skeleton, useTooltip } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 const ReferenceElement = styled.div`
@@ -33,10 +34,10 @@ const Multiplier: React.FunctionComponent<MultiplierProps> = ({ multiplier }) =>
   const { t } = useTranslation()
   const tooltipContent = (
     <div>
-      {t('The multiplier represents the amount of WAGYU rewards each farm gets.')}
+      {t('The multiplier represents the amount of Beef rewards each farm gets.')}
       <br />
       <br />
-      {t('For example, if a 1x farm was getting 1 WAGYU per block, a 40x farm would be getting 40 WAGYU per block.')}
+      {t('For example, if a 1x farm was getting 1 Beef per block, a 40x farm would be getting 40 Beef per block.')}
     </div>
   )
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, {

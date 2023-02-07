@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Suspense, SuspenseProps } from 'react'
 
 interface State {

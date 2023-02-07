@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Svg, SvgProps } from '@wagyu-swap-libs/uikit'
+import { Svg, SvgProps } from '@beef-swap-libs/uikit'
 
 const Ranks: React.FC<SvgProps> = (props) => {
   return (

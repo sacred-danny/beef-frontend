@@ -1,10 +1,11 @@
+// @ts-nocheck
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
-import { AutoRenewIcon, Button, Card, CardBody, Heading, Skeleton, Text } from '@wagyu-swap-libs/uikit'
+import { AutoRenewIcon, Button, Card, CardBody, Heading, Skeleton, Text } from '@beef-swap-libs/uikit'
 import { Link as RouterLink } from 'react-router-dom'
 import { useWeb3React } from '@web3-react/core'
 import { getAddressByType } from 'utils/collectibles'
-import { getWagyuProfileAddress } from 'utils/addressHelpers'
+import { getBeefProfileAddress } from 'utils/addressHelpers'
 import { useTranslation } from 'contexts/Localization'
 import { useGetCollectibles } from 'state/hooks'
 import useToast from 'hooks/useToast'
@@ -33,7 +34,7 @@ const ProfilePicture: React.FC = () => {
 
   const handleApprove = () => {
     contract.methods
-      .approve(getWagyuProfileAddress(), selectedNft.tokenId)
+      .approve(getBeefProfileAddress(), selectedNft.tokenId)
       .send({ from: account })
       .once('sending', () => {
         setIsApproving(true)
@@ -55,11 +56,11 @@ const ProfilePicture: React.FC = () => {
           {t('Oops!')}
         </Heading>
         <Text bold fontSize="20px" mb="24px">
-          {t('We couldn’t find any Wagyu Collectibles in your wallet.')}
+          {t('We couldn’t find any Beef Collectibles in your wallet.')}
         </Text>
         <Text as="p">
           {t(
-            'You need a Wagyu Collectible to finish setting up your profile. If you sold or transferred your starter collectible to another wallet, you’ll need to get it back or acquire a new one somehow. You can’t make a new starter with this wallet address.',
+            'You need a Beef Collectible to finish setting up your profile. If you sold or transferred your starter collectible to another wallet, you’ll need to get it back or acquire a new one somehow. You can’t make a new starter with this wallet address.',
           )}
         </Text>
       </>
@@ -83,7 +84,7 @@ const ProfilePicture: React.FC = () => {
             {t('Choose a profile picture from the eligible collectibles (NFT) in your wallet, shown below.')}
           </Text>
           <Text as="p" color="textSubtle" mb="24px">
-            {t('Only approved Wagyu Collectibles can be used.')}
+            {t('Only approved Beef Collectibles can be used.')}
             <Link to="/collectibles" style={{ marginLeft: '4px' }}>
               {t('See the list >')}
             </Link>

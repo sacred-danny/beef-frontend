@@ -1,7 +1,7 @@
-# Contributing to the Wagyu ecosystem 🥞
+# Contributing to the Beef ecosystem 🥞
 
 Thanks for taking the time to contribute !
-You can start by reading our [Contribution guidelines](https://docs.wagyuswap.finance/code/contributing) first.
+You can start by reading our [Contribution guidelines](https://docs.Beefswap.finance/code/contributing) first.
 
 ## Setup
 
@@ -54,7 +54,7 @@ t(key, data)
 If a Crowdin translation like this `You have %num% left in your wallet` - would look something like:
 
 ```
-t(`You have %num% left in your wallet`, { num: wagyuBalance })
+t(`You have %num% left in your wallet`, { num: BeefBalance })
 ```
 
 ## Issue reports

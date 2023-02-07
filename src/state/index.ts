@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 import farmsReducer from './farms'

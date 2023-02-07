@@ -1,4 +1,4 @@
-export { default as LeaderboardWagyues } from './LeaderboardWagyues'
+export { default as LeaderboardBeefes } from './LeaderboardBeefes'
 export { default as LeaderboardFlippers } from './LeaderboardFlippers'
 export { default as LeaderboardStorm } from './LeaderboardStorm'
 export { default as PodiumBase } from './PodiumBase'

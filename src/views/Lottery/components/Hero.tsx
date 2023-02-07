@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Heading, Text } from '@wagyu-swap-libs/uikit'
+import { Heading, Text } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Container from 'components/layout/Container'
 import LotteryProgress from './LotteryProgress'
@@ -70,8 +70,8 @@ const Hero = () => {
     <StyledHero>
       <StyledContainer>
         <LeftWrapper>
-          <Title>{t('The WAGYU Lottery')}</Title>
-          <Blurb>{t('Buy tickets with WAGYU')}</Blurb>
+          <Title>{t('The Beef Lottery')}</Title>
+          <Blurb>{t('Buy tickets with Beef')}</Blurb>
           <Blurb>{t('Win if 2, 3, or 4 of your ticket numbers match!')}</Blurb>
         </LeftWrapper>
         <RightWrapper>

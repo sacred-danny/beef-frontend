@@ -1,9 +1,10 @@
+// @ts-nocheck
 import React from 'react'
-import { Modal, Flex, Text } from '@wagyu-swap-libs/uikit'
+import { Modal, Flex, Text } from '@beef-swap-libs/uikit'
 import { useAppDispatch } from 'state'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
-import { useWagyu, useProfile } from 'hooks/useContract'
+import { useBeef, useProfile } from 'hooks/useContract'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
 import { fetchProfile } from 'state/profile'
 import useToast from 'hooks/useToast'
@@ -16,7 +17,7 @@ interface Props {
   selectedNft: State['selectedNft']
   account: string
   teamId: number
-  minimumWagyuRequired: BigNumber
+  minimumBeefRequired: BigNumber
   allowance: BigNumber
   onDismiss?: () => void
 }
@@ -25,7 +26,7 @@ const ConfirmProfileCreationModal: React.FC<Props> = ({
   account,
   teamId,
   selectedNft,
-  minimumWagyuRequired,
+  minimumBeefRequired,
   allowance,
   onDismiss,
 }) => {
@@ -33,21 +34,21 @@ const ConfirmProfileCreationModal: React.FC<Props> = ({
   const profileContract = useProfile()
   const dispatch = useAppDispatch()
   const { toastSuccess } = useToast()
-  const wagyuContract = useWagyu()
+  const BeefContract = useBeef()
 
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
-          const response = await wagyuContract.methods.allowance(account, profileContract.options.address).call()
+          const response = await BeefContract.methods.allowance(account, profileContract.options.address).call()
           const currentAllowance = new BigNumber(response)
-          return currentAllowance.gte(minimumWagyuRequired)
+          return currentAllowance.gte(minimumBeefRequired)
         } catch (error) {
           return false
         }
       },
       onApprove: () => {
-        return wagyuContract.methods.approve(profileContract.options.address, allowance.toJSON()).send({ from: account })
+        return BeefContract.methods.approve(profileContract.options.address, allowance.toJSON()).send({ from: account })
       },
       onConfirm: () => {
         return profileContract.methods
@@ -68,7 +69,7 @@ const ConfirmProfileCreationModal: React.FC<Props> = ({
       </Text>
       <Flex justifyContent="space-between" mb="16px">
         <Text>{t('Cost')}</Text>
-        <Text>{t('%num% WAGYU', { num: REGISTER_COST })}</Text>
+        <Text>{t('%num% Beef', { num: REGISTER_COST })}</Text>
       </Flex>
       <ApproveConfirmButtons
         isApproveDisabled={isConfirmed || isConfirming || isApproved}

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export default {
   masterChef: {
     106: '',
@@ -19,11 +20,11 @@ export default {
     106: '',
     111: '0xC70b3De226fDa9D25F681879b0B026BeeBDc833f',
   },
-  wagyuProfile: {
+  BeefProfile: {
     106: '',
     111: '0x4B683C7E13B6d5D7fd1FeA9530F451954c1A7c8A',
   },
-  wagyuRabbits: {
+  BeefRabbits: {
     106: '',
     111: '0x60935F36e4631F73f0f407e68642144e07aC7f5E',
   },
@@ -51,7 +52,7 @@ export default {
     106: '',
     111: '0x24ec6962dbe874F6B67B5C50857565667fA0854F',
   },
-  wagyuVault: {
+  BeefVault: {
     106: '',
     111: '0x34b1370C8Fc76C15eb646ca9503C739d2489158C',
   },

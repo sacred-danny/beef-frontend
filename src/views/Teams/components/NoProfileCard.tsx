@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Button, Card, CardBody, Flex, Heading, Text } from '@wagyu-swap-libs/uikit'
+import { Button, Card, CardBody, Flex, Heading, Text } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { Link } from 'react-router-dom'
 

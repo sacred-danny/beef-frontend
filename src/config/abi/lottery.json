@@ -463,7 +463,7 @@
   },
   {
     "inputs": [],
-    "name": "wagyu",
+    "name": "Beef",
     "outputs": [
       {
         "internalType": "contract IERC20",
@@ -499,7 +499,7 @@
     "inputs": [
       {
         "internalType": "contract IERC20",
-        "name": "_wagyu",
+        "name": "_Beef",
         "type": "address"
       },
       {

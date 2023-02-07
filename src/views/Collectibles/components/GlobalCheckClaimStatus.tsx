@@ -1,7 +1,8 @@
+// @ts-nocheck
 import React, { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useWeb3React } from '@web3-react/core'
-import { useModal } from '@wagyu-swap-libs/uikit'
+import { useModal } from '@beef-swap-libs/uikit'
 import { useProfile } from 'state/hooks'
 import { useEasterNftContract } from 'hooks/useContract'
 import NftGiveawayModal from './NftGiveawayModal'

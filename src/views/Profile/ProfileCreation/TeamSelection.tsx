@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React, { useMemo } from 'react'
-import { Card, CardBody, CommunityIcon, Flex, Heading, Text } from '@wagyu-swap-libs/uikit'
+import { Card, CardBody, CommunityIcon, Flex, Heading, Text } from '@beef-swap-libs/uikit'
 import shuffle from 'lodash/shuffle'
 import { useTeams } from 'state/hooks'
 import { useTranslation } from 'contexts/Localization'

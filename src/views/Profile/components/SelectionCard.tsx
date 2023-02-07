@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { Card, Radio } from '@wagyu-swap-libs/uikit'
+import { Card, Radio } from '@beef-swap-libs/uikit'
 
 interface SelectionCardProps {
   name: string

@@ -286,7 +286,7 @@
     "name": "pancakeProfile",
     "outputs": [
       {
-        "internalType": "contract WagyuProfile",
+        "internalType": "contract BeefProfile",
         "name": "",
         "type": "address"
       }

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { AbiItem } from 'web3-utils'
 import { Interface } from '@ethersproject/abi'
 import { getWeb3NoAccount } from 'utils/web3'

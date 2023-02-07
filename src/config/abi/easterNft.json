@@ -12,7 +12,7 @@
         "type": "address"
       },
       {
-        "internalType": "contract WagyuProfile",
+        "internalType": "contract BeefProfile",
         "name": "_pancakeProfile",
         "type": "address"
       },
@@ -263,7 +263,7 @@
     "name": "pancakeProfile",
     "outputs": [
       {
-        "internalType": "contract WagyuProfile",
+        "internalType": "contract BeefProfile",
         "name": "",
         "type": "address"
       }

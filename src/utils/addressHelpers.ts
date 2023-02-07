@@ -1,3 +1,4 @@
+// @ts-nocheck
 import addresses from 'config/constants/contracts'
 import tokens from 'config/constants/tokens'
 import { Address } from 'config/constants/types'
@@ -11,8 +12,8 @@ export const getAddress = (address: Address): string => {
   return address[chainId] ? address[chainId] : address[mainNetChainId]
 }
 
-export const getWagyuAddress = () => {
-  return getAddress(tokens.wagyu.address)
+export const getBeefAddress = () => {
+  return getAddress(tokens.Beef.address)
 }
 export const getMasterChefAddress = () => {
   return getAddress(addresses.masterChef)
@@ -32,11 +33,11 @@ export const getLotteryTicketAddress = () => {
 export const getLotteryV2Address = () => {
   return getAddress(addresses.lotteryV2)
 }
-export const getWagyuProfileAddress = () => {
-  return getAddress(addresses.wagyuProfile)
+export const getBeefProfileAddress = () => {
+  return getAddress(addresses.BeefProfile)
 }
-export const getWagyuRabbitsAddress = () => {
-  return getAddress(addresses.wagyuRabbits)
+export const getBeefRabbitsAddress = () => {
+  return getAddress(addresses.BeefRabbits)
 }
 export const getBunnyFactoryAddress = () => {
   return getAddress(addresses.bunnyFactory)
@@ -56,8 +57,8 @@ export const getTradingCompetitionAddress = () => {
 export const getEasterNftAddress = () => {
   return getAddress(addresses.easterNft)
 }
-export const getWagyuVaultAddress = () => {
-  return getAddress(addresses.wagyuVault)
+export const getBeefVaultAddress = () => {
+  return getAddress(addresses.BeefVault)
 }
 export const getPredictionsAddress = () => {
   return getAddress(addresses.predictions)

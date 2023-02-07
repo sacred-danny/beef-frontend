@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Text } from '@wagyu-swap-libs/uikit'
+import { Flex, Text } from '@beef-swap-libs/uikit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import RulesCard from './RulesCard'
@@ -30,7 +30,7 @@ const Rules = () => {
       <StyledCardWrapper>
         <RulesCard title={t('Trade to increase your rank')}>
           <Text textAlign="center" fontSize="14px" color="textSubtle">
-            {t('Eligible pairs: VLX/VUSDT, WAGYU/VLX, VETHER/VLX and BTCB/VLX')}
+            {t('Eligible pairs: VLX/VUSDT, Beef/VLX, VETHER/VLX and BTCB/VLX')}
           </Text>
         </RulesCard>
         <RulesCard title={t('Play as a team')}>

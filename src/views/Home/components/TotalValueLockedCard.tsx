@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Card, CardBody, Heading, Skeleton, Text } from '@wagyu-swap-libs/uikit'
+import { Card, CardBody, Heading, Skeleton, Text } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useGetStats } from 'hooks/api'
 

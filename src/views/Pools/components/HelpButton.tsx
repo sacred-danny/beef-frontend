@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text, Button, HelpIcon, Link } from '@wagyu-swap-libs/uikit'
+import { Text, Button, HelpIcon, Link } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 const ButtonText = styled(Text)`
@@ -26,7 +26,7 @@ const StyledLink = styled(Link)`
 const HelpButton = () => {
   const { t } = useTranslation()
   return (
-    <StyledLink external href="https://docs.wagyuswap.finance/syrup-pools/syrup-pool">
+    <StyledLink external href="https://docs.Beefswap.finance/syrup-pools/syrup-pool">
       <Button px={['14px', null, null, null, '20px']} variant="subtle">
         <ButtonText color="backgroundAlt" bold fontSize="16px">
           {t('Help')}

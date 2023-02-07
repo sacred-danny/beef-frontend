@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Flex, Box, Skeleton } from '@wagyu-swap-libs/uikit'
+import { Text, Flex, Box, Skeleton } from '@beef-swap-libs/uikit'
 import { PublicIfoData } from 'hooks/ifo/types'
 import { useTranslation } from 'contexts/Localization'
 import { Ifo, PoolIds } from 'config/constants/types'
@@ -59,7 +59,7 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
         <>
           {poolId === PoolIds.poolBasic && <FooterEntry label={t('Max. LP token entry')} value={maxLpTokens} />}
           <FooterEntry label={t('Funds to raise:')} value={ifo[poolId].raiseAmount} />
-          <FooterEntry label={t('WAGYU to burn:')} value={ifo[poolId].wagyuToBurn} />
+          <FooterEntry label={t('Beef to burn:')} value={ifo[poolId].BeefToBurn} />
           <FooterEntry
             label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}
             value={`$${ifo.tokenOfferingPrice}`}
@@ -83,7 +83,7 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
           {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('Additional fee:')} value={taxRate} />}
           <FooterEntry label={t('Total committed:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
           <FooterEntry label={t('Funds to raise:')} value={ifo[poolId].raiseAmount} />
-          <FooterEntry label={t('WAGYU to burn:')} value={ifo[poolId].wagyuToBurn} />
+          <FooterEntry label={t('Beef to burn:')} value={ifo[poolId].BeefToBurn} />
           <FooterEntry
             label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}
             value={`$${ifo.tokenOfferingPrice ? ifo.tokenOfferingPrice : '?'}`}

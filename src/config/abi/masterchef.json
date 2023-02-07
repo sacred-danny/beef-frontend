@@ -2,8 +2,8 @@
   {
     "inputs": [
       {
-        "internalType": "contract WagyuToken",
-        "name": "_wagyu",
+        "internalType": "contract BeefToken",
+        "name": "_Beef",
         "type": "address"
       },
       {
@@ -198,7 +198,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "accWagyuPerShare",
+        "name": "accBeefPerShare",
         "type": "uint256"
       }
     ],
@@ -295,10 +295,10 @@
   },
   {
     "inputs": [],
-    "name": "wagyu",
+    "name": "Beef",
     "outputs": [
       {
-        "internalType": "contract WagyuToken",
+        "internalType": "contract BeefToken",
         "name": "",
         "type": "address"
       }
@@ -308,7 +308,7 @@
   },
   {
     "inputs": [],
-    "name": "wagyuPerBlock",
+    "name": "BeefPerBlock",
     "outputs": [
       {
         "internalType": "uint256",
@@ -454,7 +454,7 @@
         "type": "address"
       }
     ],
-    "name": "pendingWagyu",
+    "name": "pendingBeef",
     "outputs": [
       {
         "internalType": "uint256",

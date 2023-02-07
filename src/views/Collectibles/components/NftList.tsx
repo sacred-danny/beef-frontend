@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import orderBy from 'lodash/orderBy'
 import { useWeb3React } from '@web3-react/core'

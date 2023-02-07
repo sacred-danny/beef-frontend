@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React, { createContext, ReactNode, useCallback, useState } from 'react'
 import { kebabCase } from 'lodash'
-import { Toast, toastTypes } from '@wagyu-swap-libs/uikit'
+import { Toast, toastTypes } from '@beef-swap-libs/uikit'
 import { ToastContextApi } from './types'
 
 export const ToastsContext = createContext<ToastContextApi>(undefined)

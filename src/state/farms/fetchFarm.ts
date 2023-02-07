@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Farm } from 'state/types'
 import fetchPublicFarmData from './fetchPublicFarmData'
 

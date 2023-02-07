@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'contexts/Localization'
-import { Card, CardBody, CardHeader, Text, useTooltip, HelpIcon, Flex } from '@wagyu-swap-libs/uikit'
+import { Card, CardBody, CardHeader, Text, useTooltip, HelpIcon, Flex } from '@beef-swap-libs/uikit'
 import { Ifo, PoolIds } from 'config/constants/types'
 import { useProfile } from 'state/hooks'
 import { PublicIfoData, WalletIfoData } from 'hooks/ifo/types'

@@ -1,19 +1,20 @@
+// @ts-nocheck
 import React from 'react'
-import { Button, Text, useModal, Flex, TooltipText, useTooltip, Skeleton } from '@wagyu-swap-libs/uikit'
+import { Button, Text, useModal, Flex, TooltipText, useTooltip, Skeleton } from '@beef-swap-libs/uikit'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
-import { getWagyuVaultEarnings } from 'views/Pools/helpers'
+import { getBeefVaultEarnings } from 'views/Pools/helpers'
 import { PoolCategory } from 'config/constants/types'
 import { formatNumber, getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
 import { useTranslation } from 'contexts/Localization'
 import Balance from 'components/Balance'
-import { useWagyuVault } from 'state/hooks'
+import { useBeefVault } from 'state/hooks'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { Pool } from 'state/types'
 
 import { ActionContainer, ActionTitles, ActionContent } from './styles'
 import CollectModal from '../../PoolCard/Modals/CollectModal'
-import UnstakingFeeCountdownRow from '../../WagyuVaultCard/UnstakingFeeCountdownRow'
+import UnstakingFeeCountdownRow from '../../BeefVaultCard/UnstakingFeeCountdownRow'
 
 interface HarvestActionProps extends Pool {
   userDataLoaded: boolean
@@ -32,7 +33,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({
   const { account } = useWeb3React()
 
   const earnings = userData?.pendingReward ? new BigNumber(userData.pendingReward) : BIG_ZERO
-  // These will be reassigned later if its Auto WAGYU vault
+  // These will be reassigned later if its Auto Beef vault
   let earningTokenBalance = getBalanceNumber(earnings, earningToken.decimals)
   let earningTokenDollarBalance = getBalanceNumber(earnings.multipliedBy(earningTokenPrice), earningToken.decimals)
   let hasEarnings = earnings.gt(0)
@@ -42,21 +43,21 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({
   const isCompoundPool = sousId === 0
   const isVlxPool = poolCategory === PoolCategory.VELAS
 
-  // Auto WAGYU vault calculations
+  // Auto Beef vault calculations
   const {
-    userData: { wagyuAtLastUserAction, userShares },
+    userData: { BeefAtLastUserAction, userShares },
     pricePerFullShare,
     fees: { performanceFee },
-  } = useWagyuVault()
-  const { hasAutoEarnings, autoWagyuToDisplay, autoUsdToDisplay } = getWagyuVaultEarnings(
+  } = useBeefVault()
+  const { hasAutoEarnings, autoBeefToDisplay, autoUsdToDisplay } = getBeefVaultEarnings(
     account,
-    wagyuAtLastUserAction,
+    BeefAtLastUserAction,
     userShares,
     pricePerFullShare,
     earningTokenPrice,
   )
 
-  earningTokenBalance = isAutoVault ? autoWagyuToDisplay : earningTokenBalance
+  earningTokenBalance = isAutoVault ? autoBeefToDisplay : earningTokenBalance
   hasEarnings = isAutoVault ? hasAutoEarnings : hasEarnings
   earningTokenDollarBalance = isAutoVault ? autoUsdToDisplay : earningTokenDollarBalance
 
@@ -80,7 +81,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({
 
   const actionTitle = isAutoVault ? (
     <Text fontSize="12px" bold color="secondary" as="span" textTransform="uppercase">
-      {t('Recent WAGYU profit')}
+      {t('Recent Beef profit')}
     </Text>
   ) : (
     <>

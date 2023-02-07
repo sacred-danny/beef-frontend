@@ -10,7 +10,7 @@ import {
   useTooltip,
   Button,
   AutoRenewIcon,
-} from '@wagyu-swap-libs/uikit'
+} from '@beef-swap-libs/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { Ifo, PoolIds } from 'config/constants/types'
 import { PublicIfoData, WalletIfoData } from 'hooks/ifo/types'
@@ -81,9 +81,9 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
     }
     if (account && !hasProfile) {
       if (publicIfoData.status === 'finished') {
-        return <Text textAlign="center">{t('Activate WagyuSwap Profile to take part in next IFO‘s!')}</Text>
+        return <Text textAlign="center">{t('Activate BeefSwap Profile to take part in next IFO‘s!')}</Text>
       }
-      return <Text textAlign="center">{t('You need an active WagyuSwap Profile to take part in an IFO!')}</Text>
+      return <Text textAlign="center">{t('You need an active BeefSwap Profile to take part in an IFO!')}</Text>
     }
     if (publicIfoData.status === 'coming_soon') {
       return (
@@ -112,7 +112,7 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
     if (publicIfoData.status === 'live') {
       return (
         <>
-          <TokenSection img="/images/farms/wagyu-vlx.svg" mb="24px">
+          <TokenSection img="/images/farms/beef-vlx.svg" mb="24px">
             <Label>{t('Your %symbol% committed', { symbol: currency.symbol })}</Label>
             <Value>{getBalanceNumber(userPoolCharacteristics.amountTokenCommittedInLP, currency.decimals)}</Value>
             <PercentageOfTotal
@@ -135,7 +135,7 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
         </Flex>
       ) : (
         <>
-          <TokenSection img="/images/farms/wagyu-vlx.svg" mb="24px">
+          <TokenSection img="/images/farms/beef-vlx.svg" mb="24px">
             <Label>
               {t(hasClaimed ? 'Your %symbol% RECLAIMED' : 'Your %symbol% TO RECLAIM', { symbol: currency.symbol })}
             </Label>

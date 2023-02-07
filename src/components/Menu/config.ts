@@ -1,4 +1,5 @@
-import { MenuEntry } from '@wagyu-swap-libs/uikit'
+// @ts-nocheck
+import { MenuEntry } from '@beef-swap-libs/uikit'
 import { ContextApi } from 'contexts/Localization/types'
 
 const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
@@ -13,11 +14,11 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     items: [
       {
         label: t('Exchange'),
-        href: 'https://staging.exchange.wagyuswap.app/#/swap',
+        href: 'https://staging.exchange.Beefswap.app/#/swap',
       },
       {
         label: t('Liquidity'),
-        href: 'https://staging.exchange.wagyuswap.app/#/pool',
+        href: 'https://staging.exchange.Beefswap.app/#/pool',
       },
     ],
   },

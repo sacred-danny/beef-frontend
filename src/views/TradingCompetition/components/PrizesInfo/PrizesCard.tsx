@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Card, CardHeader, Box, Heading, Text } from '@wagyu-swap-libs/uikit'
+import { Card, CardHeader, Box, Heading, Text } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import PrizesGrid from './PrizesGrid'
 
@@ -28,7 +28,7 @@ const PrizesCard = () => {
       <Box p="24px">
         <Text color="textSubtle" fontSize="14px">
           {t(
-            'Prizes to be distributed in WAGYU and shared by all members of a tier. WAGYU price in USD to be determined on the day of distribution. Details below.',
+            'Prizes to be distributed in Beef and shared by all members of a tier. Beef price in USD to be determined on the day of distribution. Details below.',
           )}
         </Text>
       </Box>

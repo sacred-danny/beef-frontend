@@ -1,4 +1,4 @@
-import { Heading } from '@wagyu-swap-libs/uikit'
+import { Heading } from '@beef-swap-libs/uikit'
 import styled, { DefaultTheme } from 'styled-components'
 
 const H1SizeStyles = (theme: DefaultTheme) => `

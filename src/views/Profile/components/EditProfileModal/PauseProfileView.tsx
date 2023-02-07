@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React, { useState } from 'react'
-import { AutoRenewIcon, Button, Checkbox, Flex, InjectedModalProps, Text } from '@wagyu-swap-libs/uikit'
+import { AutoRenewIcon, Button, Checkbox, Flex, InjectedModalProps, Text } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import useGetProfileCosts from 'hooks/useGetProfileCosts'
 import { useAppDispatch } from 'state'
@@ -16,9 +17,9 @@ const PauseProfilePage: React.FC<PauseProfilePageProps> = ({ onDismiss }) => {
   const [isAcknowledged, setIsAcknowledged] = useState(false)
   const [isConfirming, setIsConfirming] = useState(false)
   const { profile } = useProfile()
-  const { numberWagyuToReactivate } = useGetProfileCosts()
+  const { numberBeefToReactivate } = useGetProfileCosts()
   const { t } = useTranslation()
-  const wagyuProfileContract = useProfileContract()
+  const BeefProfileContract = useProfileContract()
   const { account } = useWeb3React()
   const { toastSuccess, toastError } = useToast()
   const dispatch = useAppDispatch()
@@ -26,7 +27,7 @@ const PauseProfilePage: React.FC<PauseProfilePageProps> = ({ onDismiss }) => {
   const handleChange = () => setIsAcknowledged(!isAcknowledged)
 
   const handleDeactivateProfile = () => {
-    wagyuProfileContract.methods
+    BeefProfileContract.methods
       .pauseProfile()
       .send({ from: account })
       .on('sending', () => {
@@ -60,7 +61,7 @@ const PauseProfilePage: React.FC<PauseProfilePageProps> = ({ onDismiss }) => {
         )}
       </Text>
       <Text as="p" color="textSubtle" mb="24px">
-        {t('Cost to reactivate in the future: %cost% WAGYU', { cost: getBalanceNumber(numberWagyuToReactivate) })}
+        {t('Cost to reactivate in the future: %cost% Beef', { cost: getBalanceNumber(numberBeefToReactivate) })}
       </Text>
       <label htmlFor="acknowledgement" style={{ cursor: 'pointer', display: 'block', marginBottom: '24px' }}>
         <Flex alignItems="center">

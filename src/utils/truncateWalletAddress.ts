@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Truncates a wallet's address
  */

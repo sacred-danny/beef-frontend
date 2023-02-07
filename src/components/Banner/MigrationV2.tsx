@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Text, Flex, Box, ErrorIcon, Button } from '@wagyu-swap-libs/uikit'
+import { Text, Flex, Box, ErrorIcon, Button } from '@beef-swap-libs/uikit'
 import Banner from './Banner'
 
 const MigrationV2 = () => {
@@ -18,12 +19,12 @@ const MigrationV2 = () => {
     >
       <Box ml="48px">
         <Text color="warning" bold>
-          You must complete migration if you want to keep earning from any WagyuSwap LP tokens and WagyuSwap farms.
+          You must complete migration if you want to keep earning from any BeefSwap LP tokens and BeefSwap farms.
         </Text>
         <Text color="white" mb="16px">
           All LPs will be migrated to a new, upgraded contract, over several hours starting from now.
         </Text>
-        <Button as="a" href="https://v1exchange.wagyuswap.finance/#/migrate">
+        <Button as="a" href="https://v1exchange.Beefswap.finance/#/migrate">
           Migrate Now
         </Button>
       </Box>

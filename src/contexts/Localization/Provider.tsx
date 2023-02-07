@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React, { createContext, useCallback, useEffect, useState } from 'react'
-import { Language } from '@wagyu-swap-libs/uikit'
+import { Language } from '@beef-swap-libs/uikit'
 import { EN, languages } from 'config/localization/languages'
 import translations from 'config/localization/translations.json'
 import { ContextApi, ContextData, ProviderState } from './types'

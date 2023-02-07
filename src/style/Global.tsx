@@ -1,10 +1,11 @@
+// @ts-nocheck
 import { createGlobalStyle } from 'styled-components'
 // eslint-disable-next-line import/no-unresolved
-import { WagyuTheme } from '@wagyu-swap-libs/uikit'
+import { BeefTheme } from '@beef-swap-libs/uikit'
 
 declare module 'styled-components' {
   /* eslint-disable @typescript-eslint/no-empty-interface */
-  export interface DefaultTheme extends WagyuTheme {}
+  export interface DefaultTheme extends BeefTheme {}
 }
 
 const GlobalStyle = createGlobalStyle`

@@ -1,7 +1,8 @@
+// @ts-nocheck
 import { useEffect, useState } from 'react'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
-import { getMasterchefContract, getVls20Contract, getWagyuContract } from 'utils/contractHelpers'
+import { getMasterchefContract, getVls20Contract, getBeefContract } from 'utils/contractHelpers'
 import { BIG_ZERO } from 'utils/bigNumber'
 import useWeb3 from './useWeb3'
 import useRefresh from './useRefresh'
@@ -57,8 +58,8 @@ export const useTotalSupply = () => {
 
   useEffect(() => {
     async function fetchTotalSupply() {
-      const wagyuContract = getWagyuContract()
-      const supply = await wagyuContract.methods.totalSupply().call()
+      const BeefContract = getBeefContract()
+      const supply = await BeefContract.methods.totalSupply().call()
       setTotalSupply(new BigNumber(supply))
     }
 
@@ -68,21 +69,21 @@ export const useTotalSupply = () => {
   return totalSupply
 }
 
-export const useWagyuPerBlock = () => {
+export const useBeefPerBlock = () => {
   const { slowRefresh } = useRefresh()
-  const [wagyuPerBlock, setWagyuPerBlock] = useState<BigNumber>()
+  const [BeefPerBlock, setBeefPerBlock] = useState<BigNumber>()
 
   useEffect(() => {
-    async function fetchWagyuPerBlock() {
+    async function fetchBeefPerBlock() {
       const masterChefContract = getMasterchefContract()
-      const amount= await masterChefContract.methods.wagyuPerBlock().call()
-      setWagyuPerBlock(new BigNumber(amount))
+      const amount= await masterChefContract.methods.BeefPerBlock().call()
+      setBeefPerBlock(new BigNumber(amount))
     }
 
-    fetchWagyuPerBlock().then()
+    fetchBeefPerBlock().then()
   }, [slowRefresh])
 
-  return wagyuPerBlock
+  return BeefPerBlock
 }
 
 export const useBurnedBalance = (tokenAddress: string) => {

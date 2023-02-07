@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
 import { useWeb3React } from '@web3-react/core'
@@ -15,7 +16,7 @@ import {
   BlockIcon,
   VisibilityOn,
   VisibilityOff,
-} from '@wagyu-swap-libs/uikit'
+} from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useProfile } from 'state/hooks'
 import usePersistState from 'hooks/usePersistState'

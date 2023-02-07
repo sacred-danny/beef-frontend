@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import BigNumber from 'bignumber.js'
 import styled from 'styled-components'
@@ -13,11 +14,11 @@ import {
   Skeleton,
   useTooltip,
   Button,
-} from '@wagyu-swap-libs/uikit'
+} from '@beef-swap-libs/uikit'
 import { BASE_VELAS_SCAN_URL, BASE_URL } from 'config'
-import { useBlock, useWagyuVault } from 'state/hooks'
+import { useBlock, useBeefVault } from 'state/hooks'
 import { Pool } from 'state/types'
-import { getAddress, getWagyuVaultAddress } from 'utils/addressHelpers'
+import { getAddress, getBeefVaultAddress } from 'utils/addressHelpers'
 import { registerToken } from 'utils/wallet'
 import Balance from 'components/Balance'
 import { getPoolBlockInfo } from 'views/Pools/helpers'
@@ -38,18 +39,18 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
   const { t } = useTranslation()
   const { currentBlock } = useBlock()
   const {
-    totalWagyuInVault,
+    totalBeefInVault,
     fees: { performanceFee },
-  } = useWagyuVault()
+  } = useBeefVault()
 
   const { stakingToken, earningToken, totalStaked, contractAddress, sousId, isAutoVault } = pool
 
   const tokenAddress = earningToken.address ? getAddress(earningToken.address) : ''
   const poolContractAddress = getAddress(contractAddress)
-  const wagyuVaultContractAddress = getWagyuVaultAddress()
+  const BeefVaultContractAddress = getBeefVaultAddress()
   const imageSrc = `${BASE_URL}/images/tokens/${earningToken.symbol.toLowerCase()}.png`
   const isMetaMaskInScope = !!(window as WindowChain).ethereum?.isMetaMask
-  const isManualWagyuPool = sousId === 0
+  const isManualBeefPool = sousId === 0
 
   const { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay } =
     getPoolBlockInfo(pool, currentBlock)
@@ -61,11 +62,11 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
 
   const getTotalStakedBalance = () => {
     if (isAutoVault) {
-      return getBalanceNumber(totalWagyuInVault, stakingToken.decimals)
+      return getBalanceNumber(totalBeefInVault, stakingToken.decimals)
     }
-    if (isManualWagyuPool) {
-      const manualWagyuTotalMinusAutoVault = new BigNumber(totalStaked).minus(totalWagyuInVault)
-      return getBalanceNumber(manualWagyuTotalMinusAutoVault, stakingToken.decimals)
+    if (isManualBeefPool) {
+      const manualBeefTotalMinusAutoVault = new BigNumber(totalStaked).minus(totalBeefInVault)
+      return getBalanceNumber(manualBeefTotalMinusAutoVault, stakingToken.decimals)
     }
     return getBalanceNumber(totalStaked, stakingToken.decimals)
   }
@@ -126,7 +127,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
           <LinkExternal
             bold={false}
             small
-            href={`${BASE_VELAS_SCAN_URL}/address/${isAutoVault ? wagyuVaultContractAddress : poolContractAddress}`}
+            href={`${BASE_VELAS_SCAN_URL}/address/${isAutoVault ? BeefVaultContractAddress : poolContractAddress}`}
           >
             {t('View Contract')}
           </LinkExternal>

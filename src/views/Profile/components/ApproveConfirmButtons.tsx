@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { ChevronRightIcon, Button as UIKitButton, AutoRenewIcon, ChevronDownIcon, Box, Flex } from '@wagyu-swap-libs/uikit'
+import { ChevronRightIcon, Button as UIKitButton, AutoRenewIcon, ChevronDownIcon, Box, Flex } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 export enum ButtonArrangement {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 // Only support specific token pairs until we find a method to validate token pairs

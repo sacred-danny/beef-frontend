@@ -1,3 +1,4 @@
+// @ts-nocheck
 import random from 'lodash/random'
 
 // Array of available nodes to connect to

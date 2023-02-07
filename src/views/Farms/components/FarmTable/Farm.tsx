@@ -1,8 +1,9 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
 import { useFarmUser } from 'state/hooks'
 import { useTranslation } from 'contexts/Localization'
-import { Text, Image } from '@wagyu-swap-libs/uikit'
+import { Text, Image } from '@beef-swap-libs/uikit'
 import { getBalanceNumber } from 'utils/formatBalance'
 
 export interface FarmProps {

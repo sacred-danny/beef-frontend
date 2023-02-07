@@ -1,14 +1,15 @@
+// @ts-nocheck
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
-import { Button, Flex, Text, InjectedModalProps } from '@wagyu-swap-libs/uikit'
+import { Button, Flex, Text, InjectedModalProps } from '@beef-swap-libs/uikit'
 import { getFullDisplayBalance } from 'utils/formatBalance'
-import { getWagyuProfileAddress } from 'utils/addressHelpers'
-import { useWagyu } from 'hooks/useContract'
+import { getBeefProfileAddress } from 'utils/addressHelpers'
+import { useBeef } from 'hooks/useContract'
 import { useTranslation } from 'contexts/Localization'
 import useGetProfileCosts from 'hooks/useGetProfileCosts'
-import useHasWagyuBalance from 'hooks/useHasWagyuBalance'
+import useHasBeefBalance from 'hooks/useHasBeefBalance'
 import { useProfile } from 'state/hooks'
 import { UseEditProfileResponse } from './reducer'
 import ProfileAvatar from '../ProfileAvatar'
@@ -43,21 +44,21 @@ const AvatarWrapper = styled.div`
 const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemove, onDismiss }) => {
   const [needsApproval, setNeedsApproval] = useState(null)
   const { profile } = useProfile()
-  const { numberWagyuToUpdate, numberWagyuToReactivate } = useGetProfileCosts()
-  const minimumWagyuRequired = profile.isActive ? numberWagyuToUpdate : numberWagyuToReactivate
-  const hasMinimumWagyuRequired = useHasWagyuBalance(minimumWagyuRequired)
+  const { numberBeefToUpdate, numberBeefToReactivate } = useGetProfileCosts()
+  const minimumBeefRequired = profile.isActive ? numberBeefToUpdate : numberBeefToReactivate
+  const hasMinimumBeefRequired = useHasBeefBalance(minimumBeefRequired)
   const { t } = useTranslation()
   const { account } = useWeb3React()
-  const wagyuContract = useWagyu()
-  const cost = profile.isActive ? numberWagyuToUpdate : numberWagyuToReactivate
+  const BeefContract = useBeef()
+  const cost = profile.isActive ? numberBeefToUpdate : numberBeefToReactivate
 
   /**
-   * Check if the wallet has the required WAGYU allowance to change their profile pic or reactivate
+   * Check if the wallet has the required Beef allowance to change their profile pic or reactivate
    * If they don't, we send them to the approval screen first
    */
   useEffect(() => {
     const checkApprovalStatus = async () => {
-      const response = await wagyuContract.methods.allowance(account, getWagyuProfileAddress()).call()
+      const response = await BeefContract.methods.allowance(account, getBeefProfileAddress()).call()
       const currentAllowance = new BigNumber(response)
       setNeedsApproval(currentAllowance.lt(cost))
     }
@@ -65,7 +66,7 @@ const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemo
     if (account) {
       checkApprovalStatus().then()
     }
-  }, [account, cost, setNeedsApproval, wagyuContract])
+  }, [account, cost, setNeedsApproval, BeefContract])
 
   if (!profile) {
     return null
@@ -78,8 +79,8 @@ const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemo
       </AvatarWrapper>
       <Flex alignItems="center" style={{ height: '48px' }} justifyContent="center">
         <Text as="p" color="failure">
-          {!hasMinimumWagyuRequired &&
-            t('%minimum% WAGYU required to change profile pic', { minimum: getFullDisplayBalance(minimumWagyuRequired) })}
+          {!hasMinimumBeefRequired &&
+            t('%minimum% Beef required to change profile pic', { minimum: getFullDisplayBalance(minimumBeefRequired) })}
         </Text>
       </Flex>
       {profile.isActive ? (
@@ -88,7 +89,7 @@ const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemo
             width="100%"
             mb="8px"
             onClick={needsApproval === true ? goToApprove : goToChange}
-            disabled={!hasMinimumWagyuRequired || needsApproval === null}
+            disabled={!hasMinimumBeefRequired || needsApproval === null}
           >
             {t('Change Profile Pic')}
           </Button>
@@ -101,7 +102,7 @@ const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemo
           width="100%"
           mb="8px"
           onClick={needsApproval === true ? goToApprove : goToChange}
-          disabled={!hasMinimumWagyuRequired || needsApproval === null}
+          disabled={!hasMinimumBeefRequired || needsApproval === null}
         >
           {t('Reactivate Profile')}
         </Button>

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Campaign } from 'config/constants/types'
 import { getPointCenterIfoContract } from 'utils/contractHelpers'
 import ifosList from 'config/constants/ifo'

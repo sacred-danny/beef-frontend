@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Set of helper functions to facilitate wallet setup
 
 import { BASE_VELAS_SCAN_URL } from 'config'

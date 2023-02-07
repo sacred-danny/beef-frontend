@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { useWeb3React } from '@web3-react/core'
-import { Heading, Card, CardBody, CardFooter, Text, WagyuRoundIcon, Flex, Skeleton } from '@wagyu-swap-libs/uikit'
+import { Heading, Card, CardBody, CardFooter, Text, BeefRoundIcon, Flex, Skeleton } from '@beef-swap-libs/uikit'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useTranslation } from 'contexts/Localization'
 import { useTotalRewards } from 'hooks/useTickets'
 import PastLotteryDataContext from 'contexts/PastLotteryDataContext'
 import ExpandableSectionButton from 'components/ExpandableSectionButton/ExpandableSectionButton'
 import { BigNumber } from 'bignumber.js'
-import { usePriceWagyuVusdt } from 'state/hooks'
+import { usePriceBeefVusdt } from 'state/hooks'
 import PrizeGrid from '../PrizeGrid'
 import CardVusdtValue from '../../../Home/components/CardVusdtValue'
 
@@ -56,7 +56,7 @@ const TotalPrizesCard = () => {
   const { account } = useWeb3React()
   const [showFooter, setShowFooter] = useState(false)
   const lotteryPrizeAmount = +getBalanceNumber(useTotalRewards()).toFixed(0)
-  const lotteryPrizeAmountBusd = new BigNumber(lotteryPrizeAmount).multipliedBy(usePriceWagyuVusdt()).toNumber()
+  const lotteryPrizeAmountBusd = new BigNumber(lotteryPrizeAmount).multipliedBy(usePriceBeefVusdt()).toNumber()
   const lotteryPrizeWithCommaSeparators = lotteryPrizeAmount.toLocaleString()
   const { currentLotteryNumber } = useContext(PastLotteryDataContext)
 
@@ -76,13 +76,13 @@ const TotalPrizesCard = () => {
         <CardHeading>
           <Left>
             <IconWrapper>
-              <WagyuRoundIcon />
+              <BeefRoundIcon />
             </IconWrapper>
             <PrizeCountWrapper>
               <Text fontSize="14px" color="textSubtle">
                 {t('Total Pot:')}
               </Text>
-              <Heading size="lg">{lotteryPrizeWithCommaSeparators} WAGYU</Heading>
+              <Heading size="lg">{lotteryPrizeWithCommaSeparators} Beef</Heading>
               {lotteryPrizeAmountBusd !== 0 && <CardVusdtValue value={lotteryPrizeAmountBusd} />}
             </PrizeCountWrapper>
           </Left>

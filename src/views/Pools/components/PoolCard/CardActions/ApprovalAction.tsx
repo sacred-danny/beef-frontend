@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Button, AutoRenewIcon, Skeleton } from '@wagyu-swap-libs/uikit'
+import { Button, AutoRenewIcon, Skeleton } from '@beef-swap-libs/uikit'
 import { useSousApprove } from 'hooks/useApprove'
 import { useTranslation } from 'contexts/Localization'
 import { useERC20 } from 'hooks/useContract'

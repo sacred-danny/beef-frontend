@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 // import orderBy from 'lodash/orderBy'
-import { Heading, Card, CardBody, Flex, ArrowForwardIcon } from '@wagyu-swap-libs/uikit'
+import { Heading, Card, CardBody, Flex, ArrowForwardIcon } from '@beef-swap-libs/uikit'
 import { NavLink } from 'react-router-dom'
 // import pools from 'config/constants/pools'
 // import { Pool } from 'state/types'
@@ -26,11 +26,11 @@ const CardMidContent = styled(Heading).attrs({ scale: 'xl' })`
   line-height: 44px;
 `
 
-// const activeNonWagyuPools = pools.filter((pool) => !pool.isFinished && !pool.earningToken.symbol.includes('WAGYU'))
+// const activeNonBeefPools = pools.filter((pool) => !pool.isFinished && !pool.earningToken.symbol.includes('Beef'))
 // const latestPools: Pool[] = orderBy(activeNonCakePools, ['sortOrder', 'pid'], ['desc', 'desc']).slice(0, 3)
-// Always include WAGYU
-// const assets = ['WAGYU', ...latestPools.map((pool) => pool.earningToken.symbol)].join(', ')
-const assets = ['WAGYU'].join(', ')
+// Always include Beef
+// const assets = ['Beef', ...latestPools.map((pool) => pool.earningToken.symbol)].join(', ')
+const assets = ['Beef'].join(', ')
 
 const EarnAssetCard = () => {
   const { t } = useTranslation()

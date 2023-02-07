@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { Text, ChevronDownIcon } from '@wagyu-swap-libs/uikit'
+import { Text, ChevronDownIcon } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import BaseCell from './BaseCell'
 

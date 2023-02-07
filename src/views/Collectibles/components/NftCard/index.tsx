@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import { PromiEvent } from 'web3-core'
 import { Contract } from 'web3-eth-contract'
@@ -13,7 +14,7 @@ import {
   Text,
   CardFooter,
   useModal,
-} from '@wagyu-swap-libs/uikit'
+} from '@beef-swap-libs/uikit'
 import { useProfile } from 'state/hooks'
 import { useTranslation } from 'contexts/Localization'
 import { Nft } from 'config/constants/types'

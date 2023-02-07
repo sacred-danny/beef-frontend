@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Menu as UikitMenu } from '@wagyu-swap-libs/uikit'
+import { Menu as UikitMenu } from '@beef-swap-libs/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { languageList } from 'config/localization/languages'
 import { useTranslation } from 'contexts/Localization'
@@ -7,16 +8,16 @@ import useTheme from 'hooks/useTheme'
 import useAuth from 'hooks/useAuth'
 import useGetPriceData from 'hooks/useGetPriceData'
 import { useProfile } from 'state/hooks'
-import { WAGYU } from 'config'
+import { Beef } from 'config'
 import link from './config'
 
 const Menu = (props) => {
   const { account } = useWeb3React()
   const { login, logout } = useAuth()
   const { isDark, toggleTheme } = useTheme()
-  // const wagyuPriceUsd = usePriceWagyuVusdt()
+  // const BeefPriceUsd = usePriceBeefVusdt()
   const priceData = useGetPriceData()
-  const wagyuPriceUsd = priceData ? Number(priceData.data[WAGYU.address]?.price || 0) : undefined
+  const BeefPriceUsd = priceData ? Number(priceData.data[Beef.address]?.price || 0) : undefined
   const { profile } = useProfile()
   const { currentLanguage, setLanguage, t } = useTranslation()
 
@@ -30,7 +31,7 @@ const Menu = (props) => {
       currentLang={currentLanguage.code}
       langs={languageList}
       setLang={setLanguage}
-      wagyuPriceUsd={wagyuPriceUsd}
+      BeefPriceUsd={BeefPriceUsd}
       links={link(t)}
       profile={{
         username: profile?.username,

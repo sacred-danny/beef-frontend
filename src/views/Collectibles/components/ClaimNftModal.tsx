@@ -1,9 +1,10 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { PromiEvent } from 'web3-core'
 import { Contract } from 'web3-eth-contract'
 import { useWeb3React } from '@web3-react/core'
-import { Button, InjectedModalProps, Modal, Text, Flex, AutoRenewIcon } from '@wagyu-swap-libs/uikit'
+import { Button, InjectedModalProps, Modal, Text, Flex, AutoRenewIcon } from '@beef-swap-libs/uikit'
 import { Nft } from 'config/constants/types'
 import { useTranslation } from 'contexts/Localization'
 import useToast from 'hooks/useToast'

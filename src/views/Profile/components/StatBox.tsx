@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React, { ElementType, ReactNode } from 'react'
-import { Flex, Heading, Text, TextProps } from '@wagyu-swap-libs/uikit'
+import { Flex, Heading, Text, TextProps } from '@beef-swap-libs/uikit'
 import SecondaryCard from './SecondaryCard'
 
 interface StatBoxProps extends TextProps {

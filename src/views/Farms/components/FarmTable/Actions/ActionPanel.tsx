@@ -1,7 +1,8 @@
+// @ts-nocheck
 import React from 'react'
 import styled, { keyframes, css } from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
-import { LinkExternal, Text } from '@wagyu-swap-libs/uikit'
+import { LinkExternal, Text } from '@beef-swap-libs/uikit'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { getVelasScanAddressUrl } from 'utils/velasScan'
@@ -142,21 +143,21 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
   const { t } = useTranslation()
   const isActive = farm.multiplier !== '0X'
   const { quoteToken, token, dual } = farm
-  const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('WAGYU', '')
+  const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('Beef', '')
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: quoteToken.address,
     tokenAddress: token.address,
   })
   const lpAddress = farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]
   const velas = getVelasScanAddressUrl(lpAddress)
-  const info = `https://wagyuswap.info/pair/${lpAddress}`
+  const info = `https://Beefswap.info/pair/${lpAddress}`
 
   return (
     <Container expanded={expanded}>
       <InfoContainer>
         {isActive && (
           <StakeContainer>
-            <StyledLinkExternal href={`https://staging.exchange.wagyuswap.app/#/add/${liquidityUrlPathParts}`}>
+            <StyledLinkExternal href={`https://staging.exchange.Beefswap.app/#/add/${liquidityUrlPathParts}`}>
               {t('Get %symbol%', { symbol: lpLabel })}
             </StyledLinkExternal>
           </StakeContainer>

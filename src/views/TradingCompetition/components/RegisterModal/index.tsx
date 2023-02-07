@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Modal, Button, NoProfileAvatarIcon, Flex } from '@wagyu-swap-libs/uikit'
+import { Modal, Button, NoProfileAvatarIcon, Flex } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { CompetitionProps } from '../../types'
 import MakeProfile from './MakeProfile'

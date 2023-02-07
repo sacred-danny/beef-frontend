@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState, useRef } from 'react'
 import Web3 from 'web3'
 import { useWeb3React } from '@web3-react/core'

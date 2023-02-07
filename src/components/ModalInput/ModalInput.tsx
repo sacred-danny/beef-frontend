@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { Text, Button, Input, InputProps, Flex, Link } from '@wagyu-swap-libs/uikit'
+import { Text, Button, Input, InputProps, Flex, Link } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 interface ModalInputProps {

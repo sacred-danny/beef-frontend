@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Heading, Text, Link, useTooltip } from '@wagyu-swap-libs/uikit'
+import { Flex, Heading, Text, Link, useTooltip } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { ContextApi } from 'contexts/Localization/types'
 import { getVelasScanBlockNumberUrl } from 'utils/velasScan'

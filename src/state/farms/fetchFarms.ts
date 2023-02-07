@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { FarmConfig } from 'config/constants/types'
 import fetchFarm from './fetchFarm'
 

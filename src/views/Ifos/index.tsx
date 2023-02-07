@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'contexts/Localization'
 import { Route, useRouteMatch, Link } from 'react-router-dom'
-import { ButtonMenu, ButtonMenuItem, Flex } from '@wagyu-swap-libs/uikit'
+import { ButtonMenu, ButtonMenuItem, Flex } from '@beef-swap-libs/uikit'
 import Container from 'components/layout/Container'
 import Hero from './components/Hero'
 import CurrentIfo from './CurrentIfo'

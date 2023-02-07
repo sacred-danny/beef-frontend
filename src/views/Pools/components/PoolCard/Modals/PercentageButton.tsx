@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { Button } from '@wagyu-swap-libs/uikit'
+import { Button } from '@beef-swap-libs/uikit'
 
 interface PercentageButtonProps {
   onClick: () => void

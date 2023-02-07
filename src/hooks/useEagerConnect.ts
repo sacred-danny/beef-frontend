@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { connectorLocalStorageKey, ConnectorNames } from '@wagyu-swap-libs/uikit'
+import { connectorLocalStorageKey, ConnectorNames } from '@beef-swap-libs/uikit'
 import useAuth from 'hooks/useAuth'
 
 const _binanceChainListener = async () =>

@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BaseLayout, Heading, Image, Text } from '@wagyu-swap-libs/uikit'
+import { BaseLayout, Heading, Image, Text } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Page from 'components/layout/Page'
 import FarmStakingCard from 'views/Home/components/FarmStakingCard'
 import LotteryCard from 'views/Home/components/LotteryCard'
-import WagyuStats from 'views/Home/components/WagyuStats'
+import BeefStats from 'views/Home/components/BeefStats'
 import TotalValueLockedCard from 'views/Home/components/TotalValueLockedCard'
 import EarnAPRCard from 'views/Home/components/EarnAPRCard'
 import EarnAssetCard from 'views/Home/components/EarnAssetCard'
@@ -121,14 +121,14 @@ const Home: React.FC = () => {
   return (
     <>
       <Hero>
-        <StyledImage src="/images/left-wagyu.svg" alt="Wagyu" width={160} height={120} />
+        <StyledImage src="/images/left-beef.svg" alt="Beef" width={160} height={120} />
         <div>
           <Heading as="h1" scale="xl" mb="24px" color="invertedContrast">
-            {t('WagyuSwap')}
+            {t('BeefSwap')}
           </Heading>
           <Text bold={bold} color="invertedContrast">{t('The #1 AMM and yield farm on Flare.')}</Text>
         </div>
-        <StyledImage src="/images/right-wagyu.svg" alt="Wagyu" width={160} height={120} />
+        <StyledImage src="/images/right-beef.svg" alt="Beef" width={160} height={120} />
       </Hero>
       <Page>
         <div>
@@ -141,7 +141,7 @@ const Home: React.FC = () => {
             <WinCard />
           </CTACards>
           <Cards>
-            <WagyuStats />
+            <BeefStats />
             <TotalValueLockedCard />
           </Cards>
         </div>

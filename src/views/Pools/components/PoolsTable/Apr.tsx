@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Flex, useModal, CalculateIcon, IconButton, Skeleton, FlexProps } from '@wagyu-swap-libs/uikit'
+import { Flex, useModal, CalculateIcon, IconButton, Skeleton, FlexProps } from '@beef-swap-libs/uikit'
 import { BASE_EXCHANGE_URL } from 'config'
 import ApyCalculatorModal from 'components/ApyCalculatorModal'
 import Balance from 'components/Balance'

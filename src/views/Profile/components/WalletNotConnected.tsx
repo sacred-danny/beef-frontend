@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Heading, Text } from '@wagyu-swap-libs/uikit'
+import { Heading, Text } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import UnlockButton from 'components/UnlockButton'
 

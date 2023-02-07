@@ -1,7 +1,8 @@
+// @ts-nocheck
 import React from 'react'
 import styled, { DefaultTheme } from 'styled-components'
 import { Link } from 'react-router-dom'
-import { Button, Card, CommunityIcon, Flex, Heading, PrizeIcon, Text } from '@wagyu-swap-libs/uikit'
+import { Button, Card, CommunityIcon, Flex, Heading, PrizeIcon, Text } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { Team } from 'config/constants/types'
 

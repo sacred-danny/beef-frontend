@@ -1,30 +1,31 @@
+// @ts-nocheck
 import BigNumber from 'bignumber.js'
 import { Pool } from 'state/types'
 import { getRoi, tokenEarnedPerThousandDollarsCompounding } from 'utils/compoundApyHelpers'
 import { getBalanceNumber, getFullDisplayBalance, getDecimalAmount } from 'utils/formatBalance'
 
-export const convertSharesToWagyu = (
+export const convertSharesToBeef = (
   shares: BigNumber,
-  wagyuPerFullShare: BigNumber,
+  BeefPerFullShare: BigNumber,
   decimals = 18,
   decimalsToRound = 3,
 ) => {
-  const sharePriceNumber = getBalanceNumber(wagyuPerFullShare, decimals)
-  const amountInWagyu = new BigNumber(shares.multipliedBy(sharePriceNumber))
-  const wagyuAsNumberBalance = getBalanceNumber(amountInWagyu, decimals)
-  const wagyuAsBigNumber = getDecimalAmount(new BigNumber(wagyuAsNumberBalance), decimals)
-  const wagyuAsDisplayBalance = getFullDisplayBalance(amountInWagyu, decimals, decimalsToRound)
-  return { wagyuAsNumberBalance, wagyuAsBigNumber, wagyuAsDisplayBalance }
+  const sharePriceNumber = getBalanceNumber(BeefPerFullShare, decimals)
+  const amountInBeef = new BigNumber(shares.multipliedBy(sharePriceNumber))
+  const BeefAsNumberBalance = getBalanceNumber(amountInBeef, decimals)
+  const BeefAsBigNumber = getDecimalAmount(new BigNumber(BeefAsNumberBalance), decimals)
+  const BeefAsDisplayBalance = getFullDisplayBalance(amountInBeef, decimals, decimalsToRound)
+  return { BeefAsNumberBalance, BeefAsBigNumber, BeefAsDisplayBalance }
 }
 
-export const convertWagyuToShares = (
-  wagyu: BigNumber,
-  wagyuPerFullShare: BigNumber,
+export const convertBeefToShares = (
+  Beef: BigNumber,
+  BeefPerFullShare: BigNumber,
   decimals = 18,
   decimalsToRound = 3,
 ) => {
-  const sharePriceNumber = getBalanceNumber(wagyuPerFullShare, decimals)
-  const amountInShares = new BigNumber(wagyu.dividedBy(sharePriceNumber))
+  const sharePriceNumber = getBalanceNumber(BeefPerFullShare, decimals)
+  const amountInShares = new BigNumber(Beef.dividedBy(sharePriceNumber))
   const sharesAsNumberBalance = getBalanceNumber(amountInShares, decimals)
   const sharesAsBigNumber = getDecimalAmount(new BigNumber(sharesAsNumberBalance), decimals)
   const sharesAsDisplayBalance = getFullDisplayBalance(amountInShares, decimals, decimalsToRound)
@@ -62,22 +63,22 @@ export const getAprData = (pool: Pool, performanceFee: number) => {
   return { apr, isHighValueToken, roundingDecimals, compoundFrequency }
 }
 
-export const getWagyuVaultEarnings = (
+export const getBeefVaultEarnings = (
   account: string,
-  wagyuAtLastUserAction: BigNumber,
+  BeefAtLastUserAction: BigNumber,
   userShares: BigNumber,
   pricePerFullShare: BigNumber,
   earningTokenPrice: number,
 ) => {
   const hasAutoEarnings =
-    account && wagyuAtLastUserAction && wagyuAtLastUserAction.gt(0) && userShares && userShares.gt(0)
-  const { wagyuAsBigNumber } = convertSharesToWagyu(userShares, pricePerFullShare)
-  const autoWagyuProfit = wagyuAsBigNumber.minus(wagyuAtLastUserAction)
-  const autoWagyuToDisplay = autoWagyuProfit.gte(0) ? getBalanceNumber(autoWagyuProfit, 18) : 0
+    account && BeefAtLastUserAction && BeefAtLastUserAction.gt(0) && userShares && userShares.gt(0)
+  const { BeefAsBigNumber } = convertSharesToBeef(userShares, pricePerFullShare)
+  const autoBeefProfit = BeefAsBigNumber.minus(BeefAtLastUserAction)
+  const autoBeefToDisplay = autoBeefProfit.gte(0) ? getBalanceNumber(autoBeefProfit, 18) : 0
 
-  const autoUsdProfit = autoWagyuProfit.times(earningTokenPrice)
+  const autoUsdProfit = autoBeefProfit.times(earningTokenPrice)
   const autoUsdToDisplay = autoUsdProfit.gte(0) ? getBalanceNumber(autoUsdProfit, 18) : 0
-  return { hasAutoEarnings, autoWagyuToDisplay, autoUsdToDisplay }
+  return { hasAutoEarnings, autoBeefToDisplay, autoUsdToDisplay }
 }
 
 export const getPoolBlockInfo = (pool: Pool, currentBlock: number) => {

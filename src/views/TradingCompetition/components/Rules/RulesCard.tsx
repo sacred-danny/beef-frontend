@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading, Card, CardBody } from '@wagyu-swap-libs/uikit'
+import { Heading, Card, CardBody } from '@beef-swap-libs/uikit'
 
 const RulesCard: React.FC<{ title?: string }> = ({ title, children }) => {
   return (

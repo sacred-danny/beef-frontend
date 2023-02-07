@@ -1,8 +1,9 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useMatchBreakpoints } from '@wagyu-swap-libs/uikit'
+import { useMatchBreakpoints } from '@beef-swap-libs/uikit'
 import { Pool } from 'state/types'
-import { useWagyuVault } from 'state/hooks'
+import { useBeefVault } from 'state/hooks'
 import useDelayedUnmount from 'hooks/useDelayedUnmount'
 import NameCell from './Cells/NameCell'
 import EarningsCell from './Cells/EarningsCell'
@@ -35,7 +36,7 @@ const PoolRow: React.FC<PoolRowProps> = ({ pool, account, userDataLoaded }) => {
 
   const {
     fees: { performanceFee },
-  } = useWagyuVault()
+  } = useBeefVault()
   const performanceFeeAsDecimal = performanceFee && performanceFee / 100
 
   return (

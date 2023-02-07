@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text, Heading, Link, Image } from '@wagyu-swap-libs/uikit'
+import { Text, Heading, Link, Image } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 const LayoutWrapper = styled.div`
@@ -28,16 +28,16 @@ const HowItWorks = () => {
 
   return (
     <LayoutWrapper>
-      <StyledImage src="/images/wagyu-lottery-bunny.png" alt="lottery bunny" width={360} height={290} />
+      <StyledImage src="/images/Beef-lottery-bunny.png" alt="lottery bunny" width={360} height={290} />
       <StyledHeading size="lg" as="h3" color="secondary">
         {t('How it works')}
       </StyledHeading>
       <Text fontSize="16px">
         {t(
-          'Spend WAGYU to buy tickets, contributing to the lottery pot. Win prizes if 2, 3, or 4 of your ticket numbers match the winning numbers and their exact order!',
+          'Spend Beef to buy tickets, contributing to the lottery pot. Win prizes if 2, 3, or 4 of your ticket numbers match the winning numbers and their exact order!',
         )}
       </Text>
-      <StyledLink href="https://docs.wagyuswap.finance/lottery-1">{t('Read more')}</StyledLink>
+      <StyledLink href="https://docs.Beefswap.finance/lottery-1">{t('Read more')}</StyledLink>
     </LayoutWrapper>
   )
 }

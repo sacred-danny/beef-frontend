@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Progress, ProgressProps } from '@wagyu-swap-libs/uikit'
+import { Progress, ProgressProps } from '@beef-swap-libs/uikit'
 import { useBlock } from 'state/hooks'
 
 interface BlockProgressProps extends ProgressProps {

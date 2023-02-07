@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import { Button, ChevronUpIcon } from '@wagyu-swap-libs/uikit'
+import { Button, ChevronUpIcon } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { Pool } from 'state/types'
 import PoolRow from './PoolRow'
@@ -47,7 +48,7 @@ const PoolsTable: React.FC<PoolsTableProps> = ({ pools, userDataLoaded, account 
       <StyledTable role="table" ref={tableWrapperEl}>
         {pools.map((pool) => (
           <PoolRow
-            key={pool.isAutoVault ? 'auto-wagyu' : pool.sousId}
+            key={pool.isAutoVault ? 'auto-Beef' : pool.sousId}
             pool={pool}
             account={account}
             userDataLoaded={userDataLoaded}

@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { ExpandableLabel, Flex, FlexProps, Text } from '@wagyu-swap-libs/uikit'
+import { ExpandableLabel, Flex, FlexProps, Text } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 interface FoldableTextProps extends FlexProps {

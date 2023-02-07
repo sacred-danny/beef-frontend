@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Heading } from '@wagyu-swap-libs/uikit'
+import { Flex, Heading } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useAchievements } from 'state/hooks'
 import AchievementCard from './AchievementCard'

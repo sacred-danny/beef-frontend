@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Modal } from '@wagyu-swap-libs/uikit'
+import { Button, Modal } from '@beef-swap-libs/uikit'
 import ModalActions from 'components/ModalActions'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
@@ -12,7 +12,7 @@ const WarningModal: React.FC<{ onDismiss?: () => void }> = ({ onDismiss }) => {
       <TicketsList>
         {t('Lottery ticket purchases are final.')}
         <br />
-        {t('Your WAGYU will not be returned to you after you spend it to buy tickets.')}
+        {t('Your Beef will not be returned to you after you spend it to buy tickets.')}
         <br />
         {t('Tickets are only valid for one lottery draw, and will be burned after the draw.')}
         <br />

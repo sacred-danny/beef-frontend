@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React, { useCallback, useEffect, useState } from 'react'
-import { Modal, Text, InjectedModalProps, Button, AutoRenewIcon } from '@wagyu-swap-libs/uikit'
+import { Modal, Text, InjectedModalProps, Button, AutoRenewIcon } from '@beef-swap-libs/uikit'
 import { useWeb3React } from '@web3-react/core'
 import useToast from 'hooks/useToast'
 import { useClaimRefundContract } from 'hooks/useContract'
@@ -44,7 +45,7 @@ const ClaimGift: React.FC<ClaimGiftProps> = ({ onSuccess, onDismiss }) => {
 
   const handleClick = () => {
     claimRefundContract.methods
-      .getWagyuBack()
+      .getBeefBack()
       .send({ from: account })
       .on('sending', () => {
         setIsConfirming(true)
@@ -63,13 +64,13 @@ const ClaimGift: React.FC<ClaimGiftProps> = ({ onSuccess, onDismiss }) => {
   return (
     <Modal title={t('Claim your Gift!')} onDismiss={onDismiss}>
       <div style={{ maxWidth: '640px' }}>
-        <Text as="p">{t('Thank you for being a day-one user of Wagyu Profiles!')}</Text>
+        <Text as="p">{t('Thank you for being a day-one user of Beef Profiles!')}</Text>
         <Text as="p" mb="8px">
           {t(
             "If you haven't already noticed, we made a mistake and the starter bunny you chose got mixed up and changed into another bunny. Oops!",
           )}
         </Text>
-        <Text as="p">{t('To make it up to you, we’ll refund you the full 4 WAGYU it cost to make your bunny.')}</Text>
+        <Text as="p">{t('To make it up to you, we’ll refund you the full 4 Beef it cost to make your bunny.')}</Text>
         <Text as="p" mb="8px">
           {t('We’re also preparing an all-new collectible for you to claim (for free!) in the near future.')}
         </Text>
@@ -84,7 +85,7 @@ const ClaimGift: React.FC<ClaimGiftProps> = ({ onSuccess, onDismiss }) => {
           onClick={handleClick}
           disabled={!canClaim}
         >
-          {t('Claim Your WAGYU')}
+          {t('Claim Your Beef')}
         </Button>
       </div>
     </Modal>

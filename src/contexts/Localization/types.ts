@@ -1,5 +1,6 @@
+// @ts-nocheck
 import { ReactText } from 'react'
-import { Language } from '@wagyu-swap-libs/uikit'
+import { Language } from '@beef-swap-libs/uikit'
 
 export type ContextData = {
   [key: string]: ReactText

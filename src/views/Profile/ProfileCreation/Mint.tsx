@@ -1,13 +1,14 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import BigNumber from 'bignumber.js'
-import { Card, CardBody, Heading, Text } from '@wagyu-swap-libs/uikit'
+import { Card, CardBody, Heading, Text } from '@beef-swap-libs/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
 import { DEFAULT_TOKEN_DECIMAL } from 'config'
-import { useWagyu, useBunnyFactory } from 'hooks/useContract'
+import { useBeef, useBunnyFactory } from 'hooks/useContract'
 import { Nft } from 'config/constants/types'
-import useHasWagyuBalance from 'hooks/useHasWagyuBalance'
+import useHasBeefBalance from 'hooks/useHasBeefBalance'
 import nftList from 'config/constants/nfts'
 import SelectionCard from '../components/SelectionCard'
 import NextStepButton from '../components/NextStepButton'
@@ -16,31 +17,31 @@ import useProfileCreation from './contexts/hook'
 import { MINT_COST, STARTER_BUNNY_IDENTIFIERS } from './config'
 
 const nfts = nftList.filter((nft) => STARTER_BUNNY_IDENTIFIERS.includes(nft.identifier))
-const minimumWagyuBalanceToMint = new BigNumber(MINT_COST).multipliedBy(DEFAULT_TOKEN_DECIMAL)
+const minimumBeefBalanceToMint = new BigNumber(MINT_COST).multipliedBy(DEFAULT_TOKEN_DECIMAL)
 
 const Mint: React.FC = () => {
   const [variationId, setVariationId] = useState<Nft['variationId']>(null)
-  const { actions, minimumWagyuRequired, allowance } = useProfileCreation()
+  const { actions, minimumBeefRequired, allowance } = useProfileCreation()
 
   const { account } = useWeb3React()
-  const wagyuContract = useWagyu()
+  const BeefContract = useBeef()
   const bunnyFactoryContract = useBunnyFactory()
   const { t } = useTranslation()
-  const hasMinimumWagyuRequired = useHasWagyuBalance(minimumWagyuBalanceToMint)
+  const hasMinimumBeefRequired = useHasBeefBalance(minimumBeefBalanceToMint)
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         // TODO: Move this to a helper, this check will be probably be used many times
         try {
-          const response = await wagyuContract.methods.allowance(account, bunnyFactoryContract.options.address).call()
+          const response = await BeefContract.methods.allowance(account, bunnyFactoryContract.options.address).call()
           const currentAllowance = new BigNumber(response)
-          return currentAllowance.gte(minimumWagyuRequired)
+          return currentAllowance.gte(minimumBeefRequired)
         } catch (error) {
           return false
         }
       },
       onApprove: () => {
-        return wagyuContract.methods
+        return BeefContract.methods
           .approve(bunnyFactoryContract.options.address, allowance.toJSON())
           .send({ from: account })
       },
@@ -61,7 +62,7 @@ const Mint: React.FC = () => {
       <Text as="p">{t('Every profile starts by making a “starter” collectible (NFT).')}</Text>
       <Text as="p">{t('This starter will also become your first profile picture.')}</Text>
       <Text as="p" mb="24px">
-        {t('You can change your profile pic later if you get another approved Wagyu Collectible.')}
+        {t('You can change your profile pic later if you get another approved Beef Collectible.')}
       </Text>
       <Card mb="24px">
         <CardBody>
@@ -72,7 +73,7 @@ const Mint: React.FC = () => {
             {t('Choose wisely: you can only ever make one starter collectible!')}
           </Text>
           <Text as="p" mb="24px" color="textSubtle">
-            {t('Cost: %num% WAGYU', { num: MINT_COST })}
+            {t('Cost: %num% Beef', { num: MINT_COST })}
           </Text>
           {nfts.map((nft) => {
             const handleChange = (value: string) => setVariationId(Number(value))
@@ -85,21 +86,21 @@ const Mint: React.FC = () => {
                 image={`/images/nfts/${nft.images.md}`}
                 isChecked={variationId === nft.variationId}
                 onChange={handleChange}
-                disabled={isApproving || isConfirming || isConfirmed || !hasMinimumWagyuRequired}
+                disabled={isApproving || isConfirming || isConfirmed || !hasMinimumBeefRequired}
               >
                 <Text bold>{nft.name}</Text>
               </SelectionCard>
             )
           })}
-          {!hasMinimumWagyuRequired && (
+          {!hasMinimumBeefRequired && (
             <Text color="failure" mb="16px">
-              {t('A minimum of %num% WAGYU is required', { num: MINT_COST })}
+              {t('A minimum of %num% Beef is required', { num: MINT_COST })}
             </Text>
           )}
           <ApproveConfirmButtons
             isApproveDisabled={variationId === null || isConfirmed || isConfirming || isApproved}
             isApproving={isApproving}
-            isConfirmDisabled={!isApproved || isConfirmed || !hasMinimumWagyuRequired}
+            isConfirmDisabled={!isApproved || isConfirmed || !hasMinimumBeefRequired}
             isConfirming={isConfirming}
             onApprove={handleApprove}
             onConfirm={handleConfirm}

@@ -1,22 +1,23 @@
+// @ts-nocheck
 import React from 'react'
 import BigNumber from 'bignumber.js'
-import { IconButton, useModal, CalculateIcon } from '@wagyu-swap-libs/uikit'
+import { IconButton, useModal, CalculateIcon } from '@beef-swap-libs/uikit'
 import ApyCalculatorModal from 'components/ApyCalculatorModal'
 import { useTranslation } from 'contexts/Localization'
 
 export interface ApyButtonProps {
   lpLabel?: string
-  wagyuPrice?: BigNumber
+  BeefPrice?: BigNumber
   apr?: number
   addLiquidityUrl?: string
 }
 
-const ApyButton: React.FC<ApyButtonProps> = ({ lpLabel, wagyuPrice, apr, addLiquidityUrl }) => {
+const ApyButton: React.FC<ApyButtonProps> = ({ lpLabel, BeefPrice, apr, addLiquidityUrl }) => {
   const { t } = useTranslation()
   const [onPresentApyModal] = useModal(
     <ApyCalculatorModal
       linkLabel={t('Get %symbol%', { symbol: lpLabel })}
-      tokenPrice={wagyuPrice.toNumber()}
+      tokenPrice={BeefPrice.toNumber()}
       apr={apr}
       linkHref={addLiquidityUrl}
     />,

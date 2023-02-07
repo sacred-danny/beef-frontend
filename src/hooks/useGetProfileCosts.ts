@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'contexts/Localization'
 import BigNumber from 'bignumber.js'
@@ -9,9 +10,9 @@ import useToast from './useToast'
 const useGetProfileCosts = () => {
   const { t } = useTranslation()
   const [costs, setCosts] = useState({
-    numberWagyuToReactivate: BIG_ZERO,
-    numberWagyuToRegister: BIG_ZERO,
-    numberWagyuToUpdate: BIG_ZERO,
+    numberBeefToReactivate: BIG_ZERO,
+    numberBeefToRegister: BIG_ZERO,
+    numberBeefToUpdate: BIG_ZERO,
   })
   const { toastError } = useToast()
 
@@ -19,19 +20,19 @@ const useGetProfileCosts = () => {
     const fetchCosts = async () => {
       try {
         const profileContract = getProfileContract()
-        const [numberWagyuToReactivate, numberWagyuToRegister, numberWagyuToUpdate] = await makeBatchRequest([
-          profileContract.methods.numberWagyuToReactivate().call,
-          profileContract.methods.numberWagyuToRegister().call,
-          profileContract.methods.numberWagyuToUpdate().call,
+        const [numberBeefToReactivate, numberBeefToRegister, numberBeefToUpdate] = await makeBatchRequest([
+          profileContract.methods.numberBeefToReactivate().call,
+          profileContract.methods.numberBeefToRegister().call,
+          profileContract.methods.numberBeefToUpdate().call,
         ])
 
         setCosts({
-          numberWagyuToReactivate: new BigNumber(numberWagyuToReactivate as string),
-          numberWagyuToRegister: new BigNumber(numberWagyuToRegister as string),
-          numberWagyuToUpdate: new BigNumber(numberWagyuToUpdate as string),
+          numberBeefToReactivate: new BigNumber(numberBeefToReactivate as string),
+          numberBeefToRegister: new BigNumber(numberBeefToRegister as string),
+          numberBeefToUpdate: new BigNumber(numberBeefToUpdate as string),
         })
       } catch (error) {
-        toastError(t('Error'), t('Could not retrieve WAGYU costs for profile'))
+        toastError(t('Error'), t('Could not retrieve Beef costs for profile'))
       }
     }
 

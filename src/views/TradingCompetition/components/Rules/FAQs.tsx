@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Card, CardBody, CardHeader, Heading, Text, Flex } from '@wagyu-swap-libs/uikit'
+import { Card, CardBody, CardHeader, Heading, Text, Flex } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import FoldableText from 'components/FoldableText'
 
@@ -36,7 +36,7 @@ const FAQ = () => {
           <FoldableText title={t('Eligible trading pairs')} mt="24px">
             <Text fontSize="14px" color="textSubtle">
               {t(
-                'Only trades on VLX/VUSDT, WAGYU/VLX, VETHER/VLX and BTCB/VLX pairs will be included in volume calculations.',
+                'Only trades on VLX/VUSDT, Beef/VLX, VETHER/VLX and BTCB/VLX pairs will be included in volume calculations.',
               )}
             </Text>
           </FoldableText>
@@ -58,13 +58,13 @@ const FAQ = () => {
             <Text fontSize="14px" color="textSubtle">
               -{' '}
               {t(
-                'Prizes to be distributed in WAGYU and shared by all members of each respective tier as per the Prizes section above.',
+                'Prizes to be distributed in Beef and shared by all members of each respective tier as per the Prizes section above.',
               )}
             </Text>
             <Text fontSize="14px" color="textSubtle">
               -{' '}
               {t(
-                'Wagyu prizes will be distributed as per the Wagyu/VUSDT price on the day of distribution. Every eligible participant will win prizes at the end of the competition.',
+                'Beef prizes will be distributed as per the Beef/VUSDT price on the day of distribution. Every eligible participant will win prizes at the end of the competition.',
               )}
             </Text>
             <Text fontSize="14px" color="textSubtle">
@@ -75,13 +75,13 @@ const FAQ = () => {
             <Text fontSize="14px" color="textSubtle">
               -{' '}
               {t(
-                'In the event of a disagreement concerning the final winning team or rank, WagyuSwap will have the final say.',
+                'In the event of a disagreement concerning the final winning team or rank, BeefSwap will have the final say.',
               )}
             </Text>
             <Text fontSize="14px" color="textSubtle">
               -{' '}
               {t(
-                'WagyuSwap can and will disqualify any team or specific members that are proven to have taken malicious action or attempt to “cheat” in any way.',
+                'BeefSwap can and will disqualify any team or specific members that are proven to have taken malicious action or attempt to “cheat” in any way.',
               )}
             </Text>
           </FoldableText>

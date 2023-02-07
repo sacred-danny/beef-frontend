@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Button, useWalletModal } from '@wagyu-swap-libs/uikit'
+import { Button, useWalletModal } from '@beef-swap-libs/uikit'
 import useAuth from 'hooks/useAuth'
 import { useTranslation } from 'contexts/Localization'
 

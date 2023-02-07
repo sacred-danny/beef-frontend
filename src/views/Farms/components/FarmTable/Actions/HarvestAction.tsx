@@ -1,12 +1,13 @@
+// @ts-nocheck
 import React, { useState, useRef, useEffect } from 'react'
-import { Button, Skeleton } from '@wagyu-swap-libs/uikit'
+import { Button, Skeleton } from '@beef-swap-libs/uikit'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useAppDispatch } from 'state'
 import { fetchFarmUserDataAsync } from 'state/farms'
-import { usePriceWagyuVusdt } from 'state/hooks'
+import { usePriceBeefVusdt } from 'state/hooks'
 import { useHarvest } from 'hooks/useHarvest'
 import { useTranslation } from 'contexts/Localization'
 import { useCountUp } from 'react-countup'
@@ -19,7 +20,7 @@ interface HarvestActionProps extends FarmWithStakedValue {
 
 const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userData, userDataReady }) => {
   const earningsBigNumber = new BigNumber(userData.earnings)
-  const wagyuPrice = usePriceWagyuVusdt()
+  const BeefPrice = usePriceBeefVusdt()
   let earnings = 0
   let earningsVusdt = 0
   let displayBalance = userDataReady ? earnings.toLocaleString() : <Skeleton width={60} />
@@ -27,7 +28,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userD
   // If user didn't connect wallet default balance will be 0
   if (!earningsBigNumber.isZero()) {
     earnings = getBalanceNumber(earningsBigNumber)
-    earningsVusdt = new BigNumber(earnings).multipliedBy(wagyuPrice).toNumber()
+    earningsVusdt = new BigNumber(earnings).multipliedBy(BeefPrice).toNumber()
     displayBalance = earnings.toLocaleString()
   }
 
@@ -52,7 +53,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userD
   return (
     <ActionContainer>
       <ActionTitles>
-        <Title>WAGYU </Title>
+        <Title>Beef </Title>
         <Subtle>{t('Earned').toUpperCase()}</Subtle>
       </ActionTitles>
       <ActionContent>

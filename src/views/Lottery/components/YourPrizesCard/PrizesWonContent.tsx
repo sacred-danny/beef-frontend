@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
-import { Button, Heading, Won, useModal } from '@wagyu-swap-libs/uikit'
+import { Button, Heading, Won, useModal } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useMultiClaimLottery } from 'hooks/useBuyLottery'
@@ -82,7 +82,7 @@ const PrizesWonContent: React.FC<PrizesWonContentProps> = ({ onSuccess }) => {
               {winnings}
             </Heading>
             <Heading as="h4" size="lg">
-              WAGYU
+              Beef
             </Heading>
           </WinningsWrapper>
         </>

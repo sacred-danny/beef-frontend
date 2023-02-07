@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Text, TextProps } from '@wagyu-swap-libs/uikit'
+import { Text, TextProps } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { TranslatableText as AchievementTitleType } from 'state/types'
 

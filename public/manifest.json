@@ -1,7 +1,7 @@
 {
-  "short_name": "WagyuSwap",
-  "name": "WagyuSwap",
-  "description": "Farm WAGYU with Wagyu LP Tokens",
+  "short_name": "BeefSwap",
+  "name": "BeefSwap",
+  "description": "Farm Beef with Beef LP Tokens",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

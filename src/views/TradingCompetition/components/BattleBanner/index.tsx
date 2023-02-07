@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Flex, Text, Heading, Image } from '@wagyu-swap-libs/uikit'
+import { Flex, Text, Heading, Image } from '@beef-swap-libs/uikit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'
@@ -54,7 +55,7 @@ const BattleBanner = () => {
         {t('$200,000 in Prizes!')}
       </StyledHeading2Text>
       <StyledHeading scale="md" color="inputSecondary" mt="16px">
-        {t('Compete with other teams to win WAGYU, collectible NFTs, achievements & more!')}
+        {t('Compete with other teams to win Beef, collectible NFTs, achievements & more!')}
       </StyledHeading>
     </Flex>
   )

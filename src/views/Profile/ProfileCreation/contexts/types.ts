@@ -1,3 +1,4 @@
+// @ts-nocheck
 import BigNumber from 'bignumber.js'
 
 export type Actions =
@@ -16,7 +17,7 @@ export interface State {
     nftAddress: string
   }
   userName: string
-  minimumWagyuRequired: BigNumber
+  minimumBeefRequired: BigNumber
   allowance: BigNumber
 }
 

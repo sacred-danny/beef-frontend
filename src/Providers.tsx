@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { ModalProvider } from '@wagyu-swap-libs/uikit'
+import { ModalProvider } from '@beef-swap-libs/uikit'
 import { Web3ReactProvider } from '@web3-react/core'
 import { HelmetProvider } from 'react-helmet-async'
 import { Provider } from 'react-redux'

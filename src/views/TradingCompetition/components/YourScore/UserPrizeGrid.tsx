@@ -9,10 +9,10 @@ import {
   TeamPlayerIcon,
   TrophyGoldIcon,
   Skeleton,
-} from '@wagyu-swap-libs/uikit'
+} from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { UserTradingInformationProps } from '../../types'
-import { useCompetitionWagyuRewards, getRewardGroupAchievements } from '../../helpers'
+import { useCompetitionBeefRewards, getRewardGroupAchievements } from '../../helpers'
 import { BoldTd, Td, StyledPrizeTable } from '../StyledPrizeTable'
 
 const StyledThead = styled.thead`
@@ -23,15 +23,15 @@ const UserPrizeGrid: React.FC<{ userTradingInformation?: UserTradingInformationP
   userTradingInformation,
 }) => {
   const { t } = useTranslation()
-  const { userRewardGroup, userWagyuRewards, userPointReward, canClaimNFT } = userTradingInformation
-  const { wagyuReward, dollarValueOfWagyuReward } = useCompetitionWagyuRewards(userWagyuRewards)
+  const { userRewardGroup, userBeefRewards, userPointReward, canClaimNFT } = userTradingInformation
+  const { BeefReward, dollarValueOfBeefReward } = useCompetitionBeefRewards(userBeefRewards)
   const { champion, teamPlayer } = getRewardGroupAchievements(userRewardGroup)
 
   return (
     <StyledPrizeTable>
       <StyledThead>
         <tr>
-          <th>{t('WAGYU Prizes')}</th>
+          <th>{t('Beef Prizes')}</th>
           <th>{t('Achievements')}</th>
           <th>{t('NFT')}</th>
         </tr>
@@ -40,10 +40,10 @@ const UserPrizeGrid: React.FC<{ userTradingInformation?: UserTradingInformationP
         <tr>
           <BoldTd>
             <Flex flexDirection="column">
-              <Text bold>{wagyuReward.toFixed(2)}</Text>
-              {dollarValueOfWagyuReward ? (
+              <Text bold>{BeefReward.toFixed(2)}</Text>
+              {dollarValueOfBeefReward ? (
                 <Text fontSize="12px" color="textSubtle">
-                  ~{dollarValueOfWagyuReward} USD
+                  ~{dollarValueOfBeefReward} USD
                 </Text>
               ) : (
                 <Skeleton height={24} width={80} />

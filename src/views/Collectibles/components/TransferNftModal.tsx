@@ -1,8 +1,9 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Web3 from 'web3'
 import { useWeb3React } from '@web3-react/core'
-import { Button, Input, Modal, Text } from '@wagyu-swap-libs/uikit'
+import { Button, Input, Modal, Text } from '@beef-swap-libs/uikit'
 import { getAddressByType } from 'utils/collectibles'
 import { Nft } from 'config/constants/types'
 import { useTranslation } from 'contexts/Localization'

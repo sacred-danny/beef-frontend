@@ -12,11 +12,11 @@ import {
   CrownIcon,
   TrophyGoldIcon,
   TeamPlayerIcon,
-} from '@wagyu-swap-libs/uikit'
+} from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useTradingCompetitionContract } from 'hooks/useContract'
 import useToast from 'hooks/useToast'
-import { useCompetitionWagyuRewards, getRewardGroupAchievements } from '../../helpers'
+import { useCompetitionBeefRewards, getRewardGroupAchievements } from '../../helpers'
 import { CompetitionProps } from '../../types'
 import NftBunnies from '../../pngs/syrup-nft.png'
 
@@ -36,8 +36,8 @@ const ClaimModal: React.FC<CompetitionProps> = ({ onDismiss, onClaimSuccess, use
   const { toastSuccess, toastError } = useToast()
   const { t } = useTranslation()
 
-  const { userRewardGroup, userWagyuRewards, userPointReward, canClaimNFT } = userTradingInformation
-  const { wagyuReward } = useCompetitionWagyuRewards(userWagyuRewards)
+  const { userRewardGroup, userBeefRewards, userPointReward, canClaimNFT } = userTradingInformation
+  const { BeefReward } = useCompetitionBeefRewards(userBeefRewards)
   const { champion, teamPlayer } = getRewardGroupAchievements(userRewardGroup)
 
   const handleClaimClick = () => {
@@ -73,9 +73,9 @@ const ClaimModal: React.FC<CompetitionProps> = ({ onDismiss, onClaimSuccess, use
             +{userPointReward} {t('Points')}
           </Text>
         </Flex>
-        {/* wagyu */}
+        {/* Beef */}
         <Heading mt="16px" scale="md" mb={canClaimNFT ? '16px' : '0px'}>
-          {wagyuReward.toFixed(2)} WAGYU
+          {BeefReward.toFixed(2)} Beef
         </Heading>
         {/* NFT */}
         {canClaimNFT ? (

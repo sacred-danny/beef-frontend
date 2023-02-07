@@ -1,6 +1,6 @@
 import React from 'react'
 import BigNumber from 'bignumber.js'
-import { Button, useModal } from '@wagyu-swap-libs/uikit'
+import { Button, useModal } from '@beef-swap-libs/uikit'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { Ifo, PoolIds } from 'config/constants/types'
 import { WalletIfoData, PublicIfoData } from 'hooks/ifo/types'
@@ -31,7 +31,7 @@ const ContributeButton: React.FC<Props> = ({ poolId, ifo, publicIfoData, walletI
     await Promise.all([publicIfoData.fetchIfoData(), walletIfoData.fetchIfoData()])
     toastSuccess(
       t('Success!'),
-      t('You have contributed %amount% WAGYU-VLX LP tokens to this IFO!', { amount: getBalanceNumber(amount) }),
+      t('You have contributed %amount% Beef-VLX LP tokens to this IFO!', { amount: getBalanceNumber(amount) }),
     )
   }
 

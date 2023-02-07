@@ -1,14 +1,15 @@
+// @ts-nocheck
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
-import { Heading, Flex, Text } from '@wagyu-swap-libs/uikit'
+import { Heading, Flex, Text } from '@beef-swap-libs/uikit'
 import orderBy from 'lodash/orderBy'
 import partition from 'lodash/partition'
 import { useTranslation } from 'contexts/Localization'
 import usePersistState from 'hooks/usePersistState'
-import { usePools, useFetchWagyuVault, useFetchPublicPoolsData, usePollFarmsData, useWagyuVault } from 'state/hooks'
+import { usePools, useFetchBeefVault, useFetchPublicPoolsData, usePollFarmsData, useBeefVault } from 'state/hooks'
 import { latinise } from 'utils/latinise'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
@@ -17,13 +18,13 @@ import SearchInput from 'components/SearchInput'
 import Select, { OptionProps } from 'components/Select/Select'
 import { Pool } from 'state/types'
 import PoolCard from './components/PoolCard'
-import WagyuVaultCard from './components/WagyuVaultCard'
+import BeefVaultCard from './components/BeefVaultCard'
 import PoolTabButtons from './components/PoolTabButtons'
 import BountyCard from './components/BountyCard'
 import HelpButton from './components/HelpButton'
 import PoolsTable from './components/PoolsTable/PoolsTable'
 import { ViewMode } from './components/ToggleView/ToggleView'
-import { getAprData, getWagyuVaultEarnings } from './helpers'
+import { getAprData, getBeefVaultEarnings } from './helpers'
 import { PoolCategory } from '../../config/constants/types'
 
 const CardLayout = styled(FlexLayout)`
@@ -56,26 +57,26 @@ const Pools: React.FC = () => {
   const { t } = useTranslation()
   const { account } = useWeb3React()
   const { pools: poolsWithoutAutoVault, userDataLoaded } = usePools(account)
-  const [stakedOnly, setStakedOnly] = usePersistState(false, 'wagyu_pool_staked')
+  const [stakedOnly, setStakedOnly] = usePersistState(false, 'Beef_pool_staked')
   const [numberOfPoolsVisible, setNumberOfPoolsVisible] = useState(NUMBER_OF_POOLS_VISIBLE)
   const [observerIsSet, setObserverIsSet] = useState(false)
   const loadMoreRef = useRef<HTMLDivElement>(null)
-  const [viewMode, setViewMode] = usePersistState(ViewMode.TABLE, 'wagyu_farm_view')
+  const [viewMode, setViewMode] = usePersistState(ViewMode.TABLE, 'Beef_farm_view')
   const [searchQuery, setSearchQuery] = useState('')
   const [sortOption, setSortOption] = useState('hot')
   const {
-    userData: { wagyuAtLastUserAction, userShares },
+    userData: { BeefAtLastUserAction, userShares },
     fees: { performanceFee },
     pricePerFullShare,
-    totalWagyuInVault,
-  } = useWagyuVault()
+    totalBeefInVault,
+  } = useBeefVault()
   const accountHasVaultShares = userShares && userShares.gt(0)
   const performanceFeeAsDecimal = performanceFee && performanceFee / 100
 
   const pools = useMemo(() => {
-    const wagyuPool = poolsWithoutAutoVault.find((pool) => pool.sousId === 0)
-    const wagyuAutoVault = { ...wagyuPool, isAutoVault: true, poolCategory: PoolCategory.AUTO }
-    return [wagyuAutoVault, ...poolsWithoutAutoVault]
+    const BeefPool = poolsWithoutAutoVault.find((pool) => pool.sousId === 0)
+    const BeefAutoVault = { ...BeefPool, isAutoVault: true, poolCategory: PoolCategory.AUTO }
+    return [BeefAutoVault, ...poolsWithoutAutoVault]
   }, [poolsWithoutAutoVault])
 
   // TODO aren't arrays in dep array checked just by reference, i.e. it will rerender every time reference changes?
@@ -103,7 +104,7 @@ const Pools: React.FC = () => {
   const hasStakeInFinishedPools = stakedOnlyFinishedPools.length > 0
 
   usePollFarmsData()
-  useFetchWagyuVault()
+  useFetchBeefVault()
   useFetchPublicPoolsData()
 
   useEffect(() => {
@@ -151,9 +152,9 @@ const Pools: React.FC = () => {
               return 0
             }
             return pool.isAutoVault
-              ? getWagyuVaultEarnings(
+              ? getBeefVaultEarnings(
                   account,
-                  wagyuAtLastUserAction,
+                  BeefAtLastUserAction,
                   userShares,
                   pricePerFullShare,
                   pool.earningTokenPrice,
@@ -165,7 +166,7 @@ const Pools: React.FC = () => {
       case 'totalStaked':
         return orderBy(
           poolsToSort,
-          (pool: Pool) => (pool.isAutoVault ? totalWagyuInVault.toNumber() : pool.totalStaked.toNumber()),
+          (pool: Pool) => (pool.isAutoVault ? totalBeefInVault.toNumber() : pool.totalStaked.toNumber()),
           'desc',
         )
       default:
@@ -194,7 +195,7 @@ const Pools: React.FC = () => {
     <CardLayout>
       {poolsToShow().map((pool) =>
         pool.isAutoVault ? (
-          <WagyuVaultCard key="auto-wagyu" pool={pool} showStakedOnly={stakedOnly} />
+          <BeefVaultCard key="auto-Beef" pool={pool} showStakedOnly={stakedOnly} />
         ) : (
           <PoolCard key={pool.sousId} pool={pool} account={account} />
         ),

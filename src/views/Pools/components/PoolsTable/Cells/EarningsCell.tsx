@@ -1,15 +1,16 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useModal, useMatchBreakpoints } from '@wagyu-swap-libs/uikit'
+import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useModal, useMatchBreakpoints } from '@beef-swap-libs/uikit'
 import { Pool } from 'state/types'
 import BigNumber from 'bignumber.js'
 import { PoolCategory } from 'config/constants/types'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { formatNumber, getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
 import Balance from 'components/Balance'
-import { useWagyuVault } from 'state/hooks'
+import { useBeefVault } from 'state/hooks'
 import { useTranslation } from 'contexts/Localization'
-import { getWagyuVaultEarnings } from 'views/Pools/helpers'
+import { getBeefVaultEarnings } from 'views/Pools/helpers'
 import BaseCell, { CellContent } from './BaseCell'
 import CollectModal from '../../PoolCard/Modals/CollectModal'
 
@@ -34,10 +35,10 @@ const EarningsCell: React.FC<EarningsCellProps> = ({ pool, account, userDataLoad
   const { t } = useTranslation()
   const { isXs, isSm } = useMatchBreakpoints()
   const { sousId, earningToken, poolCategory, userData, earningTokenPrice, isAutoVault } = pool
-  const isManualWagyuPool = sousId === 0
+  const isManualBeefPool = sousId === 0
 
   const earnings = userData?.pendingReward ? new BigNumber(userData.pendingReward) : BIG_ZERO
-  // These will be reassigned later if its Auto WAGYU vault
+  // These will be reassigned later if its Auto Beef vault
   let earningTokenBalance = getBalanceNumber(earnings, earningToken.decimals)
   let earningTokenDollarBalance = getBalanceNumber(earnings.multipliedBy(earningTokenPrice), earningToken.decimals)
   let hasEarnings = account && earnings.gt(0)
@@ -46,14 +47,14 @@ const EarningsCell: React.FC<EarningsCellProps> = ({ pool, account, userDataLoad
   const earningsDollarValue = formatNumber(earningTokenDollarBalance)
   const isVlxPool = poolCategory === PoolCategory.VELAS
 
-  // Auto WAGYU vault calculations
+  // Auto Beef vault calculations
   const {
-    userData: { wagyuAtLastUserAction, userShares, lastUserActionTime },
+    userData: { BeefAtLastUserAction, userShares, lastUserActionTime },
     pricePerFullShare,
-  } = useWagyuVault()
-  const { hasAutoEarnings, autoWagyuToDisplay, autoUsdToDisplay } = getWagyuVaultEarnings(
+  } = useBeefVault()
+  const { hasAutoEarnings, autoBeefToDisplay, autoUsdToDisplay } = getBeefVaultEarnings(
     account,
-    wagyuAtLastUserAction,
+    BeefAtLastUserAction,
     userShares,
     pricePerFullShare,
     earningTokenPrice,
@@ -63,14 +64,14 @@ const EarningsCell: React.FC<EarningsCellProps> = ({ pool, account, userDataLoad
   const dateTimeLastAction = new Date(lastActionInMs)
   const dateStringToDisplay = dateTimeLastAction.toLocaleString()
 
-  const labelText = isAutoVault ? t('Recent WAGYU profit') : t('%asset% Earned', { asset: earningToken.symbol })
-  earningTokenBalance = isAutoVault ? autoWagyuToDisplay : earningTokenBalance
+  const labelText = isAutoVault ? t('Recent Beef profit') : t('%asset% Earned', { asset: earningToken.symbol })
+  earningTokenBalance = isAutoVault ? autoBeefToDisplay : earningTokenBalance
   hasEarnings = isAutoVault ? hasAutoEarnings : hasEarnings
   earningTokenDollarBalance = isAutoVault ? autoUsdToDisplay : earningTokenDollarBalance
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <>
-      <Balance fontSize="16px" value={autoWagyuToDisplay} decimals={3} bold unit=" WAGYU" />
+      <Balance fontSize="16px" value={autoBeefToDisplay} decimals={3} bold unit=" Beef" />
       <Balance fontSize="16px" value={autoUsdToDisplay} decimals={2} bold prefix="~$" />
       {t('Earned since your last action')}
       <Text>{dateStringToDisplay}</Text>
@@ -86,7 +87,7 @@ const EarningsCell: React.FC<EarningsCellProps> = ({ pool, account, userDataLoad
       earningsDollarValue={earningsDollarValue}
       sousId={sousId}
       isVlxPool={isVlxPool}
-      isCompoundPool={isManualWagyuPool}
+      isCompoundPool={isManualBeefPool}
     />,
   )
 

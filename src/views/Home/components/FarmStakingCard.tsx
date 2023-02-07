@@ -1,17 +1,17 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { Heading, Card, CardBody, Button } from '@wagyu-swap-libs/uikit'
+import { Heading, Card, CardBody, Button } from '@beef-swap-libs/uikit'
 import { harvest } from 'utils/callHelpers'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
 import useFarmsWithBalance from 'hooks/useFarmsWithBalance'
 import { useMasterchef } from 'hooks/useContract'
 import UnlockButton from 'components/UnlockButton'
-import WagyuHarvestBalance from './WagyuHarvestBalance'
-import WagyuWalletBalance from './WagyuWalletBalance'
+import BeefHarvestBalance from './BeefHarvestBalance'
+import BeefWalletBalance from './BeefWalletBalance'
 
 const StyledFarmStakingCard = styled(Card)`
-  background-image: url('/images/wagyu-bg.svg');
+  background-image: url('/images/beef-bg.svg');
   background-repeat: no-repeat;
   background-position: top right;
   min-height: 376px;
@@ -62,14 +62,14 @@ const FarmedStakingCard = () => {
         <Heading scale="xl" mb="24px">
           {t('Farms & Staking')}
         </Heading>
-        <CardImage src="/images/wagyu.svg" alt="wagyu logo" width={64} height={64} />
+        <CardImage src="/images/beef.svg" alt="Beef logo" width={64} height={64} />
         <Block>
-          <Label>{t('WAGYU to Harvest')}:</Label>
-          <WagyuHarvestBalance />
+          <Label>{t('Beef to Harvest')}:</Label>
+          <BeefHarvestBalance />
         </Block>
         <Block>
-          <Label>{t('WAGYU in Wallet')}:</Label>
-          <WagyuWalletBalance />
+          <Label>{t('Beef in Wallet')}:</Label>
+          <BeefWalletBalance />
         </Block>
         <Actions>
           {account ? (
@@ -80,7 +80,7 @@ const FarmedStakingCard = () => {
               width="100%"
             >
               {pendingTx
-                ? t('Collecting WAGYU')
+                ? t('Collecting Beef')
                 : t('Harvest all (%count%)', {
                     count: balancesWithValue.length,
                   })}

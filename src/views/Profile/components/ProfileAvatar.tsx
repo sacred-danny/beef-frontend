@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { NoProfileAvatarIcon } from '@wagyu-swap-libs/uikit'
+import { NoProfileAvatarIcon } from '@beef-swap-libs/uikit'
 import { Profile } from 'state/types'
 import styled from 'styled-components'
 

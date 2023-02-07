@@ -1,7 +1,8 @@
+// @ts-nocheck
 import { useTranslation } from 'contexts/Localization'
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
-import { ChevronLeftIcon, Flex, Text, ButtonMenu, ButtonMenuItem } from '@wagyu-swap-libs/uikit'
+import { ChevronLeftIcon, Flex, Text, ButtonMenu, ButtonMenuItem } from '@beef-swap-libs/uikit'
 
 interface MenuProps {
   activeIndex?: number

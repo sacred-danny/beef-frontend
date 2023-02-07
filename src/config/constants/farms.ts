@@ -7,7 +7,7 @@ const farms: FarmConfig[] = [
    */
   {
     pid: 0,
-    lpSymbol: 'WAGYU',
+    lpSymbol: 'Beef',
     lpAddresses: {
       106: '',
       111: '0x297170abcFC7AceA729ce128E1326bE125a7F982',
@@ -17,12 +17,12 @@ const farms: FarmConfig[] = [
   },
   {
     pid: 1,
-    lpSymbol: 'WAGYU-VLX LP',
+    lpSymbol: 'Beef-VLX LP',
     lpAddresses: {
       106: '',
       111: '0xa6b272aaB652c6d9fE1f53CAD9913c3Aed714073',
     },
-    token: tokens.wagyu,
+    token: tokens.Beef,
     quoteToken: tokens.wvlx,
   },
   {
@@ -37,33 +37,33 @@ const farms: FarmConfig[] = [
   },
   {
     pid: 3,
-    lpSymbol: 'VUSDT-WAGYU LP',
+    lpSymbol: 'VUSDT-Beef LP',
     lpAddresses: {
       106: '',
       111: '0x8899e8a675E5117acc38Dd4240Bd5968f5284d6C',
     },
     token: tokens.vusdt,
-    quoteToken: tokens.wagyu,
+    quoteToken: tokens.Beef,
   },
   {
     pid: 4,
-    lpSymbol: 'VETHER-WAGYU LP',
+    lpSymbol: 'VETHER-Beef LP',
     lpAddresses: {
       106: '',
       111: '0x67C46cA7a14c7aa6bBdC25c0341A2DD1F2eC8757',
     },
     token: tokens.vether,
-    quoteToken: tokens.wagyu,
+    quoteToken: tokens.Beef,
   },
   {
     pid: 5,
-    lpSymbol: 'VBNB-WAGYU LP',
+    lpSymbol: 'VBNB-Beef LP',
     lpAddresses: {
       106: '',
       111: '0xaBA00887aB1d9213169d1F44430E28cf12D61d68',
     },
     token: tokens.vbnb,
-    quoteToken: tokens.wagyu,
+    quoteToken: tokens.Beef,
   },
 ]
 

@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { Button, Modal } from '@wagyu-swap-libs/uikit'
+import { Button, Modal } from '@beef-swap-libs/uikit'
 import { getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
 import TicketInput from 'components/TicketInput'
 import ModalActions from 'components/ModalActions'
@@ -65,7 +65,7 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
     }
   }, [maxTickets])
 
-  const wagyuCosts = (amount: string): number => {
+  const BeefCosts = (amount: string): number => {
     return +amount * LOTTERY_TICKET_PRICE
   }
   return (
@@ -76,18 +76,18 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
         onChange={handleChange}
         max={fullBalance}
         symbol="TICKET"
-        availableSymbol="WAGYU"
+        availableSymbol="Beef"
       />
       <div>
-        <Tips>{t(`1 Ticket = ${LOTTERY_TICKET_PRICE} WAGYU`, { num: LOTTERY_TICKET_PRICE })}</Tips>
+        <Tips>{t(`1 Ticket = ${LOTTERY_TICKET_PRICE} Beef`, { num: LOTTERY_TICKET_PRICE })}</Tips>
       </div>
       <div>
         <Announce>
           {t(
-            'Ticket purchases are final. Your WAGYU cannot be returned to you after buying tickets.',
+            'Ticket purchases are final. Your Beef cannot be returned to you after buying tickets.',
           )}
         </Announce>
-        <Final>{t(`You will spend: ${wagyuCosts(val)} WAGYU`)}</Final>
+        <Final>{t(`You will spend: ${BeefCosts(val)} Beef`)}</Final>
       </div>
       <ModalActions>
         <Button width="100%" variant="secondary" onClick={onDismiss}>

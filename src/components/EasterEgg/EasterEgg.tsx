@@ -1,7 +1,8 @@
+// @ts-nocheck
 import React, { useState, useCallback } from 'react'
-import { FallingBunnies, FallingWagyuesProps, useKonamiCheatCode } from '@wagyu-swap-libs/uikit'
+import { FallingBunnies, FallingBeefesProps, useKonamiCheatCode } from '@beef-swap-libs/uikit'
 
-const EasterEgg: React.FC<FallingWagyuesProps> = (props) => {
+const EasterEgg: React.FC<FallingBeefesProps> = (props) => {
   const [show, setShow] = useState(false)
   const startFalling = useCallback(() => setShow(true), [setShow])
   useKonamiCheatCode(startFalling)

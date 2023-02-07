@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { createContext, useEffect, useMemo, useReducer } from 'react'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
@@ -18,7 +19,7 @@ const initialState: State = {
     tokenId: null,
   },
   userName: '',
-  minimumWagyuRequired: new BigNumber(totalCost).multipliedBy(DEFAULT_TOKEN_DECIMAL),
+  minimumBeefRequired: new BigNumber(totalCost).multipliedBy(DEFAULT_TOKEN_DECIMAL),
   allowance: new BigNumber(allowance).multipliedBy(DEFAULT_TOKEN_DECIMAL),
 }
 

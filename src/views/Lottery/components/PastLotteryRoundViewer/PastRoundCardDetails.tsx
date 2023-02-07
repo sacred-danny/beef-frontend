@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Heading, CardBody, CardFooter, WagyuRoundIcon, TicketRound } from '@wagyu-swap-libs/uikit'
+import { Heading, CardBody, CardFooter, BeefRoundIcon, TicketRound } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { DataResponse } from 'utils/getLotteryRoundData'
 import LotteryCardHeading from '../LotteryCardHeading'
@@ -54,8 +54,8 @@ const PastRoundCardDetails: React.FC<PastRoundCardDetailsProps> = ({ data }) => 
               {t('Winning numbers')}
             </TopLotteryCardHeading>
             <LotteryCardHeading
-              valueToDisplay={t(`${poolSize.toLocaleString()} WAGYU`)}
-              Icon={WagyuRoundIcon}
+              valueToDisplay={t(`${poolSize.toLocaleString()} Beef`)}
+              Icon={BeefRoundIcon}
             >
               {t('Total prizes')}
             </LotteryCardHeading>

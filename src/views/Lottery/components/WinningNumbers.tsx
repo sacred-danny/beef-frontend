@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useWeb3React } from '@web3-react/core'
-import { Image, Card, CardBody } from '@wagyu-swap-libs/uikit'
+import { Image, Card, CardBody } from '@beef-swap-libs/uikit'
 import { useWinningNumbers, useMatchingRewardLength } from 'hooks/useTickets'
 import { useTranslation } from 'contexts/Localization'
 import useGetLotteryHasDrawn from 'hooks/useGetLotteryHasDrawn'
@@ -55,7 +55,7 @@ const WinningNumbers: React.FC = () => {
               </CenteredTextWithPadding>
             </RowNoPadding>
           </Column>
-          <Link href="https://staging.api.wagyuswap.app/api/lottery?page=0&pageSize=25" target="_blank">
+          <Link href="https://staging.api.Beefswap.app/api/lottery?page=0&pageSize=25" target="_blank">
             {t('Export recent winning numbers')}
           </Link>
         </StyledCardContentInner>

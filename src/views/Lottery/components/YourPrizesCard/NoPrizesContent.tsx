@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text, Button, useModal } from '@wagyu-swap-libs/uikit'
+import { Text, Button, useModal } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import useTickets from 'hooks/useTickets'
 import MyTicketsModal from '../TicketCard/UserTicketsModal'

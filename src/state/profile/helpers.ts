@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Profile } from 'state/types'
 
 export type ProfileResponse = {

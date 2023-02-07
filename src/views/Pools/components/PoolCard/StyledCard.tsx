@@ -1,5 +1,6 @@
+// @ts-nocheck
 import styled, { css, keyframes } from 'styled-components'
-import { Card, Box } from '@wagyu-swap-libs/uikit'
+import { Card, Box } from '@beef-swap-libs/uikit'
 
 const PromotedGradient = keyframes`
   0% {

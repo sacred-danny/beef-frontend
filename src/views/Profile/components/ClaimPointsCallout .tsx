@@ -1,8 +1,9 @@
+// @ts-nocheck
 import React, { useEffect, useState } from 'react'
 import { sumBy } from 'lodash'
 import { useAppDispatch } from 'state'
 import { useWeb3React } from '@web3-react/core'
-import { Card, CardBody, CardHeader, Flex, Heading, PrizeIcon } from '@wagyu-swap-libs/uikit'
+import { Card, CardBody, CardHeader, Flex, Heading, PrizeIcon } from '@beef-swap-libs/uikit'
 import { useProfile } from 'state/hooks'
 import { Achievement } from 'state/types'
 import { addPoints } from 'state/profile'

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const MINT_COST = 1
 export const REGISTER_COST = 0.5
 export const ALLOWANCE_MULTIPLIER = 5

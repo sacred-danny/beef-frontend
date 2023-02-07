@@ -3,9 +3,9 @@ import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
 import { DEFAULT_GAS_LIMIT } from 'config'
 import styled from 'styled-components'
-import { Modal, Text, Flex, Button, HelpIcon, AutoRenewIcon, useTooltip } from '@wagyu-swap-libs/uikit'
+import { Modal, Text, Flex, Button, HelpIcon, AutoRenewIcon, useTooltip } from '@beef-swap-libs/uikit'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { useWagyuVaultContract } from 'hooks/useContract'
+import { useBeefVaultContract } from 'hooks/useContract'
 import useTheme from 'hooks/useTheme'
 import useToast from 'hooks/useToast'
 import { useTranslation } from 'contexts/Localization'
@@ -13,9 +13,9 @@ import UnlockButton from 'components/UnlockButton'
 import Balance from 'components/Balance'
 
 interface BountyModalProps {
-  wagyuBountyToDisplay: number
+  BeefBountyToDisplay: number
   dollarBountyToDisplay: number
-  totalPendingWagyuHarvest: BigNumber
+  totalPendingBeefHarvest: BigNumber
   callFee: number
   onDismiss?: () => void
   TooltipComponent: React.ElementType
@@ -29,9 +29,9 @@ const Divider = styled.div`
 `
 
 const BountyModal: React.FC<BountyModalProps> = ({
-  wagyuBountyToDisplay,
+  BeefBountyToDisplay,
   dollarBountyToDisplay,
-  totalPendingWagyuHarvest,
+  totalPendingBeefHarvest,
   callFee,
   onDismiss,
   TooltipComponent,
@@ -40,24 +40,24 @@ const BountyModal: React.FC<BountyModalProps> = ({
   const { account } = useWeb3React()
   const { theme } = useTheme()
   const { toastError, toastSuccess } = useToast()
-  const wagyuVaultContract = useWagyuVaultContract()
+  const BeefVaultContract = useBeefVaultContract()
   const [pendingTx, setPendingTx] = useState(false)
   const callFeeAsDecimal = callFee / 100
-  const totalYieldToDisplay = getBalanceNumber(totalPendingWagyuHarvest, 18)
+  const totalYieldToDisplay = getBalanceNumber(totalPendingBeefHarvest, 18)
   const { targetRef, tooltip, tooltipVisible } = useTooltip(<TooltipComponent />, {
     placement: 'bottom',
     tooltipPadding: { right: 15 },
   })
 
   const handleConfirmClick = async () => {
-    wagyuVaultContract.methods
+    BeefVaultContract.methods
       .harvest()
       .send({ from: account, gas: DEFAULT_GAS_LIMIT })
       .on('sending', () => {
         setPendingTx(true)
       })
       .on('receipt', () => {
-        toastSuccess(t('Bounty collected!'), t('WAGYU bounty has been sent to your wallet.'))
+        toastSuccess(t('Bounty collected!'), t('Beef bounty has been sent to your wallet.'))
         setPendingTx(false)
         onDismiss()
       })
@@ -78,7 +78,7 @@ const BountyModal: React.FC<BountyModalProps> = ({
       <Flex alignItems="flex-start" justifyContent="space-between">
         <Text>{t('You’ll claim')}</Text>
         <Flex flexDirection="column">
-          <Balance bold value={wagyuBountyToDisplay} decimals={7} unit=" WAGYU" />
+          <Balance bold value={BeefBountyToDisplay} decimals={7} unit=" Beef" />
           <Text fontSize="12px" color="textSubtle">
             <Balance
               fontSize="12px"
@@ -96,7 +96,7 @@ const BountyModal: React.FC<BountyModalProps> = ({
         <Text fontSize="14px" color="textSubtle">
           {t('Pool total pending yield')}
         </Text>
-        <Balance color="textSubtle" value={totalYieldToDisplay} unit=" WAGYU" />
+        <Balance color="textSubtle" value={totalYieldToDisplay} unit=" Beef" />
       </Flex>
       <Flex alignItems="center" justifyContent="space-between" mb="24px">
         <Text fontSize="14px" color="textSubtle">

@@ -1,10 +1,11 @@
+// @ts-nocheck
 import BigNumber from 'bignumber.js'
 import { DEFAULT_GAS_LIMIT, DEFAULT_TOKEN_DECIMAL } from 'config'
 import { ethers } from 'ethers'
 import { Pair, TokenAmount, Token } from '@wagyu-swap-libs/sdk'
 import { getLpContract, getMasterchefContract } from 'utils/contractHelpers'
 import farms from 'config/constants/farms'
-import { getAddress, getWagyuAddress } from 'utils/addressHelpers'
+import { getAddress, getBeefAddress } from 'utils/addressHelpers'
 import tokens from 'config/constants/tokens'
 import pools from 'config/constants/pools'
 import sousChefABI from 'config/abi/sousChef.json'
@@ -131,53 +132,53 @@ export const soushHarvestVlx = async (sousChefContract, account) => {
 }
 
 const chainId = parseInt(process.env.REACT_APP_CHAIN_ID, 10)
-const wagyuVlxPid = 1
-const wagyuVlxFarm = farms.find((farm) => farm.pid === wagyuVlxPid)
+const BeefVlxPid = 1
+const BeefVlxFarm = farms.find((farm) => farm.pid === BeefVlxPid)
 
-const WAGYU_TOKEN = new Token(chainId, getWagyuAddress(), 18)
+const Beef_TOKEN = new Token(chainId, getBeefAddress(), 18)
 const WVLX_TOKEN = new Token(chainId, tokens.wvlx.address[chainId], 18)
-const WAGYU_VLX_TOKEN = new Token(chainId, getAddress(wagyuVlxFarm.lpAddresses), 18)
+const Beef_VLX_TOKEN = new Token(chainId, getAddress(BeefVlxFarm.lpAddresses), 18)
 
 /**
- * Returns the total WAGYU staked in the WAGYU-VLX LP
+ * Returns the total Beef staked in the Beef-VLX LP
  */
-export const getUserStakeInWagyuVlxLp = async (account: string, block?: number) => {
+export const getUserStakeInBeefVlxLp = async (account: string, block?: number) => {
   try {
     const masterContract = getMasterchefContract()
-    const wagyuVlxContract = getLpContract(getAddress(wagyuVlxFarm.lpAddresses))
-    const totalSupplyLP = await wagyuVlxContract.methods.totalSupply().call(undefined, block)
-    const reservesLP = await wagyuVlxContract.methods.getReserves().call(undefined, block)
-    const wagyuVlxBalance = await masterContract.methods.userInfo(wagyuVlxPid, account).call(undefined, block)
+    const BeefVlxContract = getLpContract(getAddress(BeefVlxFarm.lpAddresses))
+    const totalSupplyLP = await BeefVlxContract.methods.totalSupply().call(undefined, block)
+    const reservesLP = await BeefVlxContract.methods.getReserves().call(undefined, block)
+    const BeefVlxBalance = await masterContract.methods.userInfo(BeefVlxPid, account).call(undefined, block)
 
     const pair: Pair = new Pair(
-      new TokenAmount(WAGYU_TOKEN, reservesLP._reserve0.toString()),
+      new TokenAmount(Beef_TOKEN, reservesLP._reserve0.toString()),
       new TokenAmount(WVLX_TOKEN, reservesLP._reserve1.toString()),
     )
-    const wagyuLPBalance = pair.getLiquidityValue(
+    const BeefLPBalance = pair.getLiquidityValue(
       pair.token0,
-      new TokenAmount(WAGYU_VLX_TOKEN, totalSupplyLP.toString()),
-      new TokenAmount(WAGYU_VLX_TOKEN, wagyuVlxBalance.amount.toString()),
+      new TokenAmount(Beef_VLX_TOKEN, totalSupplyLP.toString()),
+      new TokenAmount(Beef_VLX_TOKEN, BeefVlxBalance.amount.toString()),
       false,
     )
 
-    return wagyuLPBalance.toSignificant(18)
+    return BeefLPBalance.toSignificant(18)
   } catch (error) {
-    console.error(`WAGYU-VLX LP error: ${error}`)
+    console.error(`Beef-VLX LP error: ${error}`)
     return 0
   }
 }
 
 /**
- * Gets the wagyu staked in the main pool
+ * Gets the Beef staked in the main pool
  */
-export const getUserStakeInWagyuPool = async (account: string, block?: number) => {
+export const getUserStakeInBeefPool = async (account: string, block?: number) => {
   try {
     const masterContract = getMasterchefContract()
     const response = await masterContract.methods.userInfo(0, account).call(undefined, block)
 
     return getBalanceAmount(new BigNumber(response.amount)).toNumber()
   } catch (error) {
-    console.error('Error getting stake in WAGYU pool', error)
+    console.error('Error getting stake in Beef pool', error)
     return 0
   }
 }

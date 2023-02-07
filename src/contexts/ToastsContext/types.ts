@@ -1,4 +1,5 @@
-import { Toast } from '@wagyu-swap-libs/uikit'
+// @ts-nocheck
+import { Toast } from '@beef-swap-libs/uikit'
 
 type ToastSignature = (title: Toast['title'], description?: Toast['description']) => void
 

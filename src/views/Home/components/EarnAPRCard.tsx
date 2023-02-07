@@ -1,12 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { Heading, Card, CardBody, Flex, ArrowForwardIcon, Skeleton } from '@wagyu-swap-libs/uikit'
+import { Heading, Card, CardBody, Flex, ArrowForwardIcon, Skeleton } from '@beef-swap-libs/uikit'
 import max from 'lodash/max'
 import { NavLink } from 'react-router-dom'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
 import { useAppDispatch } from 'state'
-import { useFarms, usePriceWagyuVusdt } from 'state/hooks'
+import { useFarms, usePriceBeefVusdt } from 'state/hooks'
 import { fetchFarmsPublicDataAsync, nonArchivedFarms } from 'state/farms'
 import { getFarmApr } from 'utils/apr'
 import { getLotteryAddress } from '../../../utils/addressHelpers'
@@ -33,7 +33,7 @@ const EarnAPRCard = () => {
   const [isFetchingFarmData, setIsFetchingFarmData] = useState(true)
   const { t } = useTranslation()
   const { data: farmsLP } = useFarms()
-  const wagyuPrice = usePriceWagyuVusdt()
+  const BeefPrice = usePriceBeefVusdt()
   const dispatch = useAppDispatch()
 
   // Fetch farm data once to get the max APR
@@ -55,12 +55,12 @@ const EarnAPRCard = () => {
   }, [dispatch, setIsFetchingFarmData])
 
   const highestApr = useMemo(() => {
-    if (wagyuPrice.gt(0)) {
+    if (BeefPrice.gt(0)) {
       const aprs = farmsLP.map((farm) => {
         // Filter inactive farms, because their theoretical APR is super high. In practice, it's 0.
         if (farm.pid !== 0 && farm.multiplier !== '0X' && farm.lpTotalInQuoteToken && farm.quoteToken.vusdtPrice) {
           const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteToken.vusdtPrice)
-          return getFarmApr(new BigNumber(farm.poolWeight), wagyuPrice, totalLiquidity)
+          return getFarmApr(new BigNumber(farm.poolWeight), BeefPrice, totalLiquidity)
         }
         return null
       })
@@ -69,7 +69,7 @@ const EarnAPRCard = () => {
       return maxApr?.toLocaleString('en-US', { maximumFractionDigits: 2 })
     }
     return null
-  }, [wagyuPrice, farmsLP])
+  }, [BeefPrice, farmsLP])
 
   const aprText = highestApr || '-'
   const earnAprText = t('Earn up to %highestApr% APR in Farms', { highestApr: aprText })

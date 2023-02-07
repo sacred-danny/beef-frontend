@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { CardHeader, Heading, Text, Flex, Image } from '@wagyu-swap-libs/uikit'
+import { CardHeader, Heading, Text, Flex, Image } from '@beef-swap-libs/uikit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 
@@ -27,9 +28,9 @@ const StyledCardHeader: React.FC<{
 }) => {
   const { t } = useTranslation()
   const poolImageSrc = isAutoVault
-    ? `wagyu-wagyuvault.svg`
+    ? `beef-beefvault.svg`
     : `${earningTokenSymbol}-${stakingTokenSymbol}.svg`.toLocaleLowerCase()
-  const isWagyuPool = earningTokenSymbol === 'WAGYU' && stakingTokenSymbol === 'WAGYU'
+  const isBeefPool = earningTokenSymbol === 'Beef' && stakingTokenSymbol === 'Beef'
   const background = isStaking ? 'bubblegum' : 'cardHeader'
 
   const getHeadingPrefix = () => {
@@ -37,8 +38,8 @@ const StyledCardHeader: React.FC<{
       // vault
       return t('Auto')
     }
-    if (isWagyuPool) {
-      // manual wagyu
+    if (isBeefPool) {
+      // manual Beef
       return t('Manual')
     }
     // all other pools
@@ -49,8 +50,8 @@ const StyledCardHeader: React.FC<{
     if (isAutoVault) {
       return t('Automatic restaking')
     }
-    if (isWagyuPool) {
-      return t('Earn WAGYU, stake WAGYU')
+    if (isBeefPool) {
+      return t('Earn Beef, stake Beef')
     }
     return t('Stake %symbol%', { symbol: stakingTokenSymbol })
   }

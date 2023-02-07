@@ -1,17 +1,18 @@
+// @ts-nocheck
 import BigNumber from 'bignumber.js'
-import { getWagyuVaultContract } from 'utils/contractHelpers'
+import { getBeefVaultContract } from 'utils/contractHelpers'
 
-const wagyuVaultContract = getWagyuVaultContract()
+const BeefVaultContract = getBeefVaultContract()
 
 const fetchVaultUser = async (account: string) => {
   try {
-    const userContractResponse = await wagyuVaultContract.methods.userInfo(account).call()
+    const userContractResponse = await BeefVaultContract.methods.userInfo(account).call()
     return {
       isLoading: false,
       userShares: new BigNumber(userContractResponse.shares).toJSON(),
       lastDepositedTime: userContractResponse.lastDepositedTime as string,
       lastUserActionTime: userContractResponse.lastUserActionTime as string,
-      wagyuAtLastUserAction: new BigNumber(userContractResponse.wagyuAtLastUserAction).toJSON(),
+      BeefAtLastUserAction: new BigNumber(userContractResponse.BeefAtLastUserAction).toJSON(),
     }
   } catch (error) {
     return {
@@ -19,7 +20,7 @@ const fetchVaultUser = async (account: string) => {
       userShares: null,
       lastDepositedTime: null,
       lastUserActionTime: null,
-      wagyuAtLastUserAction: null,
+      BeefAtLastUserAction: null,
     }
   }
 }

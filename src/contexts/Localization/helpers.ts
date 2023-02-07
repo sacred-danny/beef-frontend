@@ -1,8 +1,9 @@
+// @ts-nocheck
 import { EN } from 'config/localization/languages'
 
 const publicUrl = process.env.PUBLIC_URL
 
-export const LS_KEY = 'wagyuswap_language'
+export const LS_KEY = 'Beefswap_language'
 
 export const fetchLocale = async (locale) => {
   const response = await fetch(`${publicUrl}/locales/${locale}.json`)

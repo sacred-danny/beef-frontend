@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Heading, Image } from '@wagyu-swap-libs/uikit'
+import { Flex, Heading, Image } from '@beef-swap-libs/uikit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import AllBunniesImage from '../../pngs/all-bunnies.png'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading, Text, Flex } from '@wagyu-swap-libs/uikit'
+import { Heading, Text, Flex } from '@beef-swap-libs/uikit'
 import styled from 'styled-components'
 import truncateWalletAddress from 'utils/truncateWalletAddress'
 import { LeaderboardDataItem } from '../../../types'

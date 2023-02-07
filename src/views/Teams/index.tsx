@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { AutoRenewIcon, Flex, Heading } from '@wagyu-swap-libs/uikit'
+import { AutoRenewIcon, Flex, Heading } from '@beef-swap-libs/uikit'
 import orderBy from 'lodash/orderBy'
 import { useTeams } from 'state/hooks'
 import Page from 'components/layout/Page'

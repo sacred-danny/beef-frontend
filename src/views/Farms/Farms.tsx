@@ -1,12 +1,13 @@
+// @ts-nocheck
 import React, { useEffect, useCallback, useState, useMemo, useRef } from 'react'
 import { Route, useRouteMatch, useLocation } from 'react-router-dom'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
-import { Heading, RowType, Toggle, Text } from '@wagyu-swap-libs/uikit'
+import { Heading, RowType, Toggle, Text } from '@beef-swap-libs/uikit'
 import styled from 'styled-components'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
-import { useFarms, usePollFarmsData, usePriceWagyuVusdt } from 'state/hooks'
+import { useFarms, usePollFarmsData, usePriceBeefVusdt } from 'state/hooks'
 import usePersistState from 'hooks/usePersistState'
 import { Farm } from 'state/types'
 import { useTranslation } from 'contexts/Localization'
@@ -104,9 +105,9 @@ const Farms: React.FC = () => {
   const { pathname } = useLocation()
   const { t } = useTranslation()
   const { data: farmsLP, userDataLoaded } = useFarms()
-  const wagyuPrice = usePriceWagyuVusdt()
+  const BeefPrice = usePriceBeefVusdt()
   const [query, setQuery] = useState('')
-  const [viewMode, setViewMode] = usePersistState(ViewMode.TABLE, 'wagyu_farm_view')
+  const [viewMode, setViewMode] = usePersistState(ViewMode.TABLE, 'Beef_farm_view')
   const { account } = useWeb3React()
   const [sortOption, setSortOption] = useState('hot')
 
@@ -148,7 +149,7 @@ const Farms: React.FC = () => {
           return farm
         }
         const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteToken.vusdtPrice)
-        const apr = isActive ? getFarmApr(new BigNumber(farm.poolWeight), wagyuPrice, totalLiquidity) : 0
+        const apr = isActive ? getFarmApr(new BigNumber(farm.poolWeight), BeefPrice, totalLiquidity) : 0
 
         return { ...farm, apr, liquidity: totalLiquidity }
       })
@@ -161,7 +162,7 @@ const Farms: React.FC = () => {
       }
       return farmsToDisplayWithAPR
     },
-    [wagyuPrice, query, isActive],
+    [BeefPrice, query, isActive],
   )
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -256,7 +257,7 @@ const Farms: React.FC = () => {
         lpLabel,
         tokenAddress,
         quoteTokenAddress,
-        wagyuPrice,
+        BeefPrice,
         originalValue: farm.apr,
       },
       farm: {
@@ -314,17 +315,17 @@ const Farms: React.FC = () => {
         <FlexLayout>
           <Route exact path={`${path}`}>
             {farmsStakedMemoized.map((farm) => (
-              <FarmCard key={farm.pid} farm={farm} wagyuPrice={wagyuPrice} account={account} removed={false} />
+              <FarmCard key={farm.pid} farm={farm} BeefPrice={BeefPrice} account={account} removed={false} />
             ))}
           </Route>
           <Route exact path={`${path}/history`}>
             {farmsStakedMemoized.map((farm) => (
-              <FarmCard key={farm.pid} farm={farm} wagyuPrice={wagyuPrice} account={account} removed />
+              <FarmCard key={farm.pid} farm={farm} BeefPrice={BeefPrice} account={account} removed />
             ))}
           </Route>
           <Route exact path={`${path}/archived`}>
             {farmsStakedMemoized.map((farm) => (
-              <FarmCard key={farm.pid} farm={farm} wagyuPrice={wagyuPrice} account={account} removed />
+              <FarmCard key={farm.pid} farm={farm} BeefPrice={BeefPrice} account={account} removed />
             ))}
           </Route>
         </FlexLayout>

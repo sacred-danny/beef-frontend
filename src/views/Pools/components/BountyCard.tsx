@@ -13,10 +13,10 @@ import {
   useModal,
   Box,
   useTooltip,
-} from '@wagyu-swap-libs/uikit'
+} from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { useWagyuVault, usePriceWagyuVusdt } from 'state/hooks'
+import { useBeefVault, usePriceBeefVusdt } from 'state/hooks'
 import Balance from 'components/Balance'
 import BountyModal from './BountyModal'
 
@@ -31,40 +31,40 @@ const StyledCard = styled(Card)`
 const BountyCard = () => {
   const { t } = useTranslation()
   const {
-    estimatedWagyuBountyReward,
-    totalPendingWagyuHarvest,
+    estimatedBeefBountyReward,
+    totalPendingBeefHarvest,
     fees: { callFee },
-  } = useWagyuVault()
-  const wagyuPriceVusdt = usePriceWagyuVusdt()
+  } = useBeefVault()
+  const BeefPriceVusdt = usePriceBeefVusdt()
 
   const estimatedDollarBountyReward = useMemo(() => {
-    return new BigNumber(estimatedWagyuBountyReward).multipliedBy(wagyuPriceVusdt)
-  }, [wagyuPriceVusdt, estimatedWagyuBountyReward])
+    return new BigNumber(estimatedBeefBountyReward).multipliedBy(BeefPriceVusdt)
+  }, [BeefPriceVusdt, estimatedBeefBountyReward])
 
   const hasFetchedDollarBounty = estimatedDollarBountyReward.gte(0)
-  const hasFetchedWagyuBounty = estimatedWagyuBountyReward ? estimatedWagyuBountyReward.gte(0) : false
+  const hasFetchedBeefBounty = estimatedBeefBountyReward ? estimatedBeefBountyReward.gte(0) : false
   const dollarBountyToDisplay = hasFetchedDollarBounty ? getBalanceNumber(estimatedDollarBountyReward, 18) : 0
-  const wagyuBountyToDisplay = hasFetchedWagyuBounty ? getBalanceNumber(estimatedWagyuBountyReward, 18) : 0
+  const BeefBountyToDisplay = hasFetchedBeefBounty ? getBalanceNumber(estimatedBeefBountyReward, 18) : 0
 
   const TooltipComponent = () => (
     <>
       <Text mb="16px">{t('This bounty is given as a reward for providing a service to other users.')}</Text>
       <Text mb="16px">
         {t(
-          'Whenever you successfully claim the bounty, you’re also helping out by activating the Auto WAGYU Pool’s compounding function for everyone.',
+          'Whenever you successfully claim the bounty, you’re also helping out by activating the Auto Beef Pool’s compounding function for everyone.',
         )}
       </Text>
       <Text style={{ fontWeight: 'bold' }}>
-        {t('Auto-Compound Bounty: %fee%% of all Auto WAGYU pool users pending yield', { fee: callFee / 100 })}
+        {t('Auto-Compound Bounty: %fee%% of all Auto Beef pool users pending yield', { fee: callFee / 100 })}
       </Text>
     </>
   )
 
   const [onPresentBountyModal] = useModal(
     <BountyModal
-      wagyuBountyToDisplay={wagyuBountyToDisplay}
+      BeefBountyToDisplay={BeefBountyToDisplay}
       dollarBountyToDisplay={dollarBountyToDisplay}
-      totalPendingWagyuHarvest={totalPendingWagyuHarvest}
+      totalPendingBeefHarvest={totalPendingBeefHarvest}
       callFee={callFee}
       TooltipComponent={TooltipComponent}
     />,
@@ -83,7 +83,7 @@ const BountyCard = () => {
           <Flex flexDirection="column">
             <Flex alignItems="center" mb="12px">
               <Text fontSize="16px" bold color="textSubtle" mr="4px">
-                {t('Auto WAGYU Bounty')}
+                {t('Auto Beef Bounty')}
               </Text>
               <Box ref={targetRef}>
                 <HelpIcon color="textSubtle" />
@@ -93,8 +93,8 @@ const BountyCard = () => {
           <Flex alignItems="center" justifyContent="space-between">
             <Flex flexDirection="column" mr="12px">
               <Heading>
-                {hasFetchedWagyuBounty ? (
-                  <Balance fontSize="20px" bold value={wagyuBountyToDisplay} decimals={5} />
+                {hasFetchedBeefBounty ? (
+                  <Balance fontSize="20px" bold value={BeefBountyToDisplay} decimals={5} />
                 ) : (
                   <Skeleton height={20} width={96} mb="2px" />
                 )}
@@ -113,7 +113,7 @@ const BountyCard = () => {
               )}
             </Flex>
             <Button
-              disabled={!dollarBountyToDisplay || !wagyuBountyToDisplay || !callFee}
+              disabled={!dollarBountyToDisplay || !BeefBountyToDisplay || !callFee}
               onClick={onPresentBountyModal}
               scale="sm"
             >

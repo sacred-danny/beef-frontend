@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'contexts/Localization'
 import { getVelasScanBlockCountdownUrl } from 'utils/velasScan'
-import { Flex, Link, PocketWatchIcon, Text, Skeleton } from '@wagyu-swap-libs/uikit'
+import { Flex, Link, PocketWatchIcon, Text, Skeleton } from '@beef-swap-libs/uikit'
 import getTimePeriods from 'utils/getTimePeriods'
 import { PublicIfoData } from 'hooks/ifo/types'
 

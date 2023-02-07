@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Text, Input, Button } from '@wagyu-swap-libs/uikit'
+import { Text, Input, Button } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 interface PastLotterySearcherProps {

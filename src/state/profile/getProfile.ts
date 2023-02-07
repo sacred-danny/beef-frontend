@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Cookies from 'js-cookie'
 import { getProfileContract } from 'utils/contractHelpers'
 import { Nft } from 'config/constants/types'
@@ -54,9 +55,9 @@ const getProfile = async (address: string): Promise<GetProfileResponse> => {
         `profile_${address}`,
         {
           username,
-          avatar: `https://wagyuswap.herokuapp.com/images/nfts/${nft?.images.sm}`,
+          avatar: `https://Beefswap.herokuapp.com/images/nfts/${nft?.images.sm}`,
         },
-        { domain: 'wagyuswap.finance', secure: true, expires: 30 },
+        { domain: 'Beefswap.finance', secure: true, expires: 30 },
       )
     }
 

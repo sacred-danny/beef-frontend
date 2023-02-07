@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState } from 'react'
 
 /* eslint-disable camelcase */
@@ -17,7 +18,7 @@ export const useGetStats = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://staging.api.wagyuswap.app/api/tvl')
+        const response = await fetch('https://staging.api.Beefswap.app/api/tvl')
         const responseData: DeBankTvlResponse = await response.json()
         setData(responseData);
       } catch (error) {

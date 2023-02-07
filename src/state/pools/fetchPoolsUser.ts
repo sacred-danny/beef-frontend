@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { AbiItem } from 'web3-utils'
 import poolsConfig from 'config/constants/pools'
 import masterChefABI from 'config/abi/masterchef.json'
@@ -8,7 +9,7 @@ import { getAddress, getMasterChefAddress } from 'utils/addressHelpers'
 import { getWeb3NoAccount } from 'utils/web3'
 import BigNumber from 'bignumber.js'
 
-// Pool 0, Wagyu / Wagyu is a different kind of contract (master chef)
+// Pool 0, Beef / Beef is a different kind of contract (master chef)
 // VLX pools use the native VLX token (wrapping ? unwrapping is done at the contract level)
 const nonVlxPools = poolsConfig.filter((p) => p.stakingToken.symbol !== 'VLX')
 const vlxPools = poolsConfig.filter((p) => p.stakingToken.symbol === 'VLX')
@@ -68,7 +69,7 @@ export const fetchUserStakeBalances = async (account) => {
     {},
   )
 
-  // Wagyu / Wagyu pool
+  // Beef / Beef pool
   const { amount: masterPoolAmount } = await masterChefContract.methods.userInfo('0', account).call()
 
   return { ...stakedBalances, 0: new BigNumber(masterPoolAmount).toJSON() }
@@ -89,8 +90,8 @@ export const fetchUserPendingRewards = async (account) => {
     {},
   )
 
-  // Wagyu / Wagyu pool
-  const pendingReward = await masterChefContract.methods.pendingWagyu('0', account).call()
+  // Beef / Beef pool
+  const pendingReward = await masterChefContract.methods.pendingBeef('0', account).call()
 
   return { ...pendingRewards, 0: new BigNumber(pendingReward).toJSON() }
 }

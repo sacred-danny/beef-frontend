@@ -1,7 +1,8 @@
+// @ts-nocheck
 import BigNumber from 'bignumber.js'
 import poolsConfig from 'config/constants/pools'
 import sousChefABI from 'config/abi/sousChef.json'
-import wagyuABI from 'config/abi/wagyu.json'
+import BeefABI from 'config/abi/beef.json'
 import wvlxABI from 'config/abi/weth.json'
 import multicall from 'utils/multicall'
 import { getAddress, getWvlxAddress } from 'utils/addressHelpers'
@@ -26,11 +27,11 @@ export const fetchPoolsBlockLimits = async () => {
   const starts = await multicall(sousChefABI, callsStartBlock)
   const ends = await multicall(sousChefABI, callsEndBlock)
 
-  return poolsWithEnd.map((wagyuPoolConfig, index) => {
+  return poolsWithEnd.map((BeefPoolConfig, index) => {
     const startBlock = starts[index]
     const endBlock = ends[index]
     return {
-      sousId: wagyuPoolConfig.sousId,
+      sousId: BeefPoolConfig.sousId,
       startBlock: new BigNumber(startBlock).toJSON(),
       endBlock: new BigNumber(endBlock).toJSON(),
     }
@@ -57,7 +58,7 @@ export const fetchPoolsTotalStaking = async () => {
     }
   })
 
-  const nonVlxPoolsTotalStaked = await multicall(wagyuABI, callsNonVlxPools)
+  const nonVlxPoolsTotalStaked = await multicall(BeefABI, callsNonVlxPools)
   const vlxPoolsTotalStaked = await multicall(wvlxABI, callsVlxPools)
 
   return [

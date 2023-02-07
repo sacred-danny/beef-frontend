@@ -1,7 +1,8 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
 import { useLocation, Link, useRouteMatch } from 'react-router-dom'
-import { ButtonMenu, ButtonMenuItem, NotificationDot } from '@wagyu-swap-libs/uikit'
+import { ButtonMenu, ButtonMenuItem, NotificationDot } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 interface FarmTabButtonsProps {

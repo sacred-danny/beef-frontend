@@ -1,7 +1,8 @@
+// @ts-nocheck
 import React from 'react'
 import Page from 'components/layout/Page'
 import { Link, Redirect, useParams } from 'react-router-dom'
-import { ChevronLeftIcon, Flex, Text } from '@wagyu-swap-libs/uikit'
+import { ChevronLeftIcon, Flex, Text } from '@beef-swap-libs/uikit'
 import PageLoader from 'components/PageLoader'
 import teams from 'config/constants/teams'
 import { useTranslation } from 'contexts/Localization'

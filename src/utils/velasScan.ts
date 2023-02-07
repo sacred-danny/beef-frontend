@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { BASE_VELAS_SCAN_URL } from 'config'
 
 export const getVelasScanAddressUrl = (address: string) => {

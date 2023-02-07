@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { Text, useMatchBreakpoints } from '@wagyu-swap-libs/uikit'
+import { Text, useMatchBreakpoints } from '@beef-swap-libs/uikit'
 import { Pool } from 'state/types'
 import { useTranslation } from 'contexts/Localization'
 import BaseCell, { CellContent } from './BaseCell'

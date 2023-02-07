@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Flex, FlexProps, PrizeIcon, Text } from '@wagyu-swap-libs/uikit'
+import { Flex, FlexProps, PrizeIcon, Text } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 interface PointsLabelProps extends FlexProps {

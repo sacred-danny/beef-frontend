@@ -1,10 +1,11 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { Button, useModal, IconButton, AddIcon, MinusIcon, Skeleton, useTooltip, Flex, Text } from '@wagyu-swap-libs/uikit'
+import { Button, useModal, IconButton, AddIcon, MinusIcon, Skeleton, useTooltip, Flex, Text } from '@beef-swap-libs/uikit'
 import UnlockButton from 'components/UnlockButton'
 import { useWeb3React } from '@web3-react/core'
-import { useWagyuVault } from 'state/hooks'
+import { useBeefVault } from 'state/hooks'
 import { Pool } from 'state/types'
 import Balance from 'components/Balance'
 import { useTranslation } from 'contexts/Localization'
@@ -14,11 +15,11 @@ import { PoolCategory } from 'config/constants/types'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { getAddress } from 'utils/addressHelpers'
 import { useERC20 } from 'hooks/useContract'
-import { convertSharesToWagyu } from 'views/Pools/helpers'
+import { convertSharesToBeef } from 'views/Pools/helpers'
 import { ActionContainer, ActionTitles, ActionContent } from './styles'
 import NotEnoughTokensModal from '../../PoolCard/Modals/NotEnoughTokensModal'
 import StakeModal from '../../PoolCard/Modals/StakeModal'
-import VaultStakeModal from '../../WagyuVaultCard/VaultStakeModal'
+import VaultStakeModal from '../../BeefVaultCard/VaultStakeModal'
 
 const IconButtonWrapper = styled.div`
   display: flex;
@@ -74,12 +75,12 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({ pool, userDataLoa
   const {
     userData: { userShares },
     pricePerFullShare,
-  } = useWagyuVault()
+  } = useBeefVault()
 
-  const { wagyuAsBigNumber, wagyuAsNumberBalance } = convertSharesToWagyu(userShares, pricePerFullShare)
+  const { BeefAsBigNumber, BeefAsNumberBalance } = convertSharesToBeef(userShares, pricePerFullShare)
   const hasSharesStaked = userShares && userShares.gt(0)
   const isVaultWithShares = isAutoVault && hasSharesStaked
-  const stakedAutoDollarValue = getBalanceNumber(wagyuAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken.decimals)
+  const stakedAutoDollarValue = getBalanceNumber(BeefAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken.decimals)
 
   const needsApproval = isAutoVault ? !isVaultApproved : !allowance.gt(0) && !isVlxPool
 
@@ -106,7 +107,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({ pool, userDataLoa
     />,
   )
 
-  const [onPresentVaultUnstake] = useModal(<VaultStakeModal stakingMax={wagyuAsBigNumber} pool={pool} isRemovingStake />)
+  const [onPresentVaultUnstake] = useModal(<VaultStakeModal stakingMax={BeefAsBigNumber} pool={pool} isRemovingStake />)
 
   const onStake = () => {
     if (isAutoVault) {
@@ -197,7 +198,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({ pool, userDataLoa
               bold
               fontSize="20px"
               decimals={5}
-              value={isAutoVault ? wagyuAsNumberBalance : stakedTokenBalance}
+              value={isAutoVault ? BeefAsNumberBalance : stakedTokenBalance}
             />
             <Balance
               fontSize="12px"

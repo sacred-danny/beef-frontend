@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Box, Image } from '@wagyu-swap-libs/uikit'
+import { Flex, Box, Image } from '@beef-swap-libs/uikit'
 import { TeamRanksProps } from '../../types'
-import WagyuBunny from '../../pngs/cakers.png'
+import BeefBunny from '../../pngs/cakers.png'
 import TopTradersCard from './TopTradersCard'
 import Podium from './Podium'
 
@@ -77,7 +77,7 @@ const TeamRanks: React.FC<TeamRanksProps> = ({
           }
         />
         <BunnyImageWrapper mt="24px">
-          <Image src={WagyuBunny} width={200} height={205} />
+          <Image src={BeefBunny} width={200} height={205} />
         </BunnyImageWrapper>
       </StyledPodiumWrapper>
       <StyledTopTradersWrapper>

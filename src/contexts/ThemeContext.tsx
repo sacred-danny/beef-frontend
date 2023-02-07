@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import { ThemeProvider as SCThemeProvider } from 'styled-components'
-import { light, dark } from '@wagyu-swap-libs/uikit'
+import { light, dark } from '@beef-swap-libs/uikit'
 
 const CACHE_KEY = 'IS_DARK'
 

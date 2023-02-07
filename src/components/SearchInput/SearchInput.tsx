@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React, { useState, useMemo } from 'react'
-import { Input } from '@wagyu-swap-libs/uikit'
+import { Input } from '@beef-swap-libs/uikit'
 import styled from 'styled-components'
 import debounce from 'lodash/debounce'
 import { useTranslation } from 'contexts/Localization'

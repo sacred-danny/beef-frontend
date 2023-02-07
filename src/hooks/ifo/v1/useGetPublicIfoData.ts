@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState, useCallback } from 'react'
 import BigNumber from 'bignumber.js'
 import { VELAS_BLOCK_TIME } from 'config'

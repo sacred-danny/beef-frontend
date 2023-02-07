@@ -1,7 +1,8 @@
+// @ts-nocheck
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import confetti from 'canvas-confetti'
-import { Modal, Text, Button, Flex, InjectedModalProps } from '@wagyu-swap-libs/uikit'
+import { Modal, Text, Button, Flex, InjectedModalProps } from '@beef-swap-libs/uikit'
 import history from 'routerHistory'
 import { delay } from 'lodash'
 import { useTranslation } from 'contexts/Localization'

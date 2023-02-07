@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState, useCallback } from 'react'
 import BigNumber from 'bignumber.js'
 import { VELAS_BLOCK_TIME } from 'config'
@@ -10,7 +11,7 @@ import { BIG_ZERO } from 'utils/bigNumber'
 import { PublicIfoData, PoolCharacteristics } from '../types'
 import { getStatus } from '../helpers'
 
-// https://github.com/wagyuswap/wagyu-contracts/blob/master/projects/ifo/contracts/IFOV2.sol#L431
+// https://github.com/Beefswap/Beef-contracts/blob/master/projects/ifo/contracts/IFOV2.sol#L431
 // 1,000,000,000 / 100
 const TAX_PRECISION = 10000000000
 

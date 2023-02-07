@@ -1,8 +1,9 @@
+// @ts-nocheck
 import BigNumber from 'bignumber.js'
 import React from 'react'
 import styled from 'styled-components'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { Flex, Text, Box } from '@wagyu-swap-libs/uikit'
+import { Flex, Text, Box } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { PoolCategory } from 'config/constants/types'
 import { Pool } from 'state/types'

@@ -1,6 +1,6 @@
 import { SettingsObject, SettingsType } from './types'
 
-const BASE_URL = 'https://wagyu-config-api-chefkai.wagyuswap.vercel.app'
+const BASE_URL = 'https://beef-config-api-chefkai.beefswap.vercel.app'
 const settings: SettingsObject[] = [
   {
     name: 'ifos',

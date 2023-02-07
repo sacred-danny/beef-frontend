@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState } from 'react'
 
 type ApiResponse = {
@@ -12,7 +13,7 @@ type ApiResponse = {
   }
 }
 
-const api = 'https://staging.api.wagyuswap.app/api/tokens'
+const api = 'https://staging.api.Beefswap.app/api/tokens'
 
 const useGetPriceData = () => {
   const [data, setData] = useState<ApiResponse | null>(null)

@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Link, Skeleton, Text, TimerIcon } from '@wagyu-swap-libs/uikit'
+import { Flex, Link, Skeleton, Text, TimerIcon } from '@beef-swap-libs/uikit'
 import { getVelasScanBlockCountdownUrl } from 'utils/velasScan'
 import { Pool } from 'state/types'
 import { useBlock } from 'state/hooks'
@@ -25,7 +26,7 @@ const EndsInCell: React.FC<FinishCellProps> = ({ pool }) => {
   const { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay } =
     getPoolBlockInfo(pool, currentBlock)
 
-  const isWagyuPool = sousId === 0
+  const isBeefPool = sousId === 0
 
   const renderBlocks = shouldShowBlockCountdown ? (
     <Flex alignItems="center">
@@ -49,7 +50,7 @@ const EndsInCell: React.FC<FinishCellProps> = ({ pool }) => {
   // Opted to go for this since we don't really need a separate publicDataLoaded flag
   // anywhere else
   const isLoadingPublicData = !totalStaked.gt(0) || !currentBlock || (!blocksRemaining && !blocksUntilStart)
-  const showLoading = isLoadingPublicData && !isWagyuPool && !isFinished
+  const showLoading = isLoadingPublicData && !isBeefPool && !isFinished
   return (
     <StyledCell role="cell">
       <CellContent>

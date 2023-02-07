@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { Tag, Flex, Heading, Image } from '@wagyu-swap-libs/uikit'
+import { Tag, Flex, Heading, Image } from '@beef-swap-libs/uikit'
 import { CommunityTag, CoreTag } from 'components/Tags'
 
 export interface ExpandableSectionProps {

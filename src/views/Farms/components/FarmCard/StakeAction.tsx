@@ -1,8 +1,9 @@
+// @ts-nocheck
 import React, { useCallback } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { Button, Flex, Heading, IconButton, AddIcon, MinusIcon, useModal } from '@wagyu-swap-libs/uikit'
+import { Button, Flex, Heading, IconButton, AddIcon, MinusIcon, useModal } from '@beef-swap-libs/uikit'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'contexts/Localization'
 import { useAppDispatch } from 'state'

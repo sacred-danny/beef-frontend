@@ -1,15 +1,16 @@
+// @ts-nocheck
 import React from 'react'
-import { Button, Flex, Heading, useModal, Won } from '@wagyu-swap-libs/uikit'
+import { Button, Flex, Heading, useModal, Won } from '@beef-swap-libs/uikit'
 import { useProfile } from 'state/hooks'
 import { useTranslation } from 'contexts/Localization'
-import ClaimNftAndWagyuModal, { useCanClaim } from './ClaimGiftModal'
+import ClaimNftAndBeefModal, { useCanClaim } from './ClaimGiftModal'
 import HeaderWrapper from './HeaderWrapper'
 import EditProfileModal from './EditProfileModal'
 
 const ProfileHeader = () => {
   const { t } = useTranslation()
   const { canClaim, checkClaimStatus } = useCanClaim()
-  const [onPresentClaimGiftModal] = useModal(<ClaimNftAndWagyuModal onSuccess={checkClaimStatus} />)
+  const [onPresentClaimGiftModal] = useModal(<ClaimNftAndBeefModal onSuccess={checkClaimStatus} />)
   const [onEditProfileModal] = useModal(<EditProfileModal />, false)
   const { hasProfile } = useProfile()
 

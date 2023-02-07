@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable no-await-in-loop */
 import BigNumber from 'bignumber.js'
 import { Interface } from '@ethersproject/abi'

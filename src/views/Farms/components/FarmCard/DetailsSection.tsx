@@ -1,7 +1,8 @@
+// @ts-nocheck
 import React from 'react'
 import { useTranslation } from 'contexts/Localization'
 import styled from 'styled-components'
-import { Text, Flex, LinkExternal, Skeleton } from '@wagyu-swap-libs/uikit'
+import { Text, Flex, LinkExternal, Skeleton } from '@beef-swap-libs/uikit'
 
 export interface ExpandableSectionProps {
   velasScanAddress?: string

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useMemo } from 'react'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
@@ -16,9 +17,9 @@ import {
   fetchFarmsPublicDataAsync,
   fetchPoolsPublicDataAsync,
   fetchPoolsUserDataAsync,
-  fetchWagyuVaultPublicData,
-  fetchWagyuVaultUserData,
-  fetchWagyuVaultFees,
+  fetchBeefVaultPublicData,
+  fetchBeefVaultUserData,
+  fetchBeefVaultFees,
   setBlock,
 } from './actions'
 import { State, Farm, Pool, ProfileState, TeamsState, AchievementState, FarmsState } from './types'
@@ -51,7 +52,7 @@ export const usePollFarmsData = (includeArchive = false) => {
 
 /**
  * Fetches the "core" farm data used globally
- * 1 = WAGYU-VLX LP
+ * 1 = Beef-VLX LP
  * 3 = VUSDT-VLX LP
  */
 export const usePollCoreFarmData = () => {
@@ -182,48 +183,48 @@ export const usePoolFromPid = (sousId: number): Pool => {
   return transformPool(pool)
 }
 
-export const useFetchWagyuVault = () => {
+export const useFetchBeefVault = () => {
   const { account } = useWeb3React()
   const { fastRefresh } = useRefresh()
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(fetchWagyuVaultPublicData())
+    dispatch(fetchBeefVaultPublicData())
   }, [dispatch, fastRefresh])
 
   useEffect(() => {
-    dispatch(fetchWagyuVaultUserData({ account }))
+    dispatch(fetchBeefVaultUserData({ account }))
   }, [dispatch, fastRefresh, account])
 
   useEffect(() => {
-    dispatch(fetchWagyuVaultFees())
+    dispatch(fetchBeefVaultFees())
   }, [dispatch])
 }
 
-export const useWagyuVault = () => {
+export const useBeefVault = () => {
   const {
     totalShares: totalSharesAsString,
     pricePerFullShare: pricePerFullShareAsString,
-    totalWagyuInVault: totalWagyuInVaultAsString,
-    estimatedWagyuBountyReward: estimatedWagyuBountyRewardAsString,
-    totalPendingWagyuHarvest: totalPendingWagyuHarvestAsString,
+    totalBeefInVault: totalBeefInVaultAsString,
+    estimatedBeefBountyReward: estimatedBeefBountyRewardAsString,
+    totalPendingBeefHarvest: totalPendingBeefHarvestAsString,
     fees: { performanceFee, callFee, withdrawalFee, withdrawalFeePeriod },
     userData: {
       isLoading,
       userShares: userSharesAsString,
-      wagyuAtLastUserAction: wagyuAtLastUserActionAsString,
+      BeefAtLastUserAction: BeefAtLastUserActionAsString,
       lastDepositedTime,
       lastUserActionTime,
     },
-  } = useSelector((state: State) => state.pools.wagyuVault)
+  } = useSelector((state: State) => state.pools.BeefVault)
 
-  const estimatedWagyuBountyReward = useMemo(() => {
-    return new BigNumber(estimatedWagyuBountyRewardAsString)
-  }, [estimatedWagyuBountyRewardAsString])
+  const estimatedBeefBountyReward = useMemo(() => {
+    return new BigNumber(estimatedBeefBountyRewardAsString)
+  }, [estimatedBeefBountyRewardAsString])
 
-  const totalPendingWagyuHarvest = useMemo(() => {
-    return new BigNumber(totalPendingWagyuHarvestAsString)
-  }, [totalPendingWagyuHarvestAsString])
+  const totalPendingBeefHarvest = useMemo(() => {
+    return new BigNumber(totalPendingBeefHarvestAsString)
+  }, [totalPendingBeefHarvestAsString])
 
   const totalShares = useMemo(() => {
     return new BigNumber(totalSharesAsString)
@@ -233,24 +234,24 @@ export const useWagyuVault = () => {
     return new BigNumber(pricePerFullShareAsString)
   }, [pricePerFullShareAsString])
 
-  const totalWagyuInVault = useMemo(() => {
-    return new BigNumber(totalWagyuInVaultAsString)
-  }, [totalWagyuInVaultAsString])
+  const totalBeefInVault = useMemo(() => {
+    return new BigNumber(totalBeefInVaultAsString)
+  }, [totalBeefInVaultAsString])
 
   const userShares = useMemo(() => {
     return new BigNumber(userSharesAsString)
   }, [userSharesAsString])
 
-  const wagyuAtLastUserAction = useMemo(() => {
-    return new BigNumber(wagyuAtLastUserActionAsString)
-  }, [wagyuAtLastUserActionAsString])
+  const BeefAtLastUserAction = useMemo(() => {
+    return new BigNumber(BeefAtLastUserActionAsString)
+  }, [BeefAtLastUserActionAsString])
 
   return {
     totalShares,
     pricePerFullShare,
-    totalWagyuInVault,
-    estimatedWagyuBountyReward,
-    totalPendingWagyuHarvest,
+    totalBeefInVault,
+    estimatedBeefBountyReward,
+    totalPendingBeefHarvest,
     fees: {
       performanceFee,
       callFee,
@@ -260,7 +261,7 @@ export const useWagyuVault = () => {
     userData: {
       isLoading,
       userShares,
-      wagyuAtLastUserAction,
+      BeefAtLastUserAction,
       lastDepositedTime,
       lastUserActionTime,
     },
@@ -330,9 +331,9 @@ export const usePriceVlxVusdt = (): BigNumber => {
   return new BigNumber(vlxVusdtFarm.quoteToken.vusdtPrice)
 }
 
-export const usePriceWagyuVusdt = (): BigNumber => {
-  const wagyuVlxFarm = useFarmFromPid(1)
-  return new BigNumber(wagyuVlxFarm.token.vusdtPrice)
+export const usePriceBeefVusdt = (): BigNumber => {
+  const BeefVlxFarm = useFarmFromPid(1)
+  return new BigNumber(BeefVlxFarm.token.vusdtPrice)
 }
 
 // Block

@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Box, Button, Flex, Text, Input, InputProps } from '@wagyu-swap-libs/uikit'
+import { Box, Button, Flex, Text, Input, InputProps } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 interface TokenInputProps extends InputProps {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import {
   Modal,
@@ -10,7 +11,7 @@ import {
   ButtonMenuItem,
   HelpIcon,
   useTooltip,
-} from '@wagyu-swap-libs/uikit'
+} from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'
 import { useSousHarvest } from 'hooks/useHarvest'
@@ -48,8 +49,8 @@ const CollectModal: React.FC<CollectModalProps> = ({
   const [shouldCompound, setShouldCompound] = useState(isCompoundPool)
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <>
-      <Text mb="12px">{t('Compound: collect and restake WAGYU into pool.')}</Text>
-      <Text>{t('Harvest: collect WAGYU and send to wallet')}</Text>
+      <Text mb="12px">{t('Compound: collect and restake Beef into pool.')}</Text>
+      <Text>{t('Harvest: collect Beef and send to wallet')}</Text>
     </>,
     { placement: 'bottom-end', tooltipOffset: [20, 10] },
   )

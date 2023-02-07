@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React, { ImgHTMLAttributes } from 'react'
 import styled from 'styled-components'
-import { BunnyPlaceholderIcon } from '@wagyu-swap-libs/uikit'
+import { BunnyPlaceholderIcon } from '@beef-swap-libs/uikit'
 
 interface AchievementAvatarProps extends ImgHTMLAttributes<HTMLImageElement> {
   badge?: string

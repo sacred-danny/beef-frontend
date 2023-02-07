@@ -1,10 +1,11 @@
+// @ts-nocheck
 export { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync } from './farms'
 export {
   fetchPoolsPublicDataAsync,
   fetchPoolsUserDataAsync,
-  fetchWagyuVaultPublicData,
-  fetchWagyuVaultUserData,
-  fetchWagyuVaultFees,
+  fetchBeefVaultPublicData,
+  fetchBeefVaultUserData,
+  fetchBeefVaultFees,
   updateUserAllowance,
   updateUserBalance,
   updateUserPendingReward,

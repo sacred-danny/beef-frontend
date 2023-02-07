@@ -2,7 +2,7 @@
 // import farms from './farms'
 import { Ifo } from './types'
 
-// const wagyuVlxLpToken: Token = {
+// const BeefVlxLpToken: Token = {
 //   symbol: farms[1].lpSymbol,
 //   address: farms[1].lpAddresses,
 //   decimals: 18,

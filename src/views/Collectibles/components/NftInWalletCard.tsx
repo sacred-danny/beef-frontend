@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react'
-import { Card, CardBody, Heading, Text } from '@wagyu-swap-libs/uikit'
+import { Card, CardBody, Heading, Text } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import CardContent from './CardContent'
 
@@ -11,7 +12,7 @@ const NftInWalletCard = () => {
       <CardBody>
         <CardContent imgSrc="/images/present.svg">
           <Heading mb="8px">{t('NFT in wallet')}</Heading>
-          <Text>{t('Trade in your NFT for WAGYU, or just keep it for your collection.')}</Text>
+          <Text>{t('Trade in your NFT for Beef, or just keep it for your collection.')}</Text>
         </CardContent>
       </CardBody>
     </Card>

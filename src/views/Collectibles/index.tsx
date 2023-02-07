@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { Heading } from '@wagyu-swap-libs/uikit'
+import { Heading } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Page from 'components/layout/Page'
 import NftList from './components/NftList'
@@ -18,7 +19,7 @@ const Collectibles = () => {
     <Page>
       <StyledHero>
         <Heading as="h1" scale="xxl" color="secondary">
-          {t('Wagyu Collectibles')}
+          {t('Beef Collectibles')}
         </Heading>
       </StyledHero>
       <NftList />

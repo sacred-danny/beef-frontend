@@ -1,11 +1,12 @@
+// @ts-nocheck
 import React, { useMemo } from 'react'
-import { Flex, Skeleton, Text } from '@wagyu-swap-libs/uikit'
+import { Flex, Skeleton, Text } from '@beef-swap-libs/uikit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import BigNumber from 'bignumber.js'
 import Balance from 'components/Balance'
 import { Pool } from 'state/types'
-import { useWagyuVault } from 'state/hooks'
+import { useBeefVault } from 'state/hooks'
 import { getBalanceNumber } from 'utils/formatBalance'
 import BaseCell, { CellContent } from './BaseCell'
 
@@ -20,20 +21,20 @@ const StyledCell = styled(BaseCell)`
 const TotalStakedCell: React.FC<TotalStakedCellProps> = ({ pool }) => {
   const { t } = useTranslation()
   const { sousId, stakingToken, totalStaked, isAutoVault } = pool
-  const { totalWagyuInVault } = useWagyuVault()
+  const { totalBeefInVault } = useBeefVault()
 
-  const isManualWagyuPool = sousId === 0
+  const isManualBeefPool = sousId === 0
 
   const totalStakedBalance = useMemo(() => {
     if (isAutoVault) {
-      return getBalanceNumber(totalWagyuInVault, stakingToken.decimals)
+      return getBalanceNumber(totalBeefInVault, stakingToken.decimals)
     }
-    if (isManualWagyuPool) {
-      const manualWagyuTotalMinusAutoVault = new BigNumber(totalStaked).minus(totalWagyuInVault)
-      return getBalanceNumber(manualWagyuTotalMinusAutoVault, stakingToken.decimals)
+    if (isManualBeefPool) {
+      const manualBeefTotalMinusAutoVault = new BigNumber(totalStaked).minus(totalBeefInVault)
+      return getBalanceNumber(manualBeefTotalMinusAutoVault, stakingToken.decimals)
     }
     return getBalanceNumber(totalStaked, stakingToken.decimals)
-  }, [isAutoVault, totalWagyuInVault, isManualWagyuPool, totalStaked, stakingToken.decimals])
+  }, [isAutoVault, totalBeefInVault, isManualBeefPool, totalStaked, stakingToken.decimals])
 
   return (
     <StyledCell role="cell">

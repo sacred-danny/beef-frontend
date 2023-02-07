@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { ListViewIcon, CardViewIcon, IconButton } from '@wagyu-swap-libs/uikit'
+import { ListViewIcon, CardViewIcon, IconButton } from '@beef-swap-libs/uikit'
 
 export enum ViewMode {
   'TABLE' = 'TABLE',

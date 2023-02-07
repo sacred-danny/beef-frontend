@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { Button, Modal } from '@wagyu-swap-libs/uikit'
+import { Button, Modal } from '@beef-swap-libs/uikit'
 import styled from 'styled-components'
 import { useWinningNumbers } from 'hooks/useTickets'
 import { useTranslation } from 'contexts/Localization'

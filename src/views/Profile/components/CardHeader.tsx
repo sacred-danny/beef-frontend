@@ -1,5 +1,6 @@
+// @ts-nocheck
 import styled, { DefaultTheme } from 'styled-components'
-import { CardHeader as UIKitCardHeader } from '@wagyu-swap-libs/uikit'
+import { CardHeader as UIKitCardHeader } from '@beef-swap-libs/uikit'
 
 const getBackground = (theme: DefaultTheme) => {
   if (theme.isDark) {

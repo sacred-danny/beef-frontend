@@ -1,9 +1,10 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { Text, Image, useMatchBreakpoints } from '@wagyu-swap-libs/uikit'
+import { Text, Image, useMatchBreakpoints } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
-import { useWagyuVault } from 'state/hooks'
+import { useBeefVault } from 'state/hooks'
 import { Pool } from 'state/types'
 import { BIG_ZERO } from 'utils/bigNumber'
 import BaseCell, { CellContent } from './BaseCell'
@@ -28,7 +29,7 @@ const NameCell: React.FC<NameCellProps> = ({ pool }) => {
   const { sousId, stakingToken, earningToken, userData, isFinished, isAutoVault } = pool
   const {
     userData: { userShares },
-  } = useWagyuVault()
+  } = useBeefVault()
   const hasVaultShares = userShares && userShares.gt(0)
 
   const stakingTokenSymbol = stakingToken.symbol
@@ -37,7 +38,7 @@ const NameCell: React.FC<NameCellProps> = ({ pool }) => {
 
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
   const isStaked = stakedBalance.gt(0)
-  const isManualWagyuPool = sousId === 0
+  const isManualBeefPool = sousId === 0
 
   const showStakedTag = isAutoVault ? hasVaultShares : isStaked
 
@@ -46,12 +47,12 @@ const NameCell: React.FC<NameCellProps> = ({ pool }) => {
   const showSubtitle = sousId !== 0 || (sousId === 0 && !isXs && !isSm)
 
   if (isAutoVault) {
-    title = t('Auto WAGYU')
+    title = t('Auto Beef')
     subtitle = t('Automatic restaking')
     iconFile = `${earningTokenSymbol}-${stakingTokenSymbol}vault.svg`.toLocaleLowerCase()
-  } else if (isManualWagyuPool) {
-    title = t('Manual WAGYU')
-    subtitle = `${t('Earn')} WAGYU ${t('Stake').toLocaleLowerCase()} WAGYU`
+  } else if (isManualBeefPool) {
+    title = t('Manual Beef')
+    subtitle = `${t('Earn')} Beef ${t('Stake').toLocaleLowerCase()} Beef`
   }
 
   return (

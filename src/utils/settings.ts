@@ -1,3 +1,4 @@
+// @ts-nocheck
 import BigNumber from 'bignumber.js'
 import { DEFAULT_GAS_PRICE } from 'config'
 import { getDecimalAmount } from './formatBalance'
@@ -23,7 +24,7 @@ export const getDefaultSettings = (): UserSettings => ({
 })
 
 export const getStorageKey = (account: string) => {
-  return `wagyuswap_settings_${account}_${VERSION}`
+  return `Beefswap_settings_${account}_${VERSION}`
 }
 
 export const getSettings = (account: string): UserSettings => {

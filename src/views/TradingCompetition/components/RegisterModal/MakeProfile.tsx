@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Heading, Text } from '@wagyu-swap-libs/uikit'
+import { Button, Heading, Text } from '@beef-swap-libs/uikit'
 import history from 'routerHistory'
 import { useTranslation } from 'contexts/Localization'
 import { CompetitionProps } from 'views/TradingCompetition/types'
@@ -18,7 +18,7 @@ const MakeProfile: React.FC<CompetitionProps> = ({ onDismiss }) => {
         {t('Make a profile!')}
       </Heading>
       <Text color="textSubtle">
-        {t('It looks like you’ve disabled your account by removing your Wagyu Collectible (NFT) profile picture.')}
+        {t('It looks like you’ve disabled your account by removing your Beef Collectible (NFT) profile picture.')}
       </Text>
       <Button mt="24px" width="100%" onClick={handleClick}>
         {t('Make a profile!')}

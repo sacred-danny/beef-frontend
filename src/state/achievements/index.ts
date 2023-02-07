@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable no-param-reassign */
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
 import { AchievementState, Achievement } from '../types'

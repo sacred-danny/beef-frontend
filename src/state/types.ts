@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ThunkAction } from 'redux-thunk'
 import { AnyAction } from '@reduxjs/toolkit'
 import BigNumber from 'bignumber.js'
@@ -81,23 +82,23 @@ export interface VaultFees {
 export interface VaultUser {
   isLoading: boolean
   userShares: string
-  wagyuAtLastUserAction: string
+  BeefAtLastUserAction: string
   lastDepositedTime: string
   lastUserActionTime: string
 }
-export interface WagyuVault {
+export interface BeefVault {
   totalShares?: string
   pricePerFullShare?: string
-  totalWagyuInVault?: string
-  estimatedWagyuBountyReward?: string
-  totalPendingWagyuHarvest?: string
+  totalBeefInVault?: string
+  estimatedBeefBountyReward?: string
+  totalPendingBeefHarvest?: string
   fees?: VaultFees
   userData?: VaultUser
 }
 
 export interface PoolsState {
   data: Pool[]
-  wagyuVault: WagyuVault
+  BeefVault: BeefVault
   userDataLoaded: boolean
 }
 

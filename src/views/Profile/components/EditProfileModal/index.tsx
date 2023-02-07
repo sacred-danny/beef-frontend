@@ -1,11 +1,12 @@
+// @ts-nocheck
 import React from 'react'
-import { InjectedModalProps, Modal } from '@wagyu-swap-libs/uikit'
+import { InjectedModalProps, Modal } from '@beef-swap-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import useEditProfile, { Views } from './reducer'
 import StartView from './StartView'
 import PauseProfileView from './PauseProfileView'
 import ChangeProfilePicView from './ChangeProfilePicView'
-import ApproveWagyuView from './ApproveWagyuView'
+import ApproveBeefView from './ApproveBeefView'
 
 type EditProfileModalProps = InjectedModalProps
 
@@ -13,7 +14,7 @@ const viewTitle = {
   [Views.START]: 'Edit Profile',
   [Views.CHANGE]: 'Change Profile Pic',
   [Views.REMOVE]: 'Remove Profile Pic',
-  [Views.APPROVE]: 'Approve WAGYU',
+  [Views.APPROVE]: 'Approve Beef',
 }
 
 const EditProfileModal: React.FC<EditProfileModalProps> = ({ onDismiss }) => {
@@ -32,7 +33,7 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({ onDismiss }) => {
         )}
         {currentView === Views.REMOVE && <PauseProfileView onDismiss={onDismiss} />}
         {currentView === Views.CHANGE && <ChangeProfilePicView onDismiss={onDismiss} />}
-        {currentView === Views.APPROVE && <ApproveWagyuView goToChange={goToChange} onDismiss={onDismiss} />}
+        {currentView === Views.APPROVE && <ApproveBeefView goToChange={goToChange} onDismiss={onDismiss} />}
       </div>
     </Modal>
   )

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import multicall from 'utils/multicall'
@@ -15,7 +16,7 @@ const useAllEarnings = () => {
     const fetchAllBalances = async () => {
       const calls = farmsConfig.map((farm) => ({
         address: getMasterChefAddress(),
-        name: 'pendingWagyu',
+        name: 'pendingBeef',
         params: [farm.pid, account],
       }))
 

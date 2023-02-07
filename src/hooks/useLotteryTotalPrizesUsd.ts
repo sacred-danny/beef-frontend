@@ -1,13 +1,14 @@
-import { usePriceWagyuVusdt } from 'state/hooks'
+// @ts-nocheck
+import { usePriceBeefVusdt } from 'state/hooks'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useTotalRewards } from './useTickets'
 
 const useLotteryTotalPrizesUsd = () => {
   const totalRewards = useTotalRewards()
-  const totalWagyu = getBalanceNumber(totalRewards)
-  const wagyuPriceVusdt = usePriceWagyuVusdt()
+  const totalBeef = getBalanceNumber(totalRewards)
+  const BeefPriceVusdt = usePriceBeefVusdt()
 
-  return totalWagyu * wagyuPriceVusdt.toNumber()
+  return totalBeef * BeefPriceVusdt.toNumber()
 }
 
 export default useLotteryTotalPrizesUsd

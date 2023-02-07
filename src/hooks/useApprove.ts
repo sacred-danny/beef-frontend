@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useCallback, useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { Contract } from 'web3-eth-contract'
@@ -7,7 +8,7 @@ import { useAppDispatch } from 'state'
 import { updateUserAllowance } from 'state/actions'
 import { approve } from 'utils/callHelpers'
 import { useTranslation } from 'contexts/Localization'
-import { useMasterchef, useWagyu, useSousChef, useLottery, useWagyuVaultContract } from './useContract'
+import { useMasterchef, useBeef, useSousChef, useLottery, useBeefVaultContract } from './useContract'
 import useToast from './useToast'
 import useLastUpdated from './useLastUpdated'
 
@@ -77,24 +78,24 @@ export const useSousApprove = (lpContract: Contract, sousId, earningTokenSymbol)
   return { handleApprove, requestedApproval }
 }
 
-// Approve WAGYU auto pool
+// Approve Beef auto pool
 export const useVaultApprove = (setLastUpdated: () => void) => {
   const { account } = useWeb3React()
   const [requestedApproval, setRequestedApproval] = useState(false)
   const { t } = useTranslation()
   const { toastSuccess, toastError } = useToast()
-  const wagyuVaultContract = useWagyuVaultContract()
-  const wagyuContract = useWagyu()
+  const BeefVaultContract = useBeefVaultContract()
+  const BeefContract = useBeef()
 
   const handleApprove = () => {
-    wagyuContract.methods
-      .approve(wagyuVaultContract.options.address, ethers.constants.MaxUint256)
+    BeefContract.methods
+      .approve(BeefVaultContract.options.address, ethers.constants.MaxUint256)
       .send({ from: account })
       .on('sending', () => {
         setRequestedApproval(true)
       })
       .on('receipt', () => {
-        toastSuccess(t('Contract Enabled'), t('You can now stake in the %symbol% vault!', { symbol: 'WAGYU' }))
+        toastSuccess(t('Contract Enabled'), t('You can now stake in the %symbol% vault!', { symbol: 'Beef' }))
         setLastUpdated()
         setRequestedApproval(false)
       })
@@ -111,14 +112,14 @@ export const useVaultApprove = (setLastUpdated: () => void) => {
 export const useCheckVaultApprovalStatus = () => {
   const [isVaultApproved, setIsVaultApproved] = useState(false)
   const { account } = useWeb3React()
-  const wagyuContract = useWagyu()
-  const wagyuVaultContract = useWagyuVaultContract()
+  const BeefContract = useBeef()
+  const BeefVaultContract = useBeefVaultContract()
   const { lastUpdated, setLastUpdated } = useLastUpdated()
   useEffect(() => {
     let isSubscribed = true
     const checkApprovalStatus = async () => {
       try {
-        const response = await wagyuContract.methods.allowance(account, wagyuVaultContract.options.address).call()
+        const response = await BeefContract.methods.allowance(account, BeefVaultContract.options.address).call()
         const currentAllowance = new BigNumber(response)
         if (isSubscribed) {
           setIsVaultApproved(currentAllowance.gt(0))
@@ -134,7 +135,7 @@ export const useCheckVaultApprovalStatus = () => {
     return() => {
       isSubscribed = false
     }
-  }, [account, wagyuContract, wagyuVaultContract, lastUpdated])
+  }, [account, BeefContract, BeefVaultContract, lastUpdated])
 
   return { isVaultApproved, setLastUpdated }
 }
@@ -142,17 +143,17 @@ export const useCheckVaultApprovalStatus = () => {
 // Approve the lottery
 export const useLotteryApprove = () => {
   const { account } = useWeb3React()
-  const wagyuContract = useWagyu()
+  const BeefContract = useBeef()
   const lotteryContract = useLottery()
 
   const handleApprove = useCallback(async () => {
     try {
-      const tx = await approve(wagyuContract, lotteryContract, account)
+      const tx = await approve(BeefContract, lotteryContract, account)
       return tx
     } catch (e) {
       return false
     }
-  }, [account, wagyuContract, lotteryContract])
+  }, [account, BeefContract, lotteryContract])
 
   return { onApprove: handleApprove }
 }

@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { Svg, SvgProps } from '@wagyu-swap-libs/uikit'
+import { Svg, SvgProps } from '@beef-swap-libs/uikit'
 
 interface StyledSvgProps {
   svgFill?: string

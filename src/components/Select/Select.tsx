@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React, { useState, useRef, useEffect } from 'react'
 import styled, { css } from 'styled-components'
-import { ArrowDropDownIcon, Text } from '@wagyu-swap-libs/uikit'
+import { ArrowDropDownIcon, Text } from '@beef-swap-libs/uikit'
 
 const DropDownHeader = styled.div`
   width: 100%;

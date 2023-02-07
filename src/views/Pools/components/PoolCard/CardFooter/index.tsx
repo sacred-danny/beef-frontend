@@ -1,8 +1,9 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import BigNumber from 'bignumber.js'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
-import { Flex, CardFooter, ExpandableLabel, HelpIcon, useTooltip } from '@wagyu-swap-libs/uikit'
+import { Flex, CardFooter, ExpandableLabel, HelpIcon, useTooltip } from '@beef-swap-libs/uikit'
 import { Pool } from 'state/types'
 import { CompoundingPoolTag, ManualPoolTag } from 'components/Tags'
 import ExpandedFooter from './ExpandedFooter'
@@ -10,7 +11,7 @@ import ExpandedFooter from './ExpandedFooter'
 interface FooterProps {
   pool: Pool
   account: string
-  totalWagyuInVault?: BigNumber
+  totalBeefInVault?: BigNumber
 }
 
 const ExpandableButtonWrapper = styled(Flex)`

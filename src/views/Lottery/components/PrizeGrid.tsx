@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
-import { Heading, Text } from '@wagyu-swap-libs/uikit'
+import { Heading, Text } from '@beef-swap-libs/uikit'
 import { BigNumber } from 'bignumber.js'
-import { usePriceWagyuVusdt } from 'state/hooks'
+import { usePriceBeefVusdt } from 'state/hooks'
 import CardVusdtValue from '../../Home/components/CardVusdtValue'
 
 export interface PrizeGridProps {
@@ -48,10 +48,10 @@ const PrizeGrid: React.FC<PrizeGridProps> = ({
   const twoMatchesAmount = +((lotteryPrizeAmount / 100) * 10).toFixed(0)
   const burnAmount = +((lotteryPrizeAmount / 100) * 10).toFixed(0)
   const { t } = useTranslation()
-  const wagyuVusdtPrice = usePriceWagyuVusdt()
+  const BeefVusdtPrice = usePriceBeefVusdt()
 
-  const getWagyuVusdtValue = (amount: number) => {
-    return new BigNumber(amount).multipliedBy(wagyuVusdtPrice).toNumber()
+  const getBeefVusdtValue = (amount: number) => {
+    return new BigNumber(amount).multipliedBy(BeefVusdtPrice).toNumber()
   }
 
   return (
@@ -85,7 +85,7 @@ const PrizeGrid: React.FC<PrizeGridProps> = ({
       <GridItem>
         <RightAlignedHeading size="md">
           {fourMatchesAmount.toLocaleString()}
-          {!pastDraw && !wagyuVusdtPrice.eq(0) && <CardVusdtValue value={getWagyuVusdtValue(fourMatchesAmount)} />}
+          {!pastDraw && !BeefVusdtPrice.eq(0) && <CardVusdtValue value={getBeefVusdtValue(fourMatchesAmount)} />}
         </RightAlignedHeading>
       </GridItem>
       {/* 3 matches row */}
@@ -100,7 +100,7 @@ const PrizeGrid: React.FC<PrizeGridProps> = ({
       <GridItem>
         <RightAlignedText>
           {threeMatchesAmount.toLocaleString()}
-          {!pastDraw && !wagyuVusdtPrice.eq(0) && <CardVusdtValue value={getWagyuVusdtValue(threeMatchesAmount)} />}
+          {!pastDraw && !BeefVusdtPrice.eq(0) && <CardVusdtValue value={getBeefVusdtValue(threeMatchesAmount)} />}
         </RightAlignedText>
       </GridItem>
       {/* 2 matches row */}
@@ -115,7 +115,7 @@ const PrizeGrid: React.FC<PrizeGridProps> = ({
       <GridItem>
         <RightAlignedText>
           {twoMatchesAmount.toLocaleString()}
-          {!pastDraw && !wagyuVusdtPrice.eq(0) && <CardVusdtValue value={getWagyuVusdtValue(twoMatchesAmount)} />}
+          {!pastDraw && !BeefVusdtPrice.eq(0) && <CardVusdtValue value={getBeefVusdtValue(twoMatchesAmount)} />}
         </RightAlignedText>
       </GridItem>
       {/* Burn row */}

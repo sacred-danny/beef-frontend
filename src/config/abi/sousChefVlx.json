@@ -213,7 +213,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "accWagyuPerShare",
+        "name": "accBeefPerShare",
         "type": "uint256"
       }
     ],

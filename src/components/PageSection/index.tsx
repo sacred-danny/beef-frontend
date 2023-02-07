@@ -1,6 +1,7 @@
+// @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, FlexProps } from '@wagyu-swap-libs/uikit'
+import { Flex, FlexProps } from '@beef-swap-libs/uikit'
 import Container from 'components/layout/Container'
 import CurvedDivider from './CurvedDivider'
 

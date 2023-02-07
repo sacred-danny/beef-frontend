@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Text, Heading, Link } from '@wagyu-swap-libs/uikit'
+import { Flex, Text, Heading, Link } from '@beef-swap-libs/uikit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import HowToCard from './HowToCard'
@@ -19,7 +19,7 @@ const HowToJoin = () => {
       </Heading>
       <HowToCard number={1} title={t('Get Ready')}>
         <Text fontSize="14px" color="textSubtle">
-          {t('Set up your')} <StyledLink href="/profile">{t('Wagyu Profile')}</StyledLink>
+          {t('Set up your')} <StyledLink href="/profile">{t('Beef Profile')}</StyledLink>
           {', '}
           {t('then register for the competition by clicking “I WANT TO BATTLE” button above.')}
         </Text>
@@ -27,7 +27,7 @@ const HowToJoin = () => {
       <HowToCard number={2} title={t('Battle Time')}>
         <Text fontSize="14px" color="textSubtle">
           {t(
-            'Trade VLX/VUSDT, WAGYU/VLX, ETH/VLX and BTCB/VLX during the battle period to raise both your and your team’s score. See the Rules section below for more.',
+            'Trade VLX/VUSDT, Beef/VLX, ETH/VLX and BTCB/VLX during the battle period to raise both your and your team’s score. See the Rules section below for more.',
           )}
         </Text>
       </HowToCard>
